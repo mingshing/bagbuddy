@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  bagbuddy
+
+  Created by mingshing on 2023/4/5.
+  
+*/
+
+"first_step_headline" = "Step 1";
+"first_step_title" = "Your current location";
+"first_step_description" = "Packer uses your location to calculate travel time, weather, and more!";
+"first_step_select_placeholder" = "Select a city";
+"first_step_action" = "Next: Your destination";
+"first_step_location_input_placeholder" = "Select a city";
