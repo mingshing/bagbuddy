@@ -234,7 +234,7 @@
 		E895FA2929D953D200F618A7 /* bagbuddy */ = {
 			isa = PBXGroup;
 			children = (
-				E8EB3EF229DD766E00C44EB5 /* FirstStep */,
+				E8EB3EF229DD766E00C44EB5 /* SelectLocation */,
 				E8EB3EFD29DD85ED00C44EB5 /* LocationList */,
 				E8EB3EE229DD698E00C44EB5 /* Onboarding */,
 				E8EB3F0329E1B3CC00C44EB5 /* Model */,
@@ -357,13 +357,13 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		E8EB3EF229DD766E00C44EB5 /* FirstStep */ = {
+		E8EB3EF229DD766E00C44EB5 /* SelectLocation */ = {
 			isa = PBXGroup;
 			children = (
 				E8EB3EF629DD775700C44EB5 /* Presenter */,
 				E8EB3EF529DD774C00C44EB5 /* View */,
 			);
-			path = FirstStep;
+			path = SelectLocation;
 			sourceTree = "<group>";
 		};
 		E8EB3EF529DD774C00C44EB5 /* View */ = {
