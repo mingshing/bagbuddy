@@ -12,6 +12,8 @@
 		E87BB67329E1B4D200E823D1 /* city_list.json in Resources */ = {isa = PBXBuildFile; fileRef = E87BB67229E1B4D200E823D1 /* city_list.json */; };
 		E87BB67529E1B4FC00E823D1 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB67429E1B4FC00E823D1 /* City.swift */; };
 		E87BB67729E1B6AF00E823D1 /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB67629E1B6AF00E823D1 /* LocalDataManager.swift */; };
+		E87BB67C29E1BA4C00E823D1 /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB67B29E1BA4C00E823D1 /* SelectDateViewController.swift */; };
+		E87BB67E29E1BA7D00E823D1 /* SelectDatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB67D29E1BA7D00E823D1 /* SelectDatePresenter.swift */; };
 		E895FA2B29D953D200F618A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2A29D953D200F618A7 /* AppDelegate.swift */; };
 		E895FA2D29D953D200F618A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2C29D953D200F618A7 /* SceneDelegate.swift */; };
 		E895FA2F29D953D200F618A7 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2E29D953D200F618A7 /* OnboardingViewController.swift */; };
@@ -95,6 +97,8 @@
 		E87BB67229E1B4D200E823D1 /* city_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city_list.json; sourceTree = "<group>"; };
 		E87BB67429E1B4FC00E823D1 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		E87BB67629E1B6AF00E823D1 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
+		E87BB67B29E1BA4C00E823D1 /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
+		E87BB67D29E1BA7D00E823D1 /* SelectDatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDatePresenter.swift; sourceTree = "<group>"; };
 		E895FA2729D953D200F618A7 /* bagbuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bagbuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E895FA2A29D953D200F618A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E895FA2C29D953D200F618A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +213,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E87BB67829E1B9FD00E823D1 /* SelectDate */ = {
+			isa = PBXGroup;
+			children = (
+				E87BB67929E1BA0B00E823D1 /* Presenter */,
+				E87BB67A29E1BA1B00E823D1 /* View */,
+			);
+			path = SelectDate;
+			sourceTree = "<group>";
+		};
+		E87BB67929E1BA0B00E823D1 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E87BB67D29E1BA7D00E823D1 /* SelectDatePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E87BB67A29E1BA1B00E823D1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E87BB67B29E1BA4C00E823D1 /* SelectDateViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E895FA1E29D953D200F618A7 = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +263,7 @@
 		E895FA2929D953D200F618A7 /* bagbuddy */ = {
 			isa = PBXGroup;
 			children = (
+				E87BB67829E1B9FD00E823D1 /* SelectDate */,
 				E8EB3EF229DD766E00C44EB5 /* SelectLocation */,
 				E8EB3EFD29DD85ED00C44EB5 /* LocationList */,
 				E8EB3EE229DD698E00C44EB5 /* Onboarding */,
@@ -683,6 +713,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E87BB67C29E1BA4C00E823D1 /* SelectDateViewController.swift in Sources */,
 				E895FA2F29D953D200F618A7 /* OnboardingViewController.swift in Sources */,
 				E8EB3EF129DD727400C44EB5 /* BagbuddyCoordinator.swift in Sources */,
 				E8EB3F0029DDAE0C00C44EB5 /* CityTextField.swift in Sources */,
@@ -692,6 +723,7 @@
 				E8EB3EF829DD780A00C44EB5 /* SelectLocationPresenter.swift in Sources */,
 				E8EB3EF429DD768A00C44EB5 /* SelectLocationViewController.swift in Sources */,
 				E87BB67529E1B4FC00E823D1 /* City.swift in Sources */,
+				E87BB67E29E1BA7D00E823D1 /* SelectDatePresenter.swift in Sources */,
 				E895FA2D29D953D200F618A7 /* SceneDelegate.swift in Sources */,
 				E8EB3EED29DD6C8B00C44EB5 /* UIColor+Extensions.swift in Sources */,
 				E8EB3EFC29DD829D00C44EB5 /* Constants.swift in Sources */,
