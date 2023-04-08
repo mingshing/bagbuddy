@@ -8,13 +8,14 @@
 import Foundation
 
 protocol SelectLocationDelegate: AnyObject {
-    func nextStep()
+    func showLocationListPage()
+    func enterNextStep()
 }
 
 
 protocol SelectLocationPresenterType {
     var delegate: SelectLocationDelegate? {get set}
-    
+    func nextStep()
     func openSelectCityPage()
 }
 
@@ -28,8 +29,12 @@ class SelectLocationPresenter: SelectLocationPresenterType {
         self.delegate = delegate
     }
     
+    func nextStep() {
+        delegate?.enterNextStep()
+    }
+    
     func openSelectCityPage() {
-        delegate?.nextStep()
+        delegate?.showLocationListPage()
     }
 }
     

@@ -9,9 +9,9 @@ import Foundation
 import SnapKit
 import UIKit
 
-enum SelectTargetLocation {
-    case source
-    case destination
+enum SelectTargetLocation: String {
+    case source = "Current location"
+    case destination = "Destination"
 }
 
 class SelectLocationViewController: UIViewController {
@@ -101,7 +101,6 @@ class SelectLocationViewController: UIViewController {
         button.titleLabel?.font = UIFont.actionTextFont(ofSize: 16)
         button.backgroundColor = .interactionDisableBackground
         button.layer.cornerRadius = 8
-        button.isEnabled = false
         return button
     }()
     
@@ -166,19 +165,25 @@ class SelectLocationViewController: UIViewController {
         }
     }
     @objc func buttonAction(sender: UIButton!) {
-        presenter?.openSelectCityPage()
-   }
+        presenter?.nextStep()
+    }
+    
 }
 
 extension SelectLocationViewController: SelectLocationDelegate {
-    
-    func nextStep() {
+
+    func enterNextStep() {
         switch selectTarget {
         case .source:
             BagbuddyCoordinator.openSelectLocationPage(from: self, target: .destination)
         case .destination:
             BagbuddyCoordinator.openSelectDatePage(from: self)
         }
+    }
+    
+    func showLocationListPage() {
+        
+        BagbuddyCoordinator.openLocationListPage(from: self, target: selectTarget)
     }
     
 }

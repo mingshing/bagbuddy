@@ -14,6 +14,8 @@
 		E87BB67729E1B6AF00E823D1 /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB67629E1B6AF00E823D1 /* LocalDataManager.swift */; };
 		E87BB67C29E1BA4C00E823D1 /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB67B29E1BA4C00E823D1 /* SelectDateViewController.swift */; };
 		E87BB67E29E1BA7D00E823D1 /* SelectDatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB67D29E1BA7D00E823D1 /* SelectDatePresenter.swift */; };
+		E87BB68129E1BEA400E823D1 /* LocationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB68029E1BEA400E823D1 /* LocationListViewController.swift */; };
+		E87BB68429E1BECF00E823D1 /* LocationListViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB68329E1BECF00E823D1 /* LocationListViewPresenter.swift */; };
 		E895FA2B29D953D200F618A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2A29D953D200F618A7 /* AppDelegate.swift */; };
 		E895FA2D29D953D200F618A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2C29D953D200F618A7 /* SceneDelegate.swift */; };
 		E895FA2F29D953D200F618A7 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2E29D953D200F618A7 /* OnboardingViewController.swift */; };
@@ -99,6 +101,8 @@
 		E87BB67629E1B6AF00E823D1 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
 		E87BB67B29E1BA4C00E823D1 /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
 		E87BB67D29E1BA7D00E823D1 /* SelectDatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDatePresenter.swift; sourceTree = "<group>"; };
+		E87BB68029E1BEA400E823D1 /* LocationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewController.swift; sourceTree = "<group>"; };
+		E87BB68329E1BECF00E823D1 /* LocationListViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewPresenter.swift; sourceTree = "<group>"; };
 		E895FA2729D953D200F618A7 /* bagbuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bagbuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E895FA2A29D953D200F618A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E895FA2C29D953D200F618A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -236,6 +240,22 @@
 				E87BB67B29E1BA4C00E823D1 /* SelectDateViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E87BB67F29E1BE8900E823D1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E87BB68029E1BEA400E823D1 /* LocationListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E87BB68229E1BEAC00E823D1 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E87BB68329E1BECF00E823D1 /* LocationListViewPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		E895FA1E29D953D200F618A7 = {
@@ -415,6 +435,8 @@
 		E8EB3EFD29DD85ED00C44EB5 /* LocationList */ = {
 			isa = PBXGroup;
 			children = (
+				E87BB68229E1BEAC00E823D1 /* Presenter */,
+				E87BB67F29E1BE8900E823D1 /* View */,
 			);
 			path = LocationList;
 			sourceTree = "<group>";
@@ -715,11 +737,13 @@
 			files = (
 				E87BB67C29E1BA4C00E823D1 /* SelectDateViewController.swift in Sources */,
 				E895FA2F29D953D200F618A7 /* OnboardingViewController.swift in Sources */,
+				E87BB68429E1BECF00E823D1 /* LocationListViewPresenter.swift in Sources */,
 				E8EB3EF129DD727400C44EB5 /* BagbuddyCoordinator.swift in Sources */,
 				E8EB3F0029DDAE0C00C44EB5 /* CityTextField.swift in Sources */,
 				E8EB3EFA29DD7D3100C44EB5 /* UIFont+Extensions.swift in Sources */,
 				E895FA2B29D953D200F618A7 /* AppDelegate.swift in Sources */,
 				E87BB67729E1B6AF00E823D1 /* LocalDataManager.swift in Sources */,
+				E87BB68129E1BEA400E823D1 /* LocationListViewController.swift in Sources */,
 				E8EB3EF829DD780A00C44EB5 /* SelectLocationPresenter.swift in Sources */,
 				E8EB3EF429DD768A00C44EB5 /* SelectLocationViewController.swift in Sources */,
 				E87BB67529E1B4FC00E823D1 /* City.swift in Sources */,

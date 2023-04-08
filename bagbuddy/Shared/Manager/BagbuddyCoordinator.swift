@@ -10,15 +10,23 @@ import MessageUI
 
 class BagbuddyCoordinator {
     
+    static func openLocationListPage(from sourceVC: UIViewController, target: SelectTargetLocation) {
+        let locationListVC = LocationListViewController(target: target)
+        locationListVC.modalPresentationStyle = .pageSheet
+        
+        sourceVC.present(locationListVC, animated: true, completion: nil)
+    }
+    
+    
     static func openSelectLocationPage(from sourceVC: UIViewController, target: SelectTargetLocation) {
-        let locationVC = SelectLocationViewController(target: target)
+        let setLocationVC = SelectLocationViewController(target: target)
         guard
             let navigationVC = sourceVC.navigationController
         else {
-            sourceVC.show(locationVC, sender: nil)
+            sourceVC.show(setLocationVC, sender: nil)
             return
         }
-        navigationVC.pushViewController(locationVC, animated: true)
+        navigationVC.pushViewController(setLocationVC, animated: true)
     }
     
     static func openSelectDatePage(from sourceVC: UIViewController) {
