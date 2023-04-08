@@ -17,3 +17,8 @@ struct LayoutConstants {
     //margin
     static let pageHorizontalMargin: CGFloat = 20.0
 }
+
+
+struct LocalFileName {
+    static let cityList: String = "city_list"
+}
