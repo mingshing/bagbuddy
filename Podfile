@@ -8,7 +8,9 @@ target 'bagbuddy' do
   # Pods for bagbuddy
   pod 'SnapKit', '~> 5.0.0'
   pod 'Kingfisher'
-
+  pod 'HorizonCalendar'
+  pod 'RealmSwift', '~>10'
+  
 
   target 'bagbuddyTests' do
     inherit! :search_paths

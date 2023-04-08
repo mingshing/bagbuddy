@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		03A4CAB280574A67CE8AD4DD /* Pods_bagbuddy_bagbuddyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA84250EEF6B7BC17F90BA53 /* Pods_bagbuddy_bagbuddyUITests.framework */; };
 		287D69229E6F2ECDAAB0CC74 /* Pods_bagbuddyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D31F411A0D2C57EE3F04E9 /* Pods_bagbuddyTests.framework */; };
+		E87BB67329E1B4D200E823D1 /* city_list.json in Resources */ = {isa = PBXBuildFile; fileRef = E87BB67229E1B4D200E823D1 /* city_list.json */; };
+		E87BB67529E1B4FC00E823D1 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB67429E1B4FC00E823D1 /* City.swift */; };
+		E87BB67729E1B6AF00E823D1 /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB67629E1B6AF00E823D1 /* LocalDataManager.swift */; };
 		E895FA2B29D953D200F618A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2A29D953D200F618A7 /* AppDelegate.swift */; };
 		E895FA2D29D953D200F618A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2C29D953D200F618A7 /* SceneDelegate.swift */; };
 		E895FA2F29D953D200F618A7 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2E29D953D200F618A7 /* OnboardingViewController.swift */; };
@@ -89,6 +92,9 @@
 		B13D1C8592F644C220337304 /* Pods_bagbuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bagbuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3D31F411A0D2C57EE3F04E9 /* Pods_bagbuddyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bagbuddyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5EF199862AAA3D508E8A432 /* Pods-bagbuddy-bagbuddyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bagbuddy-bagbuddyUITests.release.xcconfig"; path = "Target Support Files/Pods-bagbuddy-bagbuddyUITests/Pods-bagbuddy-bagbuddyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E87BB67229E1B4D200E823D1 /* city_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city_list.json; sourceTree = "<group>"; };
+		E87BB67429E1B4FC00E823D1 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		E87BB67629E1B6AF00E823D1 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
 		E895FA2729D953D200F618A7 /* bagbuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bagbuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E895FA2A29D953D200F618A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E895FA2C29D953D200F618A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -231,6 +237,7 @@
 				E8EB3EF229DD766E00C44EB5 /* FirstStep */,
 				E8EB3EFD29DD85ED00C44EB5 /* LocationList */,
 				E8EB3EE229DD698E00C44EB5 /* Onboarding */,
+				E8EB3F0329E1B3CC00C44EB5 /* Model */,
 				E8EB3EEE29DD723E00C44EB5 /* Shared */,
 				E8EB3EEB29DD6C5400C44EB5 /* Extensions */,
 				E8BA003229D9CF8600EC7EEA /* Resources */,
@@ -264,6 +271,7 @@
 		E8BA003229D9CF8600EC7EEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E87BB67229E1B4D200E823D1 /* city_list.json */,
 				E8BA003329D9CF9A00EC7EEA /* fonts */,
 				E895FA3329D953D700F618A7 /* Assets.xcassets */,
 			);
@@ -344,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				E8EB3EF029DD727400C44EB5 /* BagbuddyCoordinator.swift */,
+				E87BB67629E1B6AF00E823D1 /* LocalDataManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -386,6 +395,14 @@
 				E8EB3EFF29DDAE0C00C44EB5 /* CityTextField.swift */,
 			);
 			path = ViewComponent;
+			sourceTree = "<group>";
+		};
+		E8EB3F0329E1B3CC00C44EB5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E87BB67429E1B4FC00E823D1 /* City.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -521,6 +538,7 @@
 				E895FA3429D953D700F618A7 /* Assets.xcassets in Resources */,
 				E8BA007329D9D00800EC7EEA /* Poppins-Bold.ttf in Resources */,
 				E8BA007629D9D00800EC7EEA /* Poppins-ExtraLight.ttf in Resources */,
+				E87BB67329E1B4D200E823D1 /* city_list.json in Resources */,
 				E8BA007729D9D00800EC7EEA /* Poppins-MediumItalic.ttf in Resources */,
 				E8BA005129D9CFEF00EC7EEA /* Montserrat-LightItalic.ttf in Resources */,
 				E8BA005029D9CFEF00EC7EEA /* Montserrat-ThinItalic.ttf in Resources */,
@@ -670,8 +688,10 @@
 				E8EB3F0029DDAE0C00C44EB5 /* CityTextField.swift in Sources */,
 				E8EB3EFA29DD7D3100C44EB5 /* UIFont+Extensions.swift in Sources */,
 				E895FA2B29D953D200F618A7 /* AppDelegate.swift in Sources */,
+				E87BB67729E1B6AF00E823D1 /* LocalDataManager.swift in Sources */,
 				E8EB3EF829DD780A00C44EB5 /* SelectLocationPresenter.swift in Sources */,
 				E8EB3EF429DD768A00C44EB5 /* SelectLocationViewController.swift in Sources */,
+				E87BB67529E1B4FC00E823D1 /* City.swift in Sources */,
 				E895FA2D29D953D200F618A7 /* SceneDelegate.swift in Sources */,
 				E8EB3EED29DD6C8B00C44EB5 /* UIColor+Extensions.swift in Sources */,
 				E8EB3EFC29DD829D00C44EB5 /* Constants.swift in Sources */,
