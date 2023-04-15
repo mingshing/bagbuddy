@@ -10,8 +10,12 @@ import MessageUI
 
 class BagbuddyCoordinator {
     
-    static func openLocationListPage(from sourceVC: UIViewController, target: SelectTargetLocation) {
-        let locationListVC = LocationListViewController(target: target)
+    static func openLocationListPage(
+        from sourceVC: UIViewController,
+        target: SelectTargetLocation,
+        locationSelectedBlock: SelectCompletedBlock = nil
+    ) {
+        let locationListVC = LocationListViewController(target: target, completetion: locationSelectedBlock)
         locationListVC.modalPresentationStyle = .pageSheet
         
         sourceVC.present(locationListVC, animated: true, completion: nil)

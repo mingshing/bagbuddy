@@ -14,12 +14,6 @@ protocol CityInputViewDelegate: UITextFieldDelegate {
     func textFieldDidTapExpand(_ textField: CityInputView)
 }
 
-extension CityInputViewDelegate {
-    func textFieldDidChangeText(_ textField: CityInputView, text: String?) {}
-    func textFieldDidClearText(_ textField: CityInputView) {}
-    func textFieldDidTapExpand(_ textField: CityInputView) {}
-}
-
 class CityInputView: UIView {
     
     enum LeftViewState {
@@ -31,7 +25,7 @@ class CityInputView: UIView {
         didSet { inputField.delegate = delegate }
     }
     
-    var leftViewState: LeftViewState = .none {
+    public var leftViewState: LeftViewState = .none {
         didSet {
             switch leftViewState {
             case .selected:
@@ -61,7 +55,7 @@ class CityInputView: UIView {
         return button
     }()
     
-    private lazy var inputField: UITextField = {
+    public lazy var inputField: UITextField = {
         let textField = UITextField()
         textField.textColor = .primaryWhite
         textField.backgroundColor = .inputBackground
@@ -72,7 +66,8 @@ class CityInputView: UIView {
         textField.rightView = expandButton
         textField.rightViewMode = .always
         textField.placeholder = NSLocalizedString("location_input_placeholder", comment: "")
-        
+        textField.addTarget(self, action: #selector(textFieldDidChange(_:)),
+                                  for: .editingChanged)
         return textField
     }()
     
@@ -120,5 +115,9 @@ class CityInputView: UIView {
     
     @objc func pressExpandButton(_ sender: Any) {
         delegate?.textFieldDidTapExpand(self)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        delegate?.textFieldDidChangeText(self, text: inputField.text)
     }
 }

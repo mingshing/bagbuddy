@@ -10,7 +10,7 @@ target 'bagbuddy' do
   pod 'Kingfisher'
   pod 'HorizonCalendar'
   pod 'RealmSwift', '~>10'
-  
+  pod 'IQKeyboardManagerSwift'
 
   target 'bagbuddyTests' do
     inherit! :search_paths
