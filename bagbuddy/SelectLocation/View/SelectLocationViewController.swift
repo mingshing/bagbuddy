@@ -183,7 +183,18 @@ extension SelectLocationViewController: SelectLocationDelegate {
     
     func showLocationListPage() {
         
-        BagbuddyCoordinator.openLocationListPage(from: self, target: selectTarget)
+        BagbuddyCoordinator.openLocationListPage(
+            from: self,
+            target: selectTarget) { [weak self] selectedCityName in
+                guard let cityName = selectedCityName,
+                      !cityName.isEmpty else {
+                    self?.locationInputView.leftViewState = .none
+                    self?.locationInputView.inputField.text = ""
+                    return
+                }
+                self?.locationInputView.leftViewState = .selected
+                self?.locationInputView.inputField.text = cityName
+            }
     }
     
 }

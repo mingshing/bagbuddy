@@ -16,6 +16,8 @@
 		E87BB67E29E1BA7D00E823D1 /* SelectDatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB67D29E1BA7D00E823D1 /* SelectDatePresenter.swift */; };
 		E87BB68129E1BEA400E823D1 /* LocationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB68029E1BEA400E823D1 /* LocationListViewController.swift */; };
 		E87BB68429E1BECF00E823D1 /* LocationListViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB68329E1BECF00E823D1 /* LocationListViewPresenter.swift */; };
+		E887E1AB29EAE8D000CA14BF /* LocationListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1AA29EAE8D000CA14BF /* LocationListViewCell.swift */; };
+		E887E1AE29EAEAB500CA14BF /* LocationListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1AD29EAEAB500CA14BF /* LocationListCellViewModel.swift */; };
 		E895FA2B29D953D200F618A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2A29D953D200F618A7 /* AppDelegate.swift */; };
 		E895FA2D29D953D200F618A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2C29D953D200F618A7 /* SceneDelegate.swift */; };
 		E895FA2F29D953D200F618A7 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2E29D953D200F618A7 /* OnboardingViewController.swift */; };
@@ -103,6 +105,8 @@
 		E87BB67D29E1BA7D00E823D1 /* SelectDatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDatePresenter.swift; sourceTree = "<group>"; };
 		E87BB68029E1BEA400E823D1 /* LocationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewController.swift; sourceTree = "<group>"; };
 		E87BB68329E1BECF00E823D1 /* LocationListViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewPresenter.swift; sourceTree = "<group>"; };
+		E887E1AA29EAE8D000CA14BF /* LocationListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewCell.swift; sourceTree = "<group>"; };
+		E887E1AD29EAEAB500CA14BF /* LocationListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListCellViewModel.swift; sourceTree = "<group>"; };
 		E895FA2729D953D200F618A7 /* bagbuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bagbuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E895FA2A29D953D200F618A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E895FA2C29D953D200F618A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -246,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				E87BB68029E1BEA400E823D1 /* LocationListViewController.swift */,
+				E887E1AA29EAE8D000CA14BF /* LocationListViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -256,6 +261,14 @@
 				E87BB68329E1BECF00E823D1 /* LocationListViewPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E887E1AC29EAEA9000CA14BF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E887E1AD29EAEAB500CA14BF /* LocationListCellViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		E895FA1E29D953D200F618A7 = {
@@ -436,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				E87BB68229E1BEAC00E823D1 /* Presenter */,
+				E887E1AC29EAEA9000CA14BF /* ViewModel */,
 				E87BB67F29E1BE8900E823D1 /* View */,
 			);
 			path = LocationList;
@@ -746,8 +760,10 @@
 				E87BB68129E1BEA400E823D1 /* LocationListViewController.swift in Sources */,
 				E8EB3EF829DD780A00C44EB5 /* SelectLocationPresenter.swift in Sources */,
 				E8EB3EF429DD768A00C44EB5 /* SelectLocationViewController.swift in Sources */,
+				E887E1AE29EAEAB500CA14BF /* LocationListCellViewModel.swift in Sources */,
 				E87BB67529E1B4FC00E823D1 /* City.swift in Sources */,
 				E87BB67E29E1BA7D00E823D1 /* SelectDatePresenter.swift in Sources */,
+				E887E1AB29EAE8D000CA14BF /* LocationListViewCell.swift in Sources */,
 				E895FA2D29D953D200F618A7 /* SceneDelegate.swift in Sources */,
 				E8EB3EED29DD6C8B00C44EB5 /* UIColor+Extensions.swift in Sources */,
 				E8EB3EFC29DD829D00C44EB5 /* Constants.swift in Sources */,
