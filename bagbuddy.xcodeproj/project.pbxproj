@@ -21,6 +21,10 @@
 		E887E1B029ED131400CA14BF /* TripPacker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1AF29ED131400CA14BF /* TripPacker.swift */; };
 		E887E1B229ED252100CA14BF /* DateField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1B129ED252100CA14BF /* DateField.swift */; };
 		E887E1B529ED399000CA14BF /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1B429ED399000CA14BF /* DatePickerViewController.swift */; };
+		E887E1BC29ED3E4C00CA14BF /* PackageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1BB29ED3E4C00CA14BF /* PackageListViewController.swift */; };
+		E887E1BE29ED3EAE00CA14BF /* PackageListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1BD29ED3EAE00CA14BF /* PackageListPresenter.swift */; };
+		E887E1C029ED3EC500CA14BF /* PackageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1BF29ED3EC500CA14BF /* PackageListViewModel.swift */; };
+		E887E1C229ED3EF500CA14BF /* PackageListInteactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1C129ED3EF500CA14BF /* PackageListInteactor.swift */; };
 		E895FA2B29D953D200F618A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2A29D953D200F618A7 /* AppDelegate.swift */; };
 		E895FA2D29D953D200F618A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2C29D953D200F618A7 /* SceneDelegate.swift */; };
 		E895FA2F29D953D200F618A7 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2E29D953D200F618A7 /* OnboardingViewController.swift */; };
@@ -113,6 +117,10 @@
 		E887E1AF29ED131400CA14BF /* TripPacker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPacker.swift; sourceTree = "<group>"; };
 		E887E1B129ED252100CA14BF /* DateField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateField.swift; sourceTree = "<group>"; };
 		E887E1B429ED399000CA14BF /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		E887E1BB29ED3E4C00CA14BF /* PackageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageListViewController.swift; sourceTree = "<group>"; };
+		E887E1BD29ED3EAE00CA14BF /* PackageListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageListPresenter.swift; sourceTree = "<group>"; };
+		E887E1BF29ED3EC500CA14BF /* PackageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageListViewModel.swift; sourceTree = "<group>"; };
+		E887E1C129ED3EF500CA14BF /* PackageListInteactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageListInteactor.swift; sourceTree = "<group>"; };
 		E895FA2729D953D200F618A7 /* bagbuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bagbuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E895FA2A29D953D200F618A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E895FA2C29D953D200F618A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -285,6 +293,49 @@
 			path = DatePicker;
 			sourceTree = "<group>";
 		};
+		E887E1B629ED3D7900CA14BF /* PackageList */ = {
+			isa = PBXGroup;
+			children = (
+				E887E1B929ED3DB800CA14BF /* Interactor */,
+				E887E1B829ED3DAD00CA14BF /* Presenter */,
+				E887E1BA29ED3DCA00CA14BF /* ViewModel */,
+				E887E1B729ED3DA300CA14BF /* View */,
+			);
+			path = PackageList;
+			sourceTree = "<group>";
+		};
+		E887E1B729ED3DA300CA14BF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E887E1BB29ED3E4C00CA14BF /* PackageListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E887E1B829ED3DAD00CA14BF /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E887E1BD29ED3EAE00CA14BF /* PackageListPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E887E1B929ED3DB800CA14BF /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				E887E1C129ED3EF500CA14BF /* PackageListInteactor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		E887E1BA29ED3DCA00CA14BF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E887E1BF29ED3EC500CA14BF /* PackageListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		E895FA1E29D953D200F618A7 = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +366,7 @@
 				E87BB67829E1B9FD00E823D1 /* SelectDate */,
 				E8EB3EF229DD766E00C44EB5 /* SelectLocation */,
 				E8EB3EE229DD698E00C44EB5 /* Onboarding */,
+				E887E1B629ED3D7900CA14BF /* PackageList */,
 				E8EB3F0329E1B3CC00C44EB5 /* Model */,
 				E8EB3EEE29DD723E00C44EB5 /* Shared */,
 				E8EB3EEB29DD6C5400C44EB5 /* Extensions */,
@@ -772,6 +824,7 @@
 				E87BB68429E1BECF00E823D1 /* LocationListViewPresenter.swift in Sources */,
 				E8EB3EF129DD727400C44EB5 /* BagbuddyCoordinator.swift in Sources */,
 				E8EB3F0029DDAE0C00C44EB5 /* CityTextField.swift in Sources */,
+				E887E1C229ED3EF500CA14BF /* PackageListInteactor.swift in Sources */,
 				E8EB3EFA29DD7D3100C44EB5 /* UIFont+Extensions.swift in Sources */,
 				E895FA2B29D953D200F618A7 /* AppDelegate.swift in Sources */,
 				E87BB67729E1B6AF00E823D1 /* LocalDataManager.swift in Sources */,
@@ -779,13 +832,16 @@
 				E87BB68129E1BEA400E823D1 /* LocationListViewController.swift in Sources */,
 				E8EB3EF829DD780A00C44EB5 /* SelectLocationPresenter.swift in Sources */,
 				E8EB3EF429DD768A00C44EB5 /* SelectLocationViewController.swift in Sources */,
+				E887E1BC29ED3E4C00CA14BF /* PackageListViewController.swift in Sources */,
 				E887E1AE29EAEAB500CA14BF /* LocationListCellViewModel.swift in Sources */,
 				E87BB67529E1B4FC00E823D1 /* City.swift in Sources */,
 				E87BB67E29E1BA7D00E823D1 /* SelectDatePresenter.swift in Sources */,
+				E887E1C029ED3EC500CA14BF /* PackageListViewModel.swift in Sources */,
 				E887E1AB29EAE8D000CA14BF /* LocationListViewCell.swift in Sources */,
 				E895FA2D29D953D200F618A7 /* SceneDelegate.swift in Sources */,
 				E8EB3EED29DD6C8B00C44EB5 /* UIColor+Extensions.swift in Sources */,
 				E8EB3EFC29DD829D00C44EB5 /* Constants.swift in Sources */,
+				E887E1BE29ED3EAE00CA14BF /* PackageListPresenter.swift in Sources */,
 				E887E1B029ED131400CA14BF /* TripPacker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

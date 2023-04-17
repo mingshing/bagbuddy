@@ -15,7 +15,7 @@ protocol SelectDateDelegate: AnyObject {
 protocol SelectDatePresenterType {
     var delegate: SelectDateDelegate? {get set}
     func openDatePicker()
-    func openTripMainPage()
+    func openPackageListPage()
 }
 
 class SelectDatePresenter: SelectDatePresenterType {
@@ -31,7 +31,7 @@ class SelectDatePresenter: SelectDatePresenterType {
         delegate?.showDatePicker()
     }
     
-    func openTripMainPage() {
+    func openPackageListPage() {
         delegate?.enterPackageList()
     }
 }

@@ -153,7 +153,7 @@ class SelectDateViewController: UIViewController {
         }
     }
     @objc func buttonAction(sender: UIButton!) {
-        presenter?.openTripMainPage()
+        presenter?.openPackageListPage()
    }
 
 }
