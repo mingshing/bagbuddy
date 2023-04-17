@@ -13,16 +13,24 @@ class BagbuddyCoordinator {
     static func openLocationListPage(
         from sourceVC: UIViewController,
         target: SelectTargetLocation,
+        selectedCityName: String? = nil,
         locationSelectedBlock: SelectCompletedBlock = nil
     ) {
-        let locationListVC = LocationListViewController(target: target, completetion: locationSelectedBlock)
+        let locationListVC = LocationListViewController(
+            target: target,
+            selectedCityName: selectedCityName,
+            completetion: locationSelectedBlock
+        )
         locationListVC.modalPresentationStyle = .pageSheet
         
         sourceVC.present(locationListVC, animated: true, completion: nil)
     }
     
     
-    static func openSelectLocationPage(from sourceVC: UIViewController, target: SelectTargetLocation) {
+    static func openSelectLocationPage(
+        from sourceVC: UIViewController,
+        target: SelectTargetLocation
+    ) {
         let setLocationVC = SelectLocationViewController(target: target)
         guard
             let navigationVC = sourceVC.navigationController

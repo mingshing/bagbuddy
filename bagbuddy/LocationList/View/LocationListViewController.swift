@@ -62,10 +62,12 @@ class LocationListViewController: UIViewController {
     }
     
     init(target: SelectTargetLocation,
+         selectedCityName: String? = nil,
          completetion: SelectCompletedBlock = nil
     ) {
         
         self.completetion = completetion
+        self.selectedCityName = selectedCityName
         super.init(nibName: nil, bundle: nil)
     
         self.navigationTitleLabel.text = target.rawValue
@@ -82,7 +84,8 @@ class LocationListViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
-        presenter?.updateItems(with: nil)
+        locationInputView.inputField.text = selectedCityName
+        presenter?.updateItems(with: selectedCityName)
         closeButton.addTarget(self, action: #selector(didTapClose), for: .touchUpInside)
     }
     
@@ -173,6 +176,7 @@ extension LocationListViewController: UITableViewDataSource, UITableViewDelegate
 extension LocationListViewController: CityInputViewDelegate {
     
     func textFieldDidChangeText(_ textField: CityInputView, text: String?) {
+        selectedCityName = text
         presenter?.updateItems(with: text)
     }
     

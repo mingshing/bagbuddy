@@ -84,7 +84,8 @@ class SelectLocationViewController: UIViewController {
     private lazy var locationInputView: CityInputView = {
         let textInputView = CityInputView()
         textInputView.delegate = self
-        
+        textInputView.inputField.text = selectedCity
+        textInputView.leftViewState = !hasSelectedCity ? .none : .selected
         return textInputView
     }()
     
@@ -101,13 +102,23 @@ class SelectLocationViewController: UIViewController {
         button.titleLabel?.font = UIFont.actionTextFont(ofSize: 16)
         button.backgroundColor = .interactionDisableBackground
         button.layer.cornerRadius = 8
+        button.isEnabled = hasSelectedCity
         return button
     }()
     
     private let selectTarget: SelectTargetLocation
-    
+    private var selectedCity: String?
+    private var hasSelectedCity: Bool {
+        return !(selectedCity?.isEmpty ?? true)
+    }
     init(target: SelectTargetLocation = .source) {
         selectTarget = target
+        switch selectTarget {
+        case .source:
+            self.selectedCity = TripPacker.shared.currentPlannedTrip?.source
+        case .destination:
+            self.selectedCity = TripPacker.shared.currentPlannedTrip?.destination
+        }
         super.init(nibName: nil, bundle: nil)
         presenter = SelectLocationPresenter(delegate: self)
     }
@@ -168,6 +179,25 @@ class SelectLocationViewController: UIViewController {
         presenter?.nextStep()
     }
     
+    internal func setCurrentStep() {
+
+        switch selectTarget {
+        case .source:
+            TripPacker.shared.currentPlannedTrip?.source = selectedCity
+        case .destination:
+            TripPacker.shared.currentPlannedTrip?.destination = selectedCity
+        }
+        
+        if hasSelectedCity {
+            actionBtn.isEnabled = true
+            actionBtn.backgroundColor = .interactionPrimaryBackground
+            self.locationInputView.leftViewState = .selected
+        } else {
+            actionBtn.isEnabled = false
+            actionBtn.backgroundColor = .interactionDisableBackground
+            self.locationInputView.leftViewState = .none
+        }
+    }
 }
 
 extension SelectLocationViewController: SelectLocationDelegate {
@@ -175,7 +205,10 @@ extension SelectLocationViewController: SelectLocationDelegate {
     func enterNextStep() {
         switch selectTarget {
         case .source:
-            BagbuddyCoordinator.openSelectLocationPage(from: self, target: .destination)
+            BagbuddyCoordinator.openSelectLocationPage(
+                from: self,
+                target: .destination
+            )
         case .destination:
             BagbuddyCoordinator.openSelectDatePage(from: self)
         }
@@ -185,16 +218,14 @@ extension SelectLocationViewController: SelectLocationDelegate {
         
         BagbuddyCoordinator.openLocationListPage(
             from: self,
-            target: selectTarget) { [weak self] selectedCityName in
-                guard let cityName = selectedCityName,
-                      !cityName.isEmpty else {
-                    self?.locationInputView.leftViewState = .none
-                    self?.locationInputView.inputField.text = ""
-                    return
-                }
-                self?.locationInputView.leftViewState = .selected
-                self?.locationInputView.inputField.text = cityName
-            }
+            target: selectTarget,
+            selectedCityName: selectedCity
+        ) { [weak self] selectedCityName in
+            
+            self?.selectedCity = selectedCityName
+            self?.locationInputView.inputField.text = selectedCityName
+            self?.setCurrentStep()
+        }
     }
     
 }

@@ -59,7 +59,7 @@ class CityInputView: UIView {
         let textField = UITextField()
         textField.textColor = .primaryWhite
         textField.backgroundColor = .inputBackground
-        textField.tintColor = .interactionPrimary
+        textField.tintColor = .interactionPrimaryBackground
         textField.textColor = .primaryBlack
         textField.font = UIFont.actionTextFont(ofSize: 16)
         
