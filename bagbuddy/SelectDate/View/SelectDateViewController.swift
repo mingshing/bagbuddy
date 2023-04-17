@@ -55,6 +55,20 @@ class SelectDateViewController: UIViewController {
         return label
     }()
     
+    private lazy var startDateInputView: DateInputView = {
+        let dateInputView = DateInputView(titlePlaceHolder: "From")
+        dateInputView.delegate = self
+        dateInputView.inputField.text = "Mar 21, 2023"
+        return dateInputView
+    }()
+    
+    private lazy var endDateInputView: DateInputView = {
+        let dateInputView = DateInputView(titlePlaceHolder: "To")
+        dateInputView.delegate = self
+        dateInputView.inputField.text = "Mar 28, 2023"
+        return dateInputView
+    }()
+    
     private lazy var actionBtn: UIButton = {
         let button = UIButton()
         button.setTitle(NSLocalizedString("third_step_action", comment: ""), for: .normal)
@@ -67,10 +81,15 @@ class SelectDateViewController: UIViewController {
         return button
     }()
     
-    
+    private var hasSelectedDate: Bool = false {
+        didSet {
+            actionBtn.backgroundColor = hasSelectedDate ? .interactionPrimaryBackground : .interactionDisableBackground
+            actionBtn.isEnabled = hasSelectedDate
+        }
+    }
     init() {
         super.init(nibName: nil, bundle: nil)
-        presenter = SelectDatePresenter()
+        presenter = SelectDatePresenter(delegate: self)
     }
     
     required init?(coder: NSCoder) {
@@ -111,6 +130,21 @@ class SelectDateViewController: UIViewController {
             make.trailing.leading.equalToSuperview().inset(LayoutConstants.pageHorizontalMargin)
         }
         
+        view.addSubview(startDateInputView)
+        startDateInputView.snp.makeConstraints { make in
+            make.trailing.leading.equalToSuperview().inset(LayoutConstants.pageHorizontalMargin)
+            make.height.equalTo(LayoutConstants.inputFieldHeight)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(28)
+        }
+        
+        view.addSubview(endDateInputView)
+        endDateInputView.snp.makeConstraints { make in
+            make.trailing.leading.equalToSuperview().inset(LayoutConstants.pageHorizontalMargin)
+            make.height.equalTo(LayoutConstants.inputFieldHeight)
+            make.top.equalTo(startDateInputView.snp.bottom).offset(12)
+        }
+        
+        
         view.addSubview(actionBtn)
         actionBtn.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(LayoutConstants.pageHorizontalMargin)
@@ -121,4 +155,28 @@ class SelectDateViewController: UIViewController {
     @objc func buttonAction(sender: UIButton!) {
         presenter?.openTripMainPage()
    }
+
+}
+
+extension SelectDateViewController: DateInputViewDelegate {
+    
+    func dateFieldDidTapExpand(_ dateField: DateInputView) {
+        presenter?.openDatePicker()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+        presenter?.openDatePicker()
+    }
+}
+
+extension SelectDateViewController: SelectDateDelegate {
+    func showDatePicker() {
+        BagbuddyCoordinator.openDatePicker(from: self)
+        hasSelectedDate = true
+    }
+    
+    func enterPackageList() {
+        BagbuddyCoordinator.openPackageListPage(from: self)
+    }
 }

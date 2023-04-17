@@ -57,7 +57,6 @@ class CityInputView: UIView {
     
     public lazy var inputField: UITextField = {
         let textField = UITextField()
-        textField.textColor = .primaryWhite
         textField.backgroundColor = .inputBackground
         textField.tintColor = .interactionPrimaryBackground
         textField.textColor = .primaryBlack
