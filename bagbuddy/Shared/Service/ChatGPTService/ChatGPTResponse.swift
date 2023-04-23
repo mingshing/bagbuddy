@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct ChatGPTResponse: Codable {
+    let result: String
+}

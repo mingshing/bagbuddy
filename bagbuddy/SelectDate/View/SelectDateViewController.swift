@@ -77,16 +77,18 @@ class SelectDateViewController: UIViewController {
         button.titleLabel?.font = UIFont.actionTextFont(ofSize: 16)
         button.backgroundColor = .interactionDisableBackground
         button.layer.cornerRadius = 8
-        button.isEnabled = false
+        button.isEnabled = true
         return button
     }()
     
-    private var hasSelectedDate: Bool = false {
+    private var hasSelectedDate: Bool = true /*{
+        
         didSet {
             actionBtn.backgroundColor = hasSelectedDate ? .interactionPrimaryBackground : .interactionDisableBackground
             actionBtn.isEnabled = hasSelectedDate
         }
-    }
+        
+    }*/
     init() {
         super.init(nibName: nil, bundle: nil)
         presenter = SelectDatePresenter(delegate: self)

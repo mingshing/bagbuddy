@@ -8,5 +8,7 @@
 import Foundation
 
 struct PackageListViewModel {
-    
+    let tripDestination: String
+    let startDate: String
+    let endDate: String
 }

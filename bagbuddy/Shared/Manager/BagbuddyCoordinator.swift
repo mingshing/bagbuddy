@@ -61,12 +61,8 @@ class BagbuddyCoordinator {
     
     static func openPackageListPage(from sourceVC: UIViewController) {
         let packageListVC = PackageListViewController()
-        guard
-            let navigationVC = sourceVC.navigationController
-        else {
-            sourceVC.show(packageListVC, sender: nil)
-            return
-        }
-        navigationVC.pushViewController(packageListVC, animated: true)
+        packageListVC.modalPresentationStyle = .fullScreen
+        
+        sourceVC.present(packageListVC, animated: true, completion: nil)
     }
 }

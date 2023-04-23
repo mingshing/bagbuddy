@@ -22,3 +22,7 @@ struct LayoutConstants {
 struct LocalFileName {
     static let cityList: String = "city_list"
 }
+
+struct HostAppContants {
+    static let chatGPTUrl = "https://test"
+}

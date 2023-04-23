@@ -6,6 +6,7 @@ target 'bagbuddy' do
   use_frameworks!
 
   # Pods for bagbuddy
+  pod 'Moya', '~> 15.0'
   pod 'SnapKit', '~> 5.0.0'
   pod 'Kingfisher'
   pod 'HorizonCalendar'

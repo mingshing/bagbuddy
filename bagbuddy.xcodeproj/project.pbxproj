@@ -26,6 +26,10 @@
 		E887E1C029ED3EC500CA14BF /* PackageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1BF29ED3EC500CA14BF /* PackageListViewModel.swift */; };
 		E887E1C229ED3EF500CA14BF /* PackageListInteactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1C129ED3EF500CA14BF /* PackageListInteactor.swift */; };
 		E887E1C429F55DF900CA14BF /* TripHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1C329F55DF900CA14BF /* TripHeaderView.swift */; };
+		E887E1C729F573F500CA14BF /* ChatGPTAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1C629F573F500CA14BF /* ChatGPTAPIService.swift */; };
+		E887E1CA29F576E200CA14BF /* ChatGPTResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = E887E1C929F576E200CA14BF /* ChatGPTResponse.json */; };
+		E887E1CD29F577BD00CA14BF /* ChatGPTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1CC29F577BD00CA14BF /* ChatGPTService.swift */; };
+		E887E1D029F5787F00CA14BF /* ChatGPTResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1CF29F5787F00CA14BF /* ChatGPTResponse.swift */; };
 		E895FA2B29D953D200F618A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2A29D953D200F618A7 /* AppDelegate.swift */; };
 		E895FA2D29D953D200F618A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2C29D953D200F618A7 /* SceneDelegate.swift */; };
 		E895FA2F29D953D200F618A7 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2E29D953D200F618A7 /* OnboardingViewController.swift */; };
@@ -123,6 +127,10 @@
 		E887E1BF29ED3EC500CA14BF /* PackageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageListViewModel.swift; sourceTree = "<group>"; };
 		E887E1C129ED3EF500CA14BF /* PackageListInteactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageListInteactor.swift; sourceTree = "<group>"; };
 		E887E1C329F55DF900CA14BF /* TripHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHeaderView.swift; sourceTree = "<group>"; };
+		E887E1C629F573F500CA14BF /* ChatGPTAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTAPIService.swift; sourceTree = "<group>"; };
+		E887E1C929F576E200CA14BF /* ChatGPTResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ChatGPTResponse.json; sourceTree = "<group>"; };
+		E887E1CC29F577BD00CA14BF /* ChatGPTService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTService.swift; sourceTree = "<group>"; };
+		E887E1CF29F5787F00CA14BF /* ChatGPTResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTResponse.swift; sourceTree = "<group>"; };
 		E895FA2729D953D200F618A7 /* bagbuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bagbuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E895FA2A29D953D200F618A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E895FA2C29D953D200F618A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -339,6 +347,40 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		E887E1C529F573D000CA14BF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E887E1CE29F5786000CA14BF /* ChatGPTService */,
+				E887E1CB29F5779700CA14BF /* APIService */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		E887E1C829F5769900CA14BF /* SampleResponse */ = {
+			isa = PBXGroup;
+			children = (
+				E887E1C929F576E200CA14BF /* ChatGPTResponse.json */,
+			);
+			path = SampleResponse;
+			sourceTree = "<group>";
+		};
+		E887E1CB29F5779700CA14BF /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+				E887E1C629F573F500CA14BF /* ChatGPTAPIService.swift */,
+			);
+			path = APIService;
+			sourceTree = "<group>";
+		};
+		E887E1CE29F5786000CA14BF /* ChatGPTService */ = {
+			isa = PBXGroup;
+			children = (
+				E887E1CC29F577BD00CA14BF /* ChatGPTService.swift */,
+				E887E1CF29F5787F00CA14BF /* ChatGPTResponse.swift */,
+			);
+			path = ChatGPTService;
+			sourceTree = "<group>";
+		};
 		E895FA1E29D953D200F618A7 = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +446,7 @@
 		E8BA003229D9CF8600EC7EEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E887E1C829F5769900CA14BF /* SampleResponse */,
 				E87BB67229E1B4D200E823D1 /* city_list.json */,
 				E8BA003329D9CF9A00EC7EEA /* fonts */,
 				E895FA3329D953D700F618A7 /* Assets.xcassets */,
@@ -476,6 +519,7 @@
 			children = (
 				E8EB3EFE29DDADE000C44EB5 /* ViewComponent */,
 				E8EB3EEF29DD725100C44EB5 /* Manager */,
+				E887E1C529F573D000CA14BF /* Service */,
 				E8EB3EFB29DD829D00C44EB5 /* Constants.swift */,
 			);
 			path = Shared;
@@ -692,6 +736,7 @@
 				E895FA3229D953D200F618A7 /* Main.storyboard in Resources */,
 				E8BA005329D9CFEF00EC7EEA /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				E8BA006D29D9D00800EC7EEA /* Poppins-ExtraLightItalic.ttf in Resources */,
+				E887E1CA29F576E200CA14BF /* ChatGPTResponse.json in Resources */,
 				E8BA005729D9CFEF00EC7EEA /* Montserrat-ExtraBold.ttf in Resources */,
 				E8BA005429D9CFEF00EC7EEA /* Montserrat-Black.ttf in Resources */,
 			);
@@ -831,6 +876,8 @@
 				E8EB3EFA29DD7D3100C44EB5 /* UIFont+Extensions.swift in Sources */,
 				E895FA2B29D953D200F618A7 /* AppDelegate.swift in Sources */,
 				E87BB67729E1B6AF00E823D1 /* LocalDataManager.swift in Sources */,
+				E887E1C729F573F500CA14BF /* ChatGPTAPIService.swift in Sources */,
+				E887E1CD29F577BD00CA14BF /* ChatGPTService.swift in Sources */,
 				E887E1C429F55DF900CA14BF /* TripHeaderView.swift in Sources */,
 				E887E1B229ED252100CA14BF /* DateField.swift in Sources */,
 				E87BB68129E1BEA400E823D1 /* LocationListViewController.swift in Sources */,
@@ -839,6 +886,7 @@
 				E887E1BC29ED3E4C00CA14BF /* PackageListViewController.swift in Sources */,
 				E887E1AE29EAEAB500CA14BF /* LocationListCellViewModel.swift in Sources */,
 				E87BB67529E1B4FC00E823D1 /* City.swift in Sources */,
+				E887E1D029F5787F00CA14BF /* ChatGPTResponse.swift in Sources */,
 				E87BB67E29E1BA7D00E823D1 /* SelectDatePresenter.swift in Sources */,
 				E887E1C029ED3EC500CA14BF /* PackageListViewModel.swift in Sources */,
 				E887E1AB29EAE8D000CA14BF /* LocationListViewCell.swift in Sources */,
