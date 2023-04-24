@@ -12,7 +12,8 @@ target 'bagbuddy' do
   pod 'HorizonCalendar'
   pod 'RealmSwift', '~>10'
   pod 'IQKeyboardManagerSwift'
-
+  pod 'TagListView', '~> 1.0'
+  
   target 'bagbuddyTests' do
     inherit! :search_paths
     # Pods for testing
