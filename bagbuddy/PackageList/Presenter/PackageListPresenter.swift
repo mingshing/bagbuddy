@@ -39,11 +39,21 @@ class PackageListPresenter: PackageListPresenterType {
     private func buildViewModel() -> PackageListViewModel? {
         
         guard let destination = TripPacker.shared.currentPlannedTrip?.destination else { return nil }
+        let categorySectionViewModel = SectionHeaderViewModel(
+            title: "Customize your trip",
+            description: "What will you be doing on this trip?"
+        )
         
+        let packItemSectionViewModel = SectionHeaderViewModel(
+            title: "Start packing",
+            description: "Your AI generated packing list:"
+        )
         return PackageListViewModel(
             tripDestination: destination,
             startDate: "Mar 21",
-            endDate: "Mar 23"
+            endDate: "Mar 23",
+            categorySection: categorySectionViewModel,
+            packItemSection: packItemSectionViewModel
         )
     }
 }

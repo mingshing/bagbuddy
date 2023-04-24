@@ -12,10 +12,9 @@ class PackageListViewController: UIViewController {
     
 // MARK: View Related
     
-    
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .mainHeaderBackground
+        scrollView.backgroundColor = .white
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.isScrollEnabled = true
@@ -25,9 +24,11 @@ class PackageListViewController: UIViewController {
     
     private lazy var headerView: TripHeaderView = {
         let view = TripHeaderView(delegate: self)
-        
         return view
     }()
+    
+    private lazy var categorySectionView = SectionHeaderView()
+    private lazy var packItemSectionView = SectionHeaderView()
 
 // MARK: Property
     private var presenter: PackageListPresenterType?
@@ -57,9 +58,21 @@ class PackageListViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
         scrollView.addSubview(headerView)
+        scrollView.addSubview(categorySectionView)
+        scrollView.addSubview(packItemSectionView)
         headerView.snp.makeConstraints { make in
             make.top.left.equalToSuperview()
             make.width.equalToSuperview()
+        }
+        
+        categorySectionView.snp.makeConstraints { make in
+            make.left.right.equalTo(headerView)
+            make.top.equalTo(headerView.snp.bottom)
+        }
+        
+        packItemSectionView.snp.makeConstraints { make in
+            make.left.right.equalTo(headerView)
+            make.top.equalTo(categorySectionView.snp.bottom)
         }
     }
     
@@ -70,6 +83,8 @@ extension PackageListViewController: PackageListPresenterDelegate {
         guard let viewModel  = viewModel else { return }
         
         headerView.updateView(with: viewModel)
+        categorySectionView.updateView(with: viewModel.categorySection)
+        packItemSectionView.updateView(with: viewModel.packItemSection)
     }
 }
 

@@ -11,4 +11,6 @@ struct PackageListViewModel {
     let tripDestination: String
     let startDate: String
     let endDate: String
+    let categorySection: SectionHeaderViewModel
+    let packItemSection: SectionHeaderViewModel
 }

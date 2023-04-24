@@ -30,6 +30,8 @@
 		E887E1CA29F576E200CA14BF /* ChatGPTResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = E887E1C929F576E200CA14BF /* ChatGPTResponse.json */; };
 		E887E1CD29F577BD00CA14BF /* ChatGPTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1CC29F577BD00CA14BF /* ChatGPTService.swift */; };
 		E887E1D029F5787F00CA14BF /* ChatGPTResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1CF29F5787F00CA14BF /* ChatGPTResponse.swift */; };
+		E887E1D229F6BCA900CA14BF /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1D129F6BCA900CA14BF /* SectionHeaderView.swift */; };
+		E887E1D429F6BE4000CA14BF /* SectionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1D329F6BE4000CA14BF /* SectionHeaderViewModel.swift */; };
 		E895FA2B29D953D200F618A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2A29D953D200F618A7 /* AppDelegate.swift */; };
 		E895FA2D29D953D200F618A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2C29D953D200F618A7 /* SceneDelegate.swift */; };
 		E895FA2F29D953D200F618A7 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2E29D953D200F618A7 /* OnboardingViewController.swift */; };
@@ -131,6 +133,8 @@
 		E887E1C929F576E200CA14BF /* ChatGPTResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ChatGPTResponse.json; sourceTree = "<group>"; };
 		E887E1CC29F577BD00CA14BF /* ChatGPTService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTService.swift; sourceTree = "<group>"; };
 		E887E1CF29F5787F00CA14BF /* ChatGPTResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTResponse.swift; sourceTree = "<group>"; };
+		E887E1D129F6BCA900CA14BF /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		E887E1D329F6BE4000CA14BF /* SectionHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderViewModel.swift; sourceTree = "<group>"; };
 		E895FA2729D953D200F618A7 /* bagbuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bagbuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E895FA2A29D953D200F618A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E895FA2C29D953D200F618A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -319,6 +323,7 @@
 			children = (
 				E887E1BB29ED3E4C00CA14BF /* PackageListViewController.swift */,
 				E887E1C329F55DF900CA14BF /* TripHeaderView.swift */,
+				E887E1D129F6BCA900CA14BF /* SectionHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -343,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				E887E1BF29ED3EC500CA14BF /* PackageListViewModel.swift */,
+				E887E1D329F6BE4000CA14BF /* SectionHeaderViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -873,6 +879,7 @@
 				E8EB3EF129DD727400C44EB5 /* BagbuddyCoordinator.swift in Sources */,
 				E8EB3F0029DDAE0C00C44EB5 /* CityTextField.swift in Sources */,
 				E887E1C229ED3EF500CA14BF /* PackageListInteactor.swift in Sources */,
+				E887E1D229F6BCA900CA14BF /* SectionHeaderView.swift in Sources */,
 				E8EB3EFA29DD7D3100C44EB5 /* UIFont+Extensions.swift in Sources */,
 				E895FA2B29D953D200F618A7 /* AppDelegate.swift in Sources */,
 				E87BB67729E1B6AF00E823D1 /* LocalDataManager.swift in Sources */,
@@ -891,6 +898,7 @@
 				E887E1C029ED3EC500CA14BF /* PackageListViewModel.swift in Sources */,
 				E887E1AB29EAE8D000CA14BF /* LocationListViewCell.swift in Sources */,
 				E895FA2D29D953D200F618A7 /* SceneDelegate.swift in Sources */,
+				E887E1D429F6BE4000CA14BF /* SectionHeaderViewModel.swift in Sources */,
 				E8EB3EED29DD6C8B00C44EB5 /* UIColor+Extensions.swift in Sources */,
 				E8EB3EFC29DD829D00C44EB5 /* Constants.swift in Sources */,
 				E887E1BE29ED3EAE00CA14BF /* PackageListPresenter.swift in Sources */,
