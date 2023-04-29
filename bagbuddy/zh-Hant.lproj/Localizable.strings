@@ -11,4 +11,17 @@
 "first_step_description" = "Packer uses your location to calculate travel time, weather, and more!";
 "first_step_select_placeholder" = "Select a city";
 "first_step_action" = "Next: Your destination";
-"first_step_location_input_placeholder" = "Select a city";
+
+"second_step_headline" = "Step 2";
+"second_step_title" = "Where are you going?";
+"second_step_description" = "Select a destination.";
+"second_step_action" = "Next: Date of travel";
+
+"third_step_headline" = "Step 3";
+"third_step_title" = "When are you traveling?";
+"third_step_description" = "Select a start and end date.";
+"third_step_action" = "Create trip";
+
+
+"location_input_placeholder" = "Select a city";
+"date_input_placeholder" = "Select a date";

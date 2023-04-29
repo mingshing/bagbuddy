@@ -12,6 +12,6 @@ struct City: Codable {
     let country: String
     
     var displayName: String {
-        return name + "," + country
+        return name + ", " + country
     }
 }
