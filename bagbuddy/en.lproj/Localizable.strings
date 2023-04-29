@@ -26,3 +26,6 @@
 
 "location_input_placeholder" = "Select a city";
 "date_input_placeholder" = "Select a date";
+
+
+"package_tag_count" = "%d items";

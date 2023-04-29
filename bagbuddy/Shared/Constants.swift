@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct LayoutConstants {
     static let miniBarHeight: CGFloat = 76.0
@@ -18,6 +19,20 @@ struct LayoutConstants {
     static let pageHorizontalMargin: CGFloat = 20.0
 }
 
+struct DeviceConstants {
+    static var width: CGFloat {
+        get {
+            let screenSize: CGRect = UIScreen.main.bounds
+            return screenSize.width
+        }
+    }
+    static var height: CGFloat {
+        get {
+            let screenSize: CGRect = UIScreen.main.bounds
+            return screenSize.height
+        }
+    }
+}
 
 struct LocalFileName {
     static let cityList: String = "city_list"

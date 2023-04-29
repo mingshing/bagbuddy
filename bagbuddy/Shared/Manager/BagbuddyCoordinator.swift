@@ -60,9 +60,44 @@ class BagbuddyCoordinator {
     }
     
     static func openPackageListPage(from sourceVC: UIViewController) {
-        let packageListVC = PackageListViewController()
+        guard let viewModel = buildPackageListViewModel() else { return }
+        let packageListVC = PackageListViewController(with: viewModel)
         packageListVC.modalPresentationStyle = .fullScreen
-        
+        packageListVC.modalPresentationCapturesStatusBarAppearance = true
         sourceVC.present(packageListVC, animated: true, completion: nil)
+    }
+    
+    static func buildPackageListViewModel() -> PackageListViewModel? {
+        
+        guard let destination = TripPacker.shared.currentPlannedTrip?.destination else { return nil }
+        let categorySectionViewModel = SectionHeaderViewModel(
+            title: "Customize your trip",
+            description: "What will you be doing on this trip?"
+        )
+        
+        let packItemSectionViewModel = SectionHeaderViewModel(
+            title: "Start packing",
+            description: "Your AI generated packing list:"
+        )
+        
+        let essentialSection =
+        ItemSectionHeaderViewModel(
+            title: "Essentials",
+            itemCount: 9
+        )
+        
+        let aboardSection =
+        ItemSectionHeaderViewModel(
+            title: "International trip",
+            itemCount: 7
+        )
+        return PackageListViewModel(
+            tripDestination: destination,
+            startDate: "Mar 21",
+            endDate: "Mar 23",
+            categorySection: categorySectionViewModel,
+            packItemSection: packItemSectionViewModel,
+            itemsSections: [essentialSection,aboardSection]
+        )
     }
 }

@@ -37,6 +37,8 @@
 		E887E1DB29F6CCD500CA14BF /* TagActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1DA29F6CCD500CA14BF /* TagActionButton.swift */; };
 		E887E1DD29F6D75800CA14BF /* PackageItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1DC29F6D75800CA14BF /* PackageItemCellViewModel.swift */; };
 		E887E1DF29F6DF0500CA14BF /* PackageItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1DE29F6DF0500CA14BF /* PackageItemCell.swift */; };
+		E887E1E129FD64C000CA14BF /* ItemSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1E029FD64C000CA14BF /* ItemSectionHeaderView.swift */; };
+		E887E1E329FD665200CA14BF /* TagListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1E229FD665200CA14BF /* TagListCell.swift */; };
 		E895FA2B29D953D200F618A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2A29D953D200F618A7 /* AppDelegate.swift */; };
 		E895FA2D29D953D200F618A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2C29D953D200F618A7 /* SceneDelegate.swift */; };
 		E895FA2F29D953D200F618A7 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2E29D953D200F618A7 /* OnboardingViewController.swift */; };
@@ -145,6 +147,8 @@
 		E887E1DA29F6CCD500CA14BF /* TagActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagActionButton.swift; sourceTree = "<group>"; };
 		E887E1DC29F6D75800CA14BF /* PackageItemCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageItemCellViewModel.swift; sourceTree = "<group>"; };
 		E887E1DE29F6DF0500CA14BF /* PackageItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageItemCell.swift; sourceTree = "<group>"; };
+		E887E1E029FD64C000CA14BF /* ItemSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSectionHeaderView.swift; sourceTree = "<group>"; };
+		E887E1E229FD665200CA14BF /* TagListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListCell.swift; sourceTree = "<group>"; };
 		E895FA2729D953D200F618A7 /* bagbuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bagbuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E895FA2A29D953D200F618A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E895FA2C29D953D200F618A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -334,7 +338,9 @@
 				E887E1BB29ED3E4C00CA14BF /* PackageListViewController.swift */,
 				E887E1C329F55DF900CA14BF /* TripHeaderView.swift */,
 				E887E1D129F6BCA900CA14BF /* SectionHeaderView.swift */,
+				E887E1E029FD64C000CA14BF /* ItemSectionHeaderView.swift */,
 				E887E1DE29F6DF0500CA14BF /* PackageItemCell.swift */,
+				E887E1E229FD665200CA14BF /* TagListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -898,6 +904,7 @@
 				E87BB67C29E1BA4C00E823D1 /* SelectDateViewController.swift in Sources */,
 				E895FA2F29D953D200F618A7 /* OnboardingViewController.swift in Sources */,
 				E887E1D829F6CC6700CA14BF /* TagView.swift in Sources */,
+				E887E1E129FD64C000CA14BF /* ItemSectionHeaderView.swift in Sources */,
 				E887E1B529ED399000CA14BF /* DatePickerViewController.swift in Sources */,
 				E87BB68429E1BECF00E823D1 /* LocationListViewPresenter.swift in Sources */,
 				E8EB3EF129DD727400C44EB5 /* BagbuddyCoordinator.swift in Sources */,
@@ -906,6 +913,7 @@
 				E887E1D229F6BCA900CA14BF /* SectionHeaderView.swift in Sources */,
 				E8EB3EFA29DD7D3100C44EB5 /* UIFont+Extensions.swift in Sources */,
 				E895FA2B29D953D200F618A7 /* AppDelegate.swift in Sources */,
+				E887E1E329FD665200CA14BF /* TagListCell.swift in Sources */,
 				E87BB67729E1B6AF00E823D1 /* LocalDataManager.swift in Sources */,
 				E887E1DB29F6CCD500CA14BF /* TagActionButton.swift in Sources */,
 				E887E1C729F573F500CA14BF /* ChatGPTAPIService.swift in Sources */,

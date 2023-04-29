@@ -8,21 +8,10 @@
 import Foundation
 import UIKit
 
-protocol TripHeaderViewDelegate: AnyObject {
-    func didTapCloseButton()
-}
-
 
 class TripHeaderView: UIView {
 
 // MARK: View Related
-
-    private let closeButton: UIButton = {
-        let button = UIButton()
-        let image = UIImage(named: "close")
-        button.setImage(image, for: .normal)
-        return button
-    }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -42,15 +31,11 @@ class TripHeaderView: UIView {
         return label
     }()
     
-    private weak var delegate: TripHeaderViewDelegate?
-    
-    init(delegate: TripHeaderViewDelegate? = nil) {
-        super.init(frame: .zero)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         clipsToBounds = true
         backgroundColor = .mainHeaderBackground
-        self.delegate = delegate
         setupView()
-        closeButton.addTarget(self, action: #selector(didTapClose), for: .touchUpInside)
     }
 
     required init?(coder: NSCoder) {
@@ -59,17 +44,10 @@ class TripHeaderView: UIView {
     
     private func setupView() {
         
-        addSubview(closeButton)
-        closeButton.snp.makeConstraints { make in
-            make.size.equalTo(LayoutConstants.actionButtonHeight)
-            make.left.equalToSuperview().inset(4)
-            make.top.equalToSuperview()
-        }
-        
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(20)
-            make.top.equalTo(closeButton.snp.bottom).offset(8)
+            make.top.equalToSuperview().offset(48)
         }
         
         addSubview(dateLabel)
@@ -80,13 +58,9 @@ class TripHeaderView: UIView {
         }
     }
     
-    @objc func didTapClose(sender: UIButton!) {
-        delegate?.didTapCloseButton()
-        
-    }
-    
     public func updateView(with viewModel: PackageListViewModel) {
         titleLabel.text = viewModel.tripDestination
         dateLabel.text = viewModel.startDate + " - " + viewModel.endDate
+        layoutIfNeeded()
     }
 }

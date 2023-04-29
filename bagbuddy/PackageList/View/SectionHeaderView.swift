@@ -38,6 +38,7 @@ class SectionHeaderView: UIView {
     }
     
     private func setupView() {
+        backgroundColor = .white
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(24)

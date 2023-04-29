@@ -10,6 +10,8 @@ extension UIColor {
 
     static let primaryBlack = UIColor(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1)
     
+    static let primaryGrey = UIColor(red: 89.0/255.0, green: 89.0/255.0, blue: 89.0/255.0, alpha: 1)
+    
     static let disableText = UIColor(red: 157.0/255.0, green: 157.0/255.0, blue: 157.0/255.0, alpha: 1)
     
     static let interactionPrimaryBackground = UIColor(red: 252.0/255.0, green: 202.0/255.0, blue: 134.0/255.0, alpha: 1)

@@ -8,23 +8,26 @@
 import Foundation
 
 protocol PackageListPresenterDelegate: AnyObject {
-    func update(with viewModel: PackageListViewModel?)
+    func updateHeaderView(with viewModel: PackageListViewModel)
+    func updateContent(with viewModel: PackageListViewModel)
 }
 
 protocol PackageListPresenterType: AnyObject {
     var hiddenSections: Set<Int> { get set }
-    func fetchData()
+    func setupHeader()
+    func setupContent()
     func numberOfSections() -> Int
+    func numberOfItemSections() -> Int
     func numberOfItems(for section: Int) -> Int
     
-    func indexPathsForSection(for section: Int) -> [IndexPath]
+    func viewModelForSection(at section: Int) -> ItemSectionHeaderViewModel
     func viewModelForIndex(at indexPath: IndexPath) -> PackageItemCellViewModel?
 }
 
 class PackageListPresenter: PackageListPresenterType {
     
     private weak var delegate: PackageListPresenterDelegate?
-    var viewModel: PackageListViewModel?
+    var viewModel: PackageListViewModel
     var hiddenSections: Set<Int>
     
     let tableViewData = [
@@ -35,66 +38,42 @@ class PackageListPresenter: PackageListPresenterType {
         ["1","2","3","4","5"],
     ]
     
-    init(delegate: PackageListPresenterDelegate? = nil) {
+    init(with viewModel: PackageListViewModel, delegate: PackageListPresenterDelegate? = nil) {
         self.delegate = delegate
+        self.viewModel = viewModel
         self.hiddenSections = Set<Int>()
     }
     
-    public func fetchData() {
-        ChatGPTService.getResponseFromChatGPT(for: "test") { [weak self] result in
-            guard let _ = self else { return }
-            
-            print(result)
-        }
-        viewModel = buildViewModel()
-        delegate?.update(with: viewModel)
+    func setupHeader() {
+        delegate?.updateHeaderView(with: viewModel)
     }
     
-    
-    private func buildViewModel() -> PackageListViewModel? {
-        
-        guard let destination = TripPacker.shared.currentPlannedTrip?.destination else { return nil }
-        let categorySectionViewModel = SectionHeaderViewModel(
-            title: "Customize your trip",
-            description: "What will you be doing on this trip?"
-        )
-        
-        let packItemSectionViewModel = SectionHeaderViewModel(
-            title: "Start packing",
-            description: "Your AI generated packing list:"
-        )
-        return PackageListViewModel(
-            tripDestination: destination,
-            startDate: "Mar 21",
-            endDate: "Mar 23",
-            categorySection: categorySectionViewModel,
-            packItemSection: packItemSectionViewModel
-        )
+    func setupContent() {
+        delegate?.updateContent(with: viewModel)
     }
 }
 
 extension PackageListPresenter {
     
     func numberOfSections() -> Int {
-        return tableViewData.count
+        return numberOfItemSections() + 2
     }
+    
+    func numberOfItemSections() -> Int {
+        return viewModel.itemsSections.count
+    }
+    
     
     func numberOfItems(for section: Int) -> Int {
         guard tableViewData.count > section else { return 0 }
         if hiddenSections.contains(section) {
             return 0
         }
-        return tableViewData[section].count
+        return 0
     }
     
-    func indexPathsForSection(for section: Int) -> [IndexPath] {
-        var indexPaths = [IndexPath]()
-        
-        for row in 0..<tableViewData[section].count {
-            indexPaths.append(IndexPath(row: row, section: section))
-        }
-        
-        return indexPaths
+    func viewModelForSection(at section: Int) -> ItemSectionHeaderViewModel {
+        return viewModel.itemsSections[section]
     }
     
     func viewModelForIndex(at indexPath: IndexPath) -> PackageItemCellViewModel? {
