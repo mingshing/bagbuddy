@@ -168,6 +168,7 @@ extension LocationListViewController: UITableViewDataSource, UITableViewDelegate
         
         locationInputView.inputField.text = cellViewModel.locationName
         selectedCityName = cellViewModel.locationName
+        dismiss(animated: true, completion: nil)
     }
     
 }
