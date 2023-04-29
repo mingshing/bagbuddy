@@ -32,6 +32,11 @@
 		E887E1D029F5787F00CA14BF /* ChatGPTResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1CF29F5787F00CA14BF /* ChatGPTResponse.swift */; };
 		E887E1D229F6BCA900CA14BF /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1D129F6BCA900CA14BF /* SectionHeaderView.swift */; };
 		E887E1D429F6BE4000CA14BF /* SectionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1D329F6BE4000CA14BF /* SectionHeaderViewModel.swift */; };
+		E887E1D629F6CC2D00CA14BF /* TagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1D529F6CC2D00CA14BF /* TagListView.swift */; };
+		E887E1D829F6CC6700CA14BF /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1D729F6CC6700CA14BF /* TagView.swift */; };
+		E887E1DB29F6CCD500CA14BF /* TagActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1DA29F6CCD500CA14BF /* TagActionButton.swift */; };
+		E887E1DD29F6D75800CA14BF /* PackageItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1DC29F6D75800CA14BF /* PackageItemCellViewModel.swift */; };
+		E887E1DF29F6DF0500CA14BF /* PackageItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887E1DE29F6DF0500CA14BF /* PackageItemCell.swift */; };
 		E895FA2B29D953D200F618A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2A29D953D200F618A7 /* AppDelegate.swift */; };
 		E895FA2D29D953D200F618A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2C29D953D200F618A7 /* SceneDelegate.swift */; };
 		E895FA2F29D953D200F618A7 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E895FA2E29D953D200F618A7 /* OnboardingViewController.swift */; };
@@ -135,6 +140,11 @@
 		E887E1CF29F5787F00CA14BF /* ChatGPTResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTResponse.swift; sourceTree = "<group>"; };
 		E887E1D129F6BCA900CA14BF /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		E887E1D329F6BE4000CA14BF /* SectionHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderViewModel.swift; sourceTree = "<group>"; };
+		E887E1D529F6CC2D00CA14BF /* TagListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListView.swift; sourceTree = "<group>"; };
+		E887E1D729F6CC6700CA14BF /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		E887E1DA29F6CCD500CA14BF /* TagActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagActionButton.swift; sourceTree = "<group>"; };
+		E887E1DC29F6D75800CA14BF /* PackageItemCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageItemCellViewModel.swift; sourceTree = "<group>"; };
+		E887E1DE29F6DF0500CA14BF /* PackageItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageItemCell.swift; sourceTree = "<group>"; };
 		E895FA2729D953D200F618A7 /* bagbuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bagbuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E895FA2A29D953D200F618A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E895FA2C29D953D200F618A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -324,6 +334,7 @@
 				E887E1BB29ED3E4C00CA14BF /* PackageListViewController.swift */,
 				E887E1C329F55DF900CA14BF /* TripHeaderView.swift */,
 				E887E1D129F6BCA900CA14BF /* SectionHeaderView.swift */,
+				E887E1DE29F6DF0500CA14BF /* PackageItemCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -349,6 +360,7 @@
 			children = (
 				E887E1BF29ED3EC500CA14BF /* PackageListViewModel.swift */,
 				E887E1D329F6BE4000CA14BF /* SectionHeaderViewModel.swift */,
+				E887E1DC29F6D75800CA14BF /* PackageItemCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -385,6 +397,16 @@
 				E887E1CF29F5787F00CA14BF /* ChatGPTResponse.swift */,
 			);
 			path = ChatGPTService;
+			sourceTree = "<group>";
+		};
+		E887E1D929F6CCA200CA14BF /* TagList */ = {
+			isa = PBXGroup;
+			children = (
+				E887E1D529F6CC2D00CA14BF /* TagListView.swift */,
+				E887E1D729F6CC6700CA14BF /* TagView.swift */,
+				E887E1DA29F6CCD500CA14BF /* TagActionButton.swift */,
+			);
+			path = TagList;
 			sourceTree = "<group>";
 		};
 		E895FA1E29D953D200F618A7 = {
@@ -579,6 +601,7 @@
 		E8EB3EFE29DDADE000C44EB5 /* ViewComponent */ = {
 			isa = PBXGroup;
 			children = (
+				E887E1D929F6CCA200CA14BF /* TagList */,
 				E8EB3EFF29DDAE0C00C44EB5 /* CityTextField.swift */,
 				E887E1B129ED252100CA14BF /* DateField.swift */,
 			);
@@ -874,6 +897,7 @@
 			files = (
 				E87BB67C29E1BA4C00E823D1 /* SelectDateViewController.swift in Sources */,
 				E895FA2F29D953D200F618A7 /* OnboardingViewController.swift in Sources */,
+				E887E1D829F6CC6700CA14BF /* TagView.swift in Sources */,
 				E887E1B529ED399000CA14BF /* DatePickerViewController.swift in Sources */,
 				E87BB68429E1BECF00E823D1 /* LocationListViewPresenter.swift in Sources */,
 				E8EB3EF129DD727400C44EB5 /* BagbuddyCoordinator.swift in Sources */,
@@ -883,8 +907,10 @@
 				E8EB3EFA29DD7D3100C44EB5 /* UIFont+Extensions.swift in Sources */,
 				E895FA2B29D953D200F618A7 /* AppDelegate.swift in Sources */,
 				E87BB67729E1B6AF00E823D1 /* LocalDataManager.swift in Sources */,
+				E887E1DB29F6CCD500CA14BF /* TagActionButton.swift in Sources */,
 				E887E1C729F573F500CA14BF /* ChatGPTAPIService.swift in Sources */,
 				E887E1CD29F577BD00CA14BF /* ChatGPTService.swift in Sources */,
+				E887E1DD29F6D75800CA14BF /* PackageItemCellViewModel.swift in Sources */,
 				E887E1C429F55DF900CA14BF /* TripHeaderView.swift in Sources */,
 				E887E1B229ED252100CA14BF /* DateField.swift in Sources */,
 				E87BB68129E1BEA400E823D1 /* LocationListViewController.swift in Sources */,
@@ -903,6 +929,8 @@
 				E8EB3EFC29DD829D00C44EB5 /* Constants.swift in Sources */,
 				E887E1BE29ED3EAE00CA14BF /* PackageListPresenter.swift in Sources */,
 				E887E1B029ED131400CA14BF /* TripPacker.swift in Sources */,
+				E887E1D629F6CC2D00CA14BF /* TagListView.swift in Sources */,
+				E887E1DF29F6DF0500CA14BF /* PackageItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

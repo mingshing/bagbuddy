@@ -28,6 +28,7 @@ class PackageListViewController: UIViewController {
     }()
     
     private lazy var categorySectionView = SectionHeaderView()
+    private lazy var categoryListView = TagListView()
     private lazy var packItemSectionView = SectionHeaderView()
 
 // MARK: Property
@@ -47,6 +48,17 @@ class PackageListViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        
+        categoryListView.delegate = self
+        categoryListView.textFont = .systemFont(ofSize: 15)
+        categoryListView.shadowRadius = 2
+        categoryListView.shadowOpacity = 0.4
+        categoryListView.shadowColor = UIColor.black
+        categoryListView.shadowOffset = CGSize(width: 1, height: 1)
+        categoryListView.addTag("Inboard")
+        categoryListView.addTag("Pomotodo")
+        categoryListView.addTag("Halo Word")
+        
         presenter?.fetchData()
     }
     
@@ -59,6 +71,7 @@ class PackageListViewController: UIViewController {
         }
         scrollView.addSubview(headerView)
         scrollView.addSubview(categorySectionView)
+        scrollView.addSubview(categoryListView)
         scrollView.addSubview(packItemSectionView)
         headerView.snp.makeConstraints { make in
             make.top.left.equalToSuperview()
@@ -68,6 +81,11 @@ class PackageListViewController: UIViewController {
         categorySectionView.snp.makeConstraints { make in
             make.left.right.equalTo(headerView)
             make.top.equalTo(headerView.snp.bottom)
+        }
+        
+        categoryListView.snp.makeConstraints { make in
+            make.left.right.equalTo(headerView).inset(20)
+            make.top.equalTo(categorySectionView.snp.bottom)
         }
         
         packItemSectionView.snp.makeConstraints { make in
@@ -91,5 +109,17 @@ extension PackageListViewController: PackageListPresenterDelegate {
 extension PackageListViewController: TripHeaderViewDelegate {
     func didTapCloseButton() {
         dismiss(animated: true)
+    }
+}
+
+extension PackageListViewController: TagListViewDelegate {
+    func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
+        print("Tag pressed: \(title), \(sender)")
+        tagView.isSelected = !tagView.isSelected
+    }
+    
+    func tagRemoveButtonPressed(_ title: String, tagView: TagView, sender: TagListView) {
+        print("Tag Remove pressed: \(title), \(sender)")
+        sender.removeTagView(tagView)
     }
 }
