@@ -7,20 +7,20 @@
 
 import Foundation
 
-struct Activity {
+struct Activity: Codable {
     let name: String
-    var suggestPackedItems: [Item]
+    var items: [Item]
     
     init(name: String) {
         self.name = name
-        suggestPackedItems = []
+        items = []
     }
 }
 
-struct Item {
+struct Item: Codable {
     let name: String
-    var count: Int
-    var checked: Bool
+    var count: Int?
+    var checked: Bool?
     
     init(name: String, count: Int = 1, checked: Bool = false) {
         self.name = name

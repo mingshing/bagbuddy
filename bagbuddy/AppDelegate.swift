@@ -18,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         IQKeyboardManager.shared.enable = true
         
+        if let cityActivities = LocalDataManager().getActivityItemDomainModel() {
+            print(cityActivities["Hong Kong"])
+        }
+        
         return true
     }
 

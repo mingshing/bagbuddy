@@ -35,7 +35,8 @@ struct DeviceConstants {
 }
 
 struct LocalFileName {
-    static let cityList: String = "city_list"
+    static let cityList: String = "cityList"
+    static let suggestItemList: String = "suggestedItemList"
 }
 
 struct HostAppContants {

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		03A4CAB280574A67CE8AD4DD /* Pods_bagbuddy_bagbuddyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA84250EEF6B7BC17F90BA53 /* Pods_bagbuddy_bagbuddyUITests.framework */; };
 		287D69229E6F2ECDAAB0CC74 /* Pods_bagbuddyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D31F411A0D2C57EE3F04E9 /* Pods_bagbuddyTests.framework */; };
-		E87BB67329E1B4D200E823D1 /* city_list.json in Resources */ = {isa = PBXBuildFile; fileRef = E87BB67229E1B4D200E823D1 /* city_list.json */; };
+		E87BB67329E1B4D200E823D1 /* cityList.json in Resources */ = {isa = PBXBuildFile; fileRef = E87BB67229E1B4D200E823D1 /* cityList.json */; };
 		E87BB67529E1B4FC00E823D1 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB67429E1B4FC00E823D1 /* City.swift */; };
 		E87BB67729E1B6AF00E823D1 /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB67629E1B6AF00E823D1 /* LocalDataManager.swift */; };
 		E87BB67C29E1BA4C00E823D1 /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB67B29E1BA4C00E823D1 /* SelectDateViewController.swift */; };
@@ -84,6 +84,8 @@
 		E8BA007929D9D00800EC7EEA /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8BA006729D9D00800EC7EEA /* Poppins-BoldItalic.ttf */; };
 		E8BA007A29D9D00800EC7EEA /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8BA006829D9D00800EC7EEA /* Poppins-SemiBold.ttf */; };
 		E8BA007B29D9D00800EC7EEA /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8BA006929D9D00800EC7EEA /* Poppins-Medium.ttf */; };
+		E8E01AB92A094FFF00FFE31A /* suggestedItemList.json in Resources */ = {isa = PBXBuildFile; fileRef = E8E01AB82A094FFF00FFE31A /* suggestedItemList.json */; };
+		E8E01ABB2A09514D00FFE31A /* CityActivityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E01ABA2A09514D00FFE31A /* CityActivityList.swift */; };
 		E8EB3EE729DD6BF600C44EB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E8EB3EE929DD6BF600C44EB5 /* Localizable.strings */; };
 		E8EB3EED29DD6C8B00C44EB5 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB3EEC29DD6C8B00C44EB5 /* UIColor+Extensions.swift */; };
 		E8EB3EF129DD727400C44EB5 /* BagbuddyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB3EF029DD727400C44EB5 /* BagbuddyCoordinator.swift */; };
@@ -119,7 +121,7 @@
 		B13D1C8592F644C220337304 /* Pods_bagbuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bagbuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3D31F411A0D2C57EE3F04E9 /* Pods_bagbuddyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bagbuddyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5EF199862AAA3D508E8A432 /* Pods-bagbuddy-bagbuddyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bagbuddy-bagbuddyUITests.release.xcconfig"; path = "Target Support Files/Pods-bagbuddy-bagbuddyUITests/Pods-bagbuddy-bagbuddyUITests.release.xcconfig"; sourceTree = "<group>"; };
-		E87BB67229E1B4D200E823D1 /* city_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city_list.json; sourceTree = "<group>"; };
+		E87BB67229E1B4D200E823D1 /* cityList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cityList.json; sourceTree = "<group>"; };
 		E87BB67429E1B4FC00E823D1 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		E87BB67629E1B6AF00E823D1 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
 		E87BB67B29E1BA4C00E823D1 /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +200,8 @@
 		E8BA006729D9D00800EC7EEA /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
 		E8BA006829D9D00800EC7EEA /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		E8BA006929D9D00800EC7EEA /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		E8E01AB82A094FFF00FFE31A /* suggestedItemList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = suggestedItemList.json; sourceTree = "<group>"; };
+		E8E01ABA2A09514D00FFE31A /* CityActivityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityActivityList.swift; sourceTree = "<group>"; };
 		E8EB3EE829DD6BF600C44EB5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E8EB3EEA29DD6C0700C44EB5 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E8EB3EEC29DD6C8B00C44EB5 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -481,7 +485,8 @@
 			isa = PBXGroup;
 			children = (
 				E887E1C829F5769900CA14BF /* SampleResponse */,
-				E87BB67229E1B4D200E823D1 /* city_list.json */,
+				E87BB67229E1B4D200E823D1 /* cityList.json */,
+				E8E01AB82A094FFF00FFE31A /* suggestedItemList.json */,
 				E8BA003329D9CF9A00EC7EEA /* fonts */,
 				E895FA3329D953D700F618A7 /* Assets.xcassets */,
 			);
@@ -618,6 +623,7 @@
 			isa = PBXGroup;
 			children = (
 				E87BB67429E1B4FC00E823D1 /* City.swift */,
+				E8E01ABA2A09514D00FFE31A /* CityActivityList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -755,7 +761,7 @@
 				E895FA3429D953D700F618A7 /* Assets.xcassets in Resources */,
 				E8BA007329D9D00800EC7EEA /* Poppins-Bold.ttf in Resources */,
 				E8BA007629D9D00800EC7EEA /* Poppins-ExtraLight.ttf in Resources */,
-				E87BB67329E1B4D200E823D1 /* city_list.json in Resources */,
+				E87BB67329E1B4D200E823D1 /* cityList.json in Resources */,
 				E8BA007729D9D00800EC7EEA /* Poppins-MediumItalic.ttf in Resources */,
 				E8BA005129D9CFEF00EC7EEA /* Montserrat-LightItalic.ttf in Resources */,
 				E8BA005029D9CFEF00EC7EEA /* Montserrat-ThinItalic.ttf in Resources */,
@@ -772,6 +778,7 @@
 				E8BA005329D9CFEF00EC7EEA /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				E8BA006D29D9D00800EC7EEA /* Poppins-ExtraLightItalic.ttf in Resources */,
 				E887E1CA29F576E200CA14BF /* ChatGPTResponse.json in Resources */,
+				E8E01AB92A094FFF00FFE31A /* suggestedItemList.json in Resources */,
 				E8BA005729D9CFEF00EC7EEA /* Montserrat-ExtraBold.ttf in Resources */,
 				E8BA005429D9CFEF00EC7EEA /* Montserrat-Black.ttf in Resources */,
 			);
@@ -925,6 +932,7 @@
 				E8EB3EF829DD780A00C44EB5 /* SelectLocationPresenter.swift in Sources */,
 				E8EB3EF429DD768A00C44EB5 /* SelectLocationViewController.swift in Sources */,
 				E887E1BC29ED3E4C00CA14BF /* PackageListViewController.swift in Sources */,
+				E8E01ABB2A09514D00FFE31A /* CityActivityList.swift in Sources */,
 				E887E1AE29EAEAB500CA14BF /* LocationListCellViewModel.swift in Sources */,
 				E87BB67529E1B4FC00E823D1 /* City.swift in Sources */,
 				E887E1D029F5787F00CA14BF /* ChatGPTResponse.swift in Sources */,
