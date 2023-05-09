@@ -11,6 +11,7 @@ import UIKit
 enum PackageListSection: Int {
     case customizeTrip = 0
     case startPacking = 1
+    case itemList = 2
 }
 
 
@@ -135,15 +136,13 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        if section == 0 {
+        if section == PackageListSection.customizeTrip.rawValue {
             return categorySectionView
-        }
-        else if section == 1 {
+        } else if section == PackageListSection.startPacking.rawValue {
             return packItemSectionView
         } else if section < presenter!.numberOfSections() {
-            let itemSectionIndex = section - 2
             
-            let itemSectionVC = presenter!.viewModelForSection(at: itemSectionIndex)
+            let itemSectionVC = presenter!.viewModelForItemSection(at: section)
             
             let headerView = ItemSectionHeaderView(with: itemSectionVC)
             return headerView
@@ -161,12 +160,24 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
         
         guard let cellViewModel = presenter?.viewModelForIndex(at: indexPath) else { return UITableViewCell() }
         
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: PackageItemCell.self),
-            for: indexPath
-        ) as! PackageItemCell
-        cell.update(with: cellViewModel)
-        return cell
+        if cellViewModel is TagListCellViewModel {
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: TagListCell.self),
+                for: indexPath
+            ) as! TagListCell
+            return cell
+        }
+        
+        if cellViewModel is PackageItemCellViewModel {
+            
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: PackageItemCell.self),
+                for: indexPath
+            ) as! PackageItemCell
+            cell.update(with: cellViewModel as! PackageItemCellViewModel)
+            return cell
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

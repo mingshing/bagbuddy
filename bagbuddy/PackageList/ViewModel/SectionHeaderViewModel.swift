@@ -12,14 +12,30 @@ struct SectionHeaderViewModel {
     let description: String
 }
 
-struct ItemSectionHeaderViewModel {
-    let title: String
-    let itemCount: Int
-    let sectionState: ItemSectionState
+struct ActivitySectionViewModel {
+    var activities: [Activity]
+    var itemCount: Int {
+        return activities.count
+    }
     
-    init(title: String, itemCount: Int) {
+    init(activities: [Activity] = []) {
+        self.activities = activities
+    }
+}
+
+
+
+struct ItemSectionViewModel {
+    let title: String
+    let sectionState: ItemSectionState
+    var items: [Item]
+    var itemCount: Int {
+        return items.count
+    }
+    
+    init(title: String, items: [Item] = []) {
         self.title = title
-        self.itemCount = itemCount
         self.sectionState = .close
+        self.items = items
     }
 }

@@ -6,7 +6,10 @@
 //
 
 import Foundation
-struct PackageItemCellViewModel {
+
+protocol ReuseableCellViewModel { }
+
+struct PackageItemCellViewModel: ReuseableCellViewModel{
     let name: String
     var note: String?
 }

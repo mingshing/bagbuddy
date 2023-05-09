@@ -20,8 +20,8 @@ protocol PackageListPresenterType: AnyObject {
     func numberOfItemSections() -> Int
     func numberOfItems(for section: Int) -> Int
     
-    func viewModelForSection(at section: Int) -> ItemSectionHeaderViewModel
-    func viewModelForIndex(at indexPath: IndexPath) -> PackageItemCellViewModel?
+    func viewModelForItemSection(at section: Int) -> ItemSectionViewModel
+    func viewModelForIndex(at indexPath: IndexPath) -> ReuseableCellViewModel?
 }
 
 class PackageListPresenter: PackageListPresenterType {
@@ -56,7 +56,7 @@ class PackageListPresenter: PackageListPresenterType {
 extension PackageListPresenter {
     
     func numberOfSections() -> Int {
-        return numberOfItemSections() + 2
+        return numberOfItemSections() + PackageListSection.itemList.rawValue
     }
     
     func numberOfItemSections() -> Int {
@@ -65,22 +65,38 @@ extension PackageListPresenter {
     
     
     func numberOfItems(for section: Int) -> Int {
-        guard tableViewData.count > section else { return 0 }
-        if hiddenSections.contains(section) {
+        if section == PackageListSection.customizeTrip.rawValue {
             return 0
+        } else if section == PackageListSection.startPacking.rawValue {
+            return 1
+        } else {
+            
+            guard tableViewData.count > section else { return 0 }
+            if hiddenSections.contains(section) {
+                return 0
+            }
         }
         return 0
     }
     
-    func viewModelForSection(at section: Int) -> ItemSectionHeaderViewModel {
-        return viewModel.itemsSections[section]
+    func viewModelForItemSection(at section: Int) -> ItemSectionViewModel {
+        let itemStartIdx = PackageListSection.itemList.rawValue
+        return viewModel.itemsSections[section - itemStartIdx]
     }
     
-    func viewModelForIndex(at indexPath: IndexPath) -> PackageItemCellViewModel? {
+    func viewModelForIndex(at indexPath: IndexPath) -> ReuseableCellViewModel? {
         
-        guard tableViewData.count > indexPath.section,
-              tableViewData[indexPath.section].count > indexPath.row else { return nil }
-        
-        return PackageItemCellViewModel(name: tableViewData[indexPath.section][indexPath.row])
+        guard indexPath.section > PackageListSection.customizeTrip.rawValue else { return nil }
+        if indexPath.section == PackageListSection.startPacking.rawValue {
+            
+            return TagListCellViewModel(tags: ["Inboard", "Pomotodo", "Halo Word"])
+        } else if indexPath.section == PackageListSection.itemList.rawValue {
+            
+            guard tableViewData.count > indexPath.section,
+                  tableViewData[indexPath.section].count > indexPath.row else { return nil }
+            
+            return PackageItemCellViewModel(name: tableViewData[indexPath.section][indexPath.row])
+        }
+        return nil
     }
 }

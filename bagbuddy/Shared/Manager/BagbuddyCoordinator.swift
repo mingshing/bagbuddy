@@ -80,23 +80,28 @@ class BagbuddyCoordinator {
             description: "Your AI generated packing list:"
         )
         
-        let essentialSection =
-        ItemSectionHeaderViewModel(
-            title: "Essentials",
-            itemCount: 9
+        let essentialSection = ItemSectionViewModel(
+            title: "Essentials"
         )
         
-        let aboardSection =
-        ItemSectionHeaderViewModel(
-            title: "International trip",
-            itemCount: 7
+        let aboardSection = ItemSectionViewModel(
+            title: "International trip"
         )
+        
+        var activities: [Activity] = []
+        if let cityActivities = LocalDataManager().getActivityItemDomainModel() {
+            activities = Array(cityActivities.values.joined())
+        }
+        
+        let activitySection = ActivitySectionViewModel(activities: activities)
+        
         return PackageListViewModel(
             tripDestination: destination,
             startDate: "Mar 21",
             endDate: "Mar 23",
             categorySection: categorySectionViewModel,
             packItemSection: packItemSectionViewModel,
+            activitiesSections: activitySection,
             itemsSections: [essentialSection,aboardSection]
         )
     }
