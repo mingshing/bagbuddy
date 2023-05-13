@@ -15,6 +15,7 @@ class SectionHeaderView: UIView {
         label.textAlignment = .left
         label.font = UIFont.projectFont(ofSize: 16, weight: .bold)
         label.textColor = .primaryBlack
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -24,6 +25,7 @@ class SectionHeaderView: UIView {
         label.textAlignment = .left
         label.font = UIFont.actionTextFont(ofSize: 14)
         label.textColor = .primaryBlack
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     

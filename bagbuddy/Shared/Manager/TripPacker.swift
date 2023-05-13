@@ -11,9 +11,9 @@ struct Activity: Codable {
     let name: String
     var items: [Item]
     
-    init(name: String) {
+    init(name: String, items: [Item] = []) {
         self.name = name
-        items = []
+        self.items = items
     }
 }
 

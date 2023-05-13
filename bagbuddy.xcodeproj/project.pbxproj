@@ -87,6 +87,7 @@
 		E8E01AB92A094FFF00FFE31A /* suggestedItemList.json in Resources */ = {isa = PBXBuildFile; fileRef = E8E01AB82A094FFF00FFE31A /* suggestedItemList.json */; };
 		E8E01ABB2A09514D00FFE31A /* CityActivityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E01ABA2A09514D00FFE31A /* CityActivityList.swift */; };
 		E8E01ABD2A0AA41400FFE31A /* TagListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E01ABC2A0AA41400FFE31A /* TagListCellViewModel.swift */; };
+		E8E01ABF2A0FCE8400FFE31A /* MockGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E01ABE2A0FCE8400FFE31A /* MockGenerator.swift */; };
 		E8EB3EE729DD6BF600C44EB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E8EB3EE929DD6BF600C44EB5 /* Localizable.strings */; };
 		E8EB3EED29DD6C8B00C44EB5 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB3EEC29DD6C8B00C44EB5 /* UIColor+Extensions.swift */; };
 		E8EB3EF129DD727400C44EB5 /* BagbuddyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB3EF029DD727400C44EB5 /* BagbuddyCoordinator.swift */; };
@@ -204,6 +205,7 @@
 		E8E01AB82A094FFF00FFE31A /* suggestedItemList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = suggestedItemList.json; sourceTree = "<group>"; };
 		E8E01ABA2A09514D00FFE31A /* CityActivityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityActivityList.swift; sourceTree = "<group>"; };
 		E8E01ABC2A0AA41400FFE31A /* TagListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListCellViewModel.swift; sourceTree = "<group>"; };
+		E8E01ABE2A0FCE8400FFE31A /* MockGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGenerator.swift; sourceTree = "<group>"; };
 		E8EB3EE829DD6BF600C44EB5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E8EB3EEA29DD6C0700C44EB5 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E8EB3EEC29DD6C8B00C44EB5 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 				E8EB3EFE29DDADE000C44EB5 /* ViewComponent */,
 				E8EB3EEF29DD725100C44EB5 /* Manager */,
 				E887E1C529F573D000CA14BF /* Service */,
+				E8E01ABE2A0FCE8400FFE31A /* MockGenerator.swift */,
 				E8EB3EFB29DD829D00C44EB5 /* Constants.swift */,
 			);
 			path = Shared;
@@ -936,6 +939,7 @@
 				E8EB3EF829DD780A00C44EB5 /* SelectLocationPresenter.swift in Sources */,
 				E8EB3EF429DD768A00C44EB5 /* SelectLocationViewController.swift in Sources */,
 				E887E1BC29ED3E4C00CA14BF /* PackageListViewController.swift in Sources */,
+				E8E01ABF2A0FCE8400FFE31A /* MockGenerator.swift in Sources */,
 				E8E01ABB2A09514D00FFE31A /* CityActivityList.swift in Sources */,
 				E887E1AE29EAEAB500CA14BF /* LocationListCellViewModel.swift in Sources */,
 				E87BB67529E1B4FC00E823D1 /* City.swift in Sources */,
