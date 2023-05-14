@@ -7,13 +7,19 @@
 
 import UIKit
 
+protocol TagListCellDelegate: AnyObject {
+    func listContentChanged()
+}
+
+
 class TagListCell: UITableViewCell {
     
+    weak var delegate: TagListCellDelegate?
     private lazy var tagListView = TagListView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .clear
+        backgroundColor = .white
         selectionStyle = .none
         setupView()
         setupContent()
@@ -26,32 +32,35 @@ class TagListCell: UITableViewCell {
     private func setupView() {
         contentView.addSubview(tagListView)
         tagListView.snp.makeConstraints { make in
-            make.left.right.top.bottom.equalToSuperview()
+            make.left.right.bottom.equalToSuperview().inset(20)
+        }
+        tagListView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
         }
     }
     
     private func setupContent() {
         
         tagListView.delegate = self
-        tagListView.textFont = .systemFont(ofSize: 15)
-        tagListView.shadowRadius = 2
-        tagListView.shadowOpacity = 0.4
-        tagListView.shadowColor = UIColor.black
-        tagListView.shadowOffset = CGSize(width: 1, height: 1)
-        tagListView.addTag("Inboard")
-        tagListView.addTag("Pomotodo")
-        tagListView.addTag("Halo Word")
+        tagListView.addTag("Temple or shrine")
+        tagListView.addTag("Shopping")
+        tagListView.addTag("Cherry blossom viewing")
+        tagListView.addTag("Nightlife")
+        tagListView.addTag("Historic landmark")
+        tagListView.addTag("Museum")
+        tagListView.addTag("Concert")
+        tagListView.addTag("Hot spring")
+        tagListView.addTag("Hiking")
     }
 }
 
 extension TagListCell: TagListViewDelegate {
+    func viewReArranged() {
+        delegate?.listContentChanged()
+    }
+    
     func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
         print("Tag pressed: \(title), \(sender)")
         tagView.isSelected = !tagView.isSelected
-    }
-    
-    func tagRemoveButtonPressed(_ title: String, tagView: TagView, sender: TagListView) {
-        print("Tag Remove pressed: \(title), \(sender)")
-        sender.removeTagView(tagView)
     }
 }

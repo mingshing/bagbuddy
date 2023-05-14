@@ -45,6 +45,7 @@ class TripPacker {
     var currentPlannedTrip: TripDetailList?
     
     public func startNewTrip() {
-        currentPlannedTrip = TripDetailList()
+        //currentPlannedTrip = TripDetailList()
+        currentPlannedTrip = MockGenerator.mockTripDetailList
     }
 }

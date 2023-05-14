@@ -66,9 +66,9 @@ extension PackageListPresenter {
     
     func numberOfItems(for section: Int) -> Int {
         if section == PackageListSection.customizeTrip.rawValue {
-            return 0
-        } else if section == PackageListSection.startPacking.rawValue {
             return 1
+        } else if section == PackageListSection.startPacking.rawValue {
+            return 0
         } else {
             
             guard tableViewData.count > section else { return 0 }
@@ -86,8 +86,8 @@ extension PackageListPresenter {
     
     func viewModelForIndex(at indexPath: IndexPath) -> ReuseableCellViewModel? {
         
-        guard indexPath.section > PackageListSection.customizeTrip.rawValue else { return nil }
-        if indexPath.section == PackageListSection.startPacking.rawValue {
+        guard indexPath.section < PackageListSection.itemList.rawValue else { return nil }
+        if indexPath.section == PackageListSection.customizeTrip.rawValue {
             
             return TagListCellViewModel(tags: ["Inboard", "Pomotodo", "Halo Word"])
         } else if indexPath.section == PackageListSection.itemList.rawValue {

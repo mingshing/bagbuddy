@@ -8,13 +8,7 @@
 import Foundation
 
 class MockGenerator {
-    struct TripDetailList {
-        var source: String?
-        var destination: String?
-        var lowTemperature: Int?
-        var highTemperature: Int?
-        var activityList: [Activity]?
-    }
+    
     static let mockTripDetailList: TripDetailList = TripDetailList(
         source: "Taipei, Taiwan",
         destination: "Tokyo, Japan",

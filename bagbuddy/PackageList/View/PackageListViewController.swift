@@ -31,7 +31,6 @@ class PackageListViewController: UIViewController {
         table.backgroundColor = .mainHeaderBackground
         table.showsVerticalScrollIndicator = false
         table.separatorStyle = .none
-        
         table.register(
             PackageItemCell.self,
             forCellReuseIdentifier: String(describing: PackageItemCell.self)
@@ -156,6 +155,14 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
         return UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cellViewModel = presenter?.viewModelForIndex(at: indexPath) else { return UITableViewCell() }
@@ -165,6 +172,7 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
                 withIdentifier: String(describing: TagListCell.self),
                 for: indexPath
             ) as! TagListCell
+            cell.delegate = self
             return cell
         }
         
@@ -183,5 +191,10 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
-    
+}
+
+extension PackageListViewController: TagListCellDelegate {
+    func listContentChanged() {
+        tableView.reloadData()
+    }
 }
