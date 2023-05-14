@@ -19,13 +19,13 @@ struct Activity: Codable {
 
 struct Item: Codable {
     let name: String
+    var note: String?
     var count: Int?
-    var checked: Bool?
     
-    init(name: String, count: Int = 1, checked: Bool = false) {
+    init(name: String, note: String? = nil, count: Int = 1) {
         self.name = name
+        self.note = note
         self.count = count
-        self.checked = checked
     }
 }
 

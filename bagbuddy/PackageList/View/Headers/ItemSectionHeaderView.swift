@@ -51,9 +51,9 @@ class ItemSectionHeaderView: UIView {
             }
         }
     }
-    private let viewModel: ItemSectionViewModel
+    private let viewModel: ActivitySectionViewModel
     
-    init(with viewModel: ItemSectionViewModel) {
+    init(with viewModel: ActivitySectionViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
         setupView()
@@ -87,7 +87,7 @@ class ItemSectionHeaderView: UIView {
         }
     }
     
-    public func setupContent(with viewModel: ItemSectionViewModel) {
+    public func setupContent(with viewModel: ActivitySectionViewModel) {
         titleLabel.text = viewModel.title
         descriptionLabel.text = String(format: NSLocalizedString("package_tag_count", comment: ""),viewModel.itemCount)
     }

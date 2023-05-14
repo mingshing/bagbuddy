@@ -14,7 +14,8 @@ struct LayoutConstants {
     static let actionButtonHeight: CGFloat = 48.0
     static let inputFieldHeight: CGFloat = 44.0
     static let smallIconSize: CGFloat = 16.0
-    
+    static let actionIconWidth: CGFloat = 48.0
+    static let actionIconHeight: CGFloat = 44.0
     //margin
     static let pageHorizontalMargin: CGFloat = 20.0
 }
@@ -37,6 +38,8 @@ struct DeviceConstants {
 struct LocalFileName {
     static let cityList: String = "cityList"
     static let suggestItemList: String = "suggestedItemList"
+    static let essentialItemList: String = "essential"
+    static let interNationalTripItemList: String = "national"
 }
 
 struct HostAppContants {

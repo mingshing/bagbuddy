@@ -87,6 +87,8 @@
 		E8E01ABB2A09514D00FFE31A /* CityActivityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E01ABA2A09514D00FFE31A /* CityActivityList.swift */; };
 		E8E01ABD2A0AA41400FFE31A /* TagListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E01ABC2A0AA41400FFE31A /* TagListCellViewModel.swift */; };
 		E8E01ABF2A0FCE8400FFE31A /* MockGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E01ABE2A0FCE8400FFE31A /* MockGenerator.swift */; };
+		E8E01AC42A11314600FFE31A /* national.json in Resources */ = {isa = PBXBuildFile; fileRef = E8E01AC32A11314600FFE31A /* national.json */; };
+		E8E01AC62A113F9700FFE31A /* essential.json in Resources */ = {isa = PBXBuildFile; fileRef = E8E01AC52A113F9700FFE31A /* essential.json */; };
 		E8EB3EE729DD6BF600C44EB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E8EB3EE929DD6BF600C44EB5 /* Localizable.strings */; };
 		E8EB3EED29DD6C8B00C44EB5 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB3EEC29DD6C8B00C44EB5 /* UIColor+Extensions.swift */; };
 		E8EB3EF129DD727400C44EB5 /* BagbuddyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB3EF029DD727400C44EB5 /* BagbuddyCoordinator.swift */; };
@@ -204,6 +206,8 @@
 		E8E01ABA2A09514D00FFE31A /* CityActivityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityActivityList.swift; sourceTree = "<group>"; };
 		E8E01ABC2A0AA41400FFE31A /* TagListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListCellViewModel.swift; sourceTree = "<group>"; };
 		E8E01ABE2A0FCE8400FFE31A /* MockGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGenerator.swift; sourceTree = "<group>"; };
+		E8E01AC32A11314600FFE31A /* national.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = national.json; sourceTree = "<group>"; };
+		E8E01AC52A113F9700FFE31A /* essential.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = essential.json; sourceTree = "<group>"; };
 		E8EB3EE829DD6BF600C44EB5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E8EB3EEA29DD6C0700C44EB5 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E8EB3EEC29DD6C8B00C44EB5 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -341,12 +345,9 @@
 		E887E1B729ED3DA300CA14BF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E8E01AC02A112BA200FFE31A /* Cells */,
+				E8E01AC12A112BB100FFE31A /* Headers */,
 				E887E1BB29ED3E4C00CA14BF /* PackageListViewController.swift */,
-				E887E1C329F55DF900CA14BF /* TripHeaderView.swift */,
-				E887E1D129F6BCA900CA14BF /* SectionHeaderView.swift */,
-				E887E1E029FD64C000CA14BF /* ItemSectionHeaderView.swift */,
-				E887E1DE29F6DF0500CA14BF /* PackageItemCell.swift */,
-				E887E1E229FD665200CA14BF /* TagListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -488,6 +489,8 @@
 			children = (
 				E887E1C829F5769900CA14BF /* SampleResponse */,
 				E87BB67229E1B4D200E823D1 /* cityList.json */,
+				E8E01AC32A11314600FFE31A /* national.json */,
+				E8E01AC52A113F9700FFE31A /* essential.json */,
 				E8E01AB82A094FFF00FFE31A /* suggestedItemList.json */,
 				E8BA003329D9CF9A00EC7EEA /* fonts */,
 				E895FA3329D953D700F618A7 /* Assets.xcassets */,
@@ -536,6 +539,25 @@
 				E8BA006329D9D00700EC7EEA /* Poppins-ThinItalic.ttf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		E8E01AC02A112BA200FFE31A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E887E1E229FD665200CA14BF /* TagListCell.swift */,
+				E887E1DE29F6DF0500CA14BF /* PackageItemCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E8E01AC12A112BB100FFE31A /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				E887E1C329F55DF900CA14BF /* TripHeaderView.swift */,
+				E887E1D129F6BCA900CA14BF /* SectionHeaderView.swift */,
+				E887E1E029FD64C000CA14BF /* ItemSectionHeaderView.swift */,
+			);
+			path = Headers;
 			sourceTree = "<group>";
 		};
 		E8EB3EE229DD698E00C44EB5 /* Onboarding */ = {
@@ -767,11 +789,13 @@
 				E87BB67329E1B4D200E823D1 /* cityList.json in Resources */,
 				E8BA007729D9D00800EC7EEA /* Poppins-MediumItalic.ttf in Resources */,
 				E8BA005129D9CFEF00EC7EEA /* Montserrat-LightItalic.ttf in Resources */,
+				E8E01AC42A11314600FFE31A /* national.json in Resources */,
 				E8BA005029D9CFEF00EC7EEA /* Montserrat-ThinItalic.ttf in Resources */,
 				E8BA007029D9D00800EC7EEA /* Poppins-SemiBoldItalic.ttf in Resources */,
 				E8BA004829D9CFEF00EC7EEA /* Montserrat-ExtraBoldItalic.ttf in Resources */,
 				E8BA004729D9CFEF00EC7EEA /* Montserrat-Regular.ttf in Resources */,
 				E8BA004A29D9CFEF00EC7EEA /* Montserrat-SemiBold.ttf in Resources */,
+				E8E01AC62A113F9700FFE31A /* essential.json in Resources */,
 				E8BA007429D9D00800EC7EEA /* Poppins-LightItalic.ttf in Resources */,
 				E8BA006B29D9D00800EC7EEA /* Poppins-BlackItalic.ttf in Resources */,
 				E8BA004D29D9CFEF00EC7EEA /* Montserrat-Medium.ttf in Resources */,

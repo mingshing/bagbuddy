@@ -67,6 +67,11 @@ class BagbuddyCoordinator {
         sourceVC.present(packageListVC, animated: true, completion: nil)
     }
     
+    static func openNoteEditPage(from sourceVC: UIViewController) {
+        print("try to open a simple edit screen")
+    }
+    
+    // MARK: Testing purpose
     static func buildPackageListViewModel() -> PackageListViewModel? {
         
         guard let destination = TripPacker.shared.currentPlannedTrip?.destination else { return nil }
@@ -79,21 +84,13 @@ class BagbuddyCoordinator {
             title: "Start packing",
             description: "Your AI generated packing list:"
         )
-        
-        let essentialSection = ItemSectionViewModel(
-            title: "Essentials"
-        )
-        
-        let aboardSection = ItemSectionViewModel(
-            title: "International trip"
-        )
-        
+
         var activities: [Activity] = []
         if let cityActivities = LocalDataManager().getActivityItemDomainModel() {
             activities = Array(cityActivities.values.joined())
         }
         
-        let activitySection = ActivitySectionViewModel(activities: activities)
+        let activityListName = activities.map { $0.name }
         
         return PackageListViewModel(
             tripDestination: destination,
@@ -101,8 +98,15 @@ class BagbuddyCoordinator {
             endDate: "Mar 23",
             categorySection: categorySectionViewModel,
             packItemSection: packItemSectionViewModel,
-            activitiesSections: activitySection,
-            itemsSections: [essentialSection,aboardSection]
+            activyListSection: ActivityListViewModel(activityNames: activityListName),
+            activitiesSections: [
+                ActivitySectionViewModel(
+                    activity: LocalDataManager.shared.getDefaultEssential()
+                ),
+                ActivitySectionViewModel(
+                    activity: LocalDataManager.shared.getDefaultInternalTrip()
+                )   
+            ]
         )
     }
 }

@@ -1,0 +1,26 @@
+{
+    "items": [
+        {
+            "name": "Passport"
+        },
+        {
+            "name": "Boarding pass"
+        },
+        {
+            "name": "Cash"
+        },
+        {
+            "name": "Credit/debit card"
+        },
+        {
+            "name": "Vaccination certificate"
+        },
+        {
+            "name": "Pen"
+        },
+        {
+            "name": "Power adaptor"
+        }
+    ],
+    "name": "International trip"
+}

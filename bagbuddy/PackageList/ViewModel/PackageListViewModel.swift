@@ -13,6 +13,6 @@ struct PackageListViewModel {
     let endDate: String
     let categorySection: SectionHeaderViewModel
     let packItemSection: SectionHeaderViewModel
-    let activitiesSections: ActivitySectionViewModel
-    let itemsSections: [ItemSectionViewModel]
+    let activyListSection: ActivityListViewModel
+    let activitiesSections: [ActivitySectionViewModel]
 }

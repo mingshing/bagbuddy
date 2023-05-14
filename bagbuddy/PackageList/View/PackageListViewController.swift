@@ -31,6 +31,7 @@ class PackageListViewController: UIViewController {
         table.backgroundColor = .mainHeaderBackground
         table.showsVerticalScrollIndicator = false
         table.separatorStyle = .none
+        table.allowsMultipleSelection = true
         table.register(
             PackageItemCell.self,
             forCellReuseIdentifier: String(describing: PackageItemCell.self)
@@ -141,13 +142,12 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
             return packItemSectionView
         } else if section < presenter!.numberOfSections() {
             
-            let itemSectionVC = presenter!.viewModelForItemSection(at: section)
-            
-            let headerView = ItemSectionHeaderView(with: itemSectionVC)
-            return headerView
-        } else {
-            return nil
+            if let itemSectionVC = presenter!.viewModelForItemSection(at: section) {
+                let headerView = ItemSectionHeaderView(with: itemSectionVC)
+                return headerView
+            }
         }
+        return nil
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -183,18 +183,32 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
                 for: indexPath
             ) as! PackageItemCell
             cell.update(with: cellViewModel as! PackageItemCellViewModel)
+            cell.delegate = self
             return cell
         }
         return UITableViewCell()
     }
-    
+    /*
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard var cellViewModel = presenter?.viewModelForIndex(at: indexPath) else { return }
         
+        if cellViewModel is PackageItemCellViewModel {
+            if let cell = tableView.cellForRow(at: indexPath) {
+                cell.isSelected.toggle()
+            }
+        }
     }
+     */
 }
 
 extension PackageListViewController: TagListCellDelegate {
     func listContentChanged() {
         tableView.reloadData()
+    }
+}
+
+extension PackageListViewController: PackageItemCellDelegate {
+    func didTapActionButton(_ viewModel: PackageItemCellViewModel) {
+        BagbuddyCoordinator.openNoteEditPage(from: self)
     }
 }

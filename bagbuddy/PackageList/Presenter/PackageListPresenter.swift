@@ -20,7 +20,7 @@ protocol PackageListPresenterType: AnyObject {
     func numberOfItemSections() -> Int
     func numberOfItems(for section: Int) -> Int
     
-    func viewModelForItemSection(at section: Int) -> ItemSectionViewModel
+    func viewModelForItemSection(at section: Int) -> ActivitySectionViewModel?
     func viewModelForIndex(at indexPath: IndexPath) -> ReuseableCellViewModel?
 }
 
@@ -29,14 +29,6 @@ class PackageListPresenter: PackageListPresenterType {
     private weak var delegate: PackageListPresenterDelegate?
     var viewModel: PackageListViewModel
     var hiddenSections: Set<Int>
-    
-    let tableViewData = [
-        ["1","2","3","4","5"],
-        ["1","2","3","4","5"],
-        ["1","2","3","4","5"],
-        ["1","2","3","4","5"],
-        ["1","2","3","4","5"],
-    ]
     
     init(with viewModel: PackageListViewModel, delegate: PackageListPresenterDelegate? = nil) {
         self.delegate = delegate
@@ -60,7 +52,7 @@ extension PackageListPresenter {
     }
     
     func numberOfItemSections() -> Int {
-        return viewModel.itemsSections.count
+        return viewModel.activitiesSections.count
     }
     
     
@@ -70,32 +62,42 @@ extension PackageListPresenter {
         } else if section == PackageListSection.startPacking.rawValue {
             return 0
         } else {
-            
-            guard tableViewData.count > section else { return 0 }
+            let startIdx = section - PackageListSection.itemList.rawValue
             if hiddenSections.contains(section) {
                 return 0
             }
+            let activity = viewModel.activitiesSections[startIdx]
+            return activity.itemCount
         }
-        return 0
     }
     
-    func viewModelForItemSection(at section: Int) -> ItemSectionViewModel {
+    func viewModelForItemSection(at section: Int) -> ActivitySectionViewModel? {
         let itemStartIdx = PackageListSection.itemList.rawValue
-        return viewModel.itemsSections[section - itemStartIdx]
+        guard section - itemStartIdx >= 0 else {
+            return nil
+        }
+        
+        return viewModel.activitiesSections[section - itemStartIdx]
     }
     
     func viewModelForIndex(at indexPath: IndexPath) -> ReuseableCellViewModel? {
         
-        guard indexPath.section < PackageListSection.itemList.rawValue else { return nil }
         if indexPath.section == PackageListSection.customizeTrip.rawValue {
-            
+            // TODO: get the real data from local / chatgpt
             return TagListCellViewModel(tags: ["Inboard", "Pomotodo", "Halo Word"])
-        } else if indexPath.section == PackageListSection.itemList.rawValue {
+        } else if indexPath.section >= PackageListSection.itemList.rawValue {
             
-            guard tableViewData.count > indexPath.section,
-                  tableViewData[indexPath.section].count > indexPath.row else { return nil }
+            let startIdx = indexPath.section - PackageListSection.itemList.rawValue
             
-            return PackageItemCellViewModel(name: tableViewData[indexPath.section][indexPath.row])
+            guard viewModel.activitiesSections.count > startIdx,
+                  viewModel.activitiesSections[startIdx].itemCount > indexPath.row else { return nil }
+            
+            let activity = viewModel.activitiesSections[startIdx].activity
+            let packageItem = activity.items[indexPath.row]
+            return PackageItemCellViewModel(
+                name: packageItem.name,
+                note: packageItem.note
+            )
         }
         return nil
     }
