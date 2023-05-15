@@ -14,5 +14,5 @@ struct PackageListViewModel {
     let categorySection: SectionHeaderViewModel
     let packItemSection: SectionHeaderViewModel
     let activyListSection: ActivityListViewModel
-    let activitiesSections: [ActivitySectionViewModel]
+    var activitiesSections: [ActivitySectionViewModel]
 }

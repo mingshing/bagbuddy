@@ -144,6 +144,8 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
             
             if let itemSectionVC = presenter!.viewModelForItemSection(at: section) {
                 let headerView = ItemSectionHeaderView(with: itemSectionVC)
+                headerView.delegate = self
+                headerView.tag = section
                 return headerView
             }
         }
@@ -210,5 +212,13 @@ extension PackageListViewController: TagListCellDelegate {
 extension PackageListViewController: PackageItemCellDelegate {
     func didTapActionButton(_ viewModel: PackageItemCellViewModel) {
         BagbuddyCoordinator.openNoteEditPage(from: self)
+    }
+}
+
+extension PackageListViewController: ItemSectionHeaderViewDelegate {
+    func didTapActivity(_ view: ItemSectionHeaderView, currentState: ItemSectionState) {
+        
+        presenter?.changeItemSectionState(section: view.tag, fromState: currentState)
+        
     }
 }

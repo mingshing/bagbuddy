@@ -18,6 +18,7 @@ struct ActivityListViewModel {
 
 struct ActivitySectionViewModel {
     var activity: Activity
+    var displayState: ItemSectionState
     var title: String {
         return activity.name
     }
@@ -27,6 +28,7 @@ struct ActivitySectionViewModel {
     
     init(activity: Activity) {
         self.activity = activity
+        self.displayState = .close
     }
 }
 

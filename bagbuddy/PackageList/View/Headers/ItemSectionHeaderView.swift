@@ -12,6 +12,10 @@ enum ItemSectionState {
     case open
 }
 
+protocol ItemSectionHeaderViewDelegate: AnyObject {
+    func didTapActivity(_ view: ItemSectionHeaderView, currentState: ItemSectionState)
+}
+
 class ItemSectionHeaderView: UIView {
     
     private lazy var indicator: UIImageView = {
@@ -53,6 +57,8 @@ class ItemSectionHeaderView: UIView {
     }
     private let viewModel: ActivitySectionViewModel
     
+    var delegate: ItemSectionHeaderViewDelegate?
+    
     init(with viewModel: ActivitySectionViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
@@ -85,10 +91,17 @@ class ItemSectionHeaderView: UIView {
             make.centerY.equalTo(titleLabel)
             make.left.equalTo(titleLabel.snp.right).offset(12)
         }
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        self.addGestureRecognizer(tapGesture)
     }
     
     public func setupContent(with viewModel: ActivitySectionViewModel) {
         titleLabel.text = viewModel.title
         descriptionLabel.text = String(format: NSLocalizedString("package_tag_count", comment: ""),viewModel.itemCount)
+        sectionState = viewModel.displayState
+    }
+    
+    @objc func handleTap(_ gestureRecognizer: UITapGestureRecognizer) {
+        delegate?.didTapActivity(self, currentState: viewModel.displayState)
     }
 }

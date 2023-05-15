@@ -21,6 +21,7 @@ protocol PackageListPresenterType: AnyObject {
     func numberOfItems(for section: Int) -> Int
     
     func viewModelForItemSection(at section: Int) -> ActivitySectionViewModel?
+    func changeItemSectionState(section: Int, fromState: ItemSectionState)
     func viewModelForIndex(at indexPath: IndexPath) -> ReuseableCellViewModel?
 }
 
@@ -33,7 +34,8 @@ class PackageListPresenter: PackageListPresenterType {
     init(with viewModel: PackageListViewModel, delegate: PackageListPresenterDelegate? = nil) {
         self.delegate = delegate
         self.viewModel = viewModel
-        self.hiddenSections = Set<Int>()
+        let totalSectionCount = viewModel.activitiesSections.count + PackageListSection.itemList.rawValue
+        self.hiddenSections = Set<Int>(0..<totalSectionCount)
     }
     
     func setupHeader() {
@@ -79,6 +81,22 @@ extension PackageListPresenter {
         
         return viewModel.activitiesSections[section - itemStartIdx]
     }
+    
+    func changeItemSectionState(section: Int, fromState: ItemSectionState) {
+        let itemStartIdx = PackageListSection.itemList.rawValue
+        if var sectionViewModel = viewModelForItemSection(at: section) {
+            if fromState == .close {
+                hiddenSections.remove(section)
+                sectionViewModel.displayState = .open
+            } else if fromState == .open {
+                hiddenSections.insert(section)
+                sectionViewModel.displayState = .close
+            }
+            viewModel.activitiesSections[section - itemStartIdx] = sectionViewModel
+            delegate?.updateContent(with: viewModel)
+        }
+    }
+    
     
     func viewModelForIndex(at indexPath: IndexPath) -> ReuseableCellViewModel? {
         
