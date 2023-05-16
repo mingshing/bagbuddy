@@ -117,7 +117,6 @@ extension PackageListViewController: PackageListPresenterDelegate {
 }
 
 
-
 extension PackageListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -170,10 +169,10 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
         guard let cellViewModel = presenter?.viewModelForIndex(at: indexPath) else { return UITableViewCell() }
         
         if cellViewModel is TagListCellViewModel {
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: String(describing: TagListCell.self),
-                for: indexPath
-            ) as! TagListCell
+            let cell = TagListCell(
+                reuseIdentifier: String(describing: TagListCell.self),
+                tags: presenter?.viewModel.activyListSection.activityNames
+            )
             cell.delegate = self
             return cell
         }
@@ -204,9 +203,31 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
 }
 
 extension PackageListViewController: TagListCellDelegate {
+    
     func listContentChanged() {
-        tableView.reloadData()
+        //tableView.reloadData()
     }
+    
+    func addActivity(_ title: String) {
+        
+        if let activityList = presenter?.viewModel.activyListSection.activities,
+           let addedActivity = activityList.filter({ activity in
+               activity.name == title
+           }).first {
+            let newSectionModel = ActivitySectionViewModel(
+                activity: addedActivity
+            )
+            // TODO: ADD HIDDEN SET
+            presenter?.viewModel.activitiesSections.append(newSectionModel)
+            
+            // TODO: ONLY RELOAD THE SECTION
+        }
+    }
+    
+    func removeActivity(_ title: String) {
+        
+    }
+    
 }
 
 extension PackageListViewController: PackageItemCellDelegate {
@@ -217,8 +238,6 @@ extension PackageListViewController: PackageItemCellDelegate {
 
 extension PackageListViewController: ItemSectionHeaderViewDelegate {
     func didTapActivity(_ view: ItemSectionHeaderView, currentState: ItemSectionState) {
-        
         presenter?.changeItemSectionState(section: view.tag, fromState: currentState)
-        
     }
 }

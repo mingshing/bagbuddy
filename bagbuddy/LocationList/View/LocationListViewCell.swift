@@ -39,7 +39,7 @@ class LocationListViewCell: UITableViewCell {
     }
     
     public func update(with viewModel: LocationListCellViewModel) {
-        locationNameLabel.text = viewModel.locationName
+        locationNameLabel.text = viewModel.location.displayName
     }
     
 }

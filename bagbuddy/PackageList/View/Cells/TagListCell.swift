@@ -9,6 +9,8 @@ import UIKit
 
 protocol TagListCellDelegate: AnyObject {
     func listContentChanged()
+    func addActivity(_ title: String)
+    func removeActivity(_ title: String)
 }
 
 
@@ -17,12 +19,18 @@ class TagListCell: UITableViewCell {
     weak var delegate: TagListCellDelegate?
     private lazy var tagListView = TagListView()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    init(reuseIdentifier: String, tags: [String]?) {
+        super.init(style: .default, reuseIdentifier: reuseIdentifier)
         backgroundColor = .white
         selectionStyle = .none
         setupView()
-        setupContent()
+        setupContent(tags: tags)
+        tagListView.delegate = self
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -39,28 +47,24 @@ class TagListCell: UITableViewCell {
         }
     }
     
-    private func setupContent() {
-        
-        tagListView.delegate = self
-        tagListView.addTag("Temple or shrine")
-        tagListView.addTag("Shopping")
-        tagListView.addTag("Cherry blossom viewing")
-        tagListView.addTag("Nightlife")
-        tagListView.addTag("Historic landmark")
-        tagListView.addTag("Museum")
-        tagListView.addTag("Concert")
-        tagListView.addTag("Hot spring")
-        tagListView.addTag("Hiking")
+    private func setupContent(tags: [String]?) {
+        guard let tags = tags else { return }
+        tagListView.addTags(tags)
     }
 }
 
 extension TagListCell: TagListViewDelegate {
     func viewReArranged() {
-        delegate?.listContentChanged()
+        //delegate?.listContentChanged()
     }
     
     func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
         print("Tag pressed: \(title), \(sender)")
         tagView.isSelected = !tagView.isSelected
+        if tagView.isSelected {
+            delegate?.addActivity(title)
+        } else {
+            delegate?.removeActivity(title)
+        }
     }
 }

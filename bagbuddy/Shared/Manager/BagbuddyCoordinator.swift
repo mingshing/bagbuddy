@@ -13,12 +13,12 @@ class BagbuddyCoordinator {
     static func openLocationListPage(
         from sourceVC: UIViewController,
         target: SelectTargetLocation,
-        selectedCityName: String? = nil,
+        selectedCity: City? = nil,
         locationSelectedBlock: SelectCompletedBlock = nil
     ) {
         let locationListVC = LocationListViewController(
             target: target,
-            selectedCityName: selectedCityName,
+            selectedCity: selectedCity,
             completetion: locationSelectedBlock
         )
         locationListVC.modalPresentationStyle = .pageSheet
@@ -86,19 +86,19 @@ class BagbuddyCoordinator {
         )
 
         var activities: [Activity] = []
-        if let cityActivities = LocalDataManager().getActivityItemDomainModel() {
-            activities = Array(cityActivities.values.joined())
+        
+         if let allCityActivities = LocalDataManager().getActivityItemDomainModel() {
+             activities = allCityActivities[destination.name.lowercased()] ?? []
+            //activities = Array(cityActivities.values.joined())
         }
         
-        let activityListName = activities.map { $0.name }
-        
         return PackageListViewModel(
-            tripDestination: destination,
-            startDate: "Mar 21",
-            endDate: "Mar 23",
+            tripDestination: destination.displayName,
+            startDate: "May 16",
+            endDate: "Mar 21",
             categorySection: categorySectionViewModel,
             packItemSection: packItemSectionViewModel,
-            activyListSection: ActivityListViewModel(activityNames: activityListName),
+            activyListSection: ActivityListViewModel(activities: activities),
             activitiesSections: [
                 ActivitySectionViewModel(
                     activity: LocalDataManager.shared.getDefaultEssential()

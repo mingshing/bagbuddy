@@ -14,6 +14,7 @@ protocol PackageListPresenterDelegate: AnyObject {
 
 protocol PackageListPresenterType: AnyObject {
     var hiddenSections: Set<Int> { get set }
+    var viewModel: PackageListViewModel { get set }
     func setupHeader()
     func setupContent()
     func numberOfSections() -> Int

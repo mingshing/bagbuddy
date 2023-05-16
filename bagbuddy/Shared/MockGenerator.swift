@@ -10,8 +10,8 @@ import Foundation
 class MockGenerator {
     
     static let mockTripDetailList: TripDetailList = TripDetailList(
-        source: "Taipei, Taiwan",
-        destination: "Tokyo, Japan",
+        source: City(name: "Taipei", country: "Taiwan"),
+        destination: City(name: "Tokyo", country: "Japan"),
         lowTemperature: 20,
         highTemperature: 22,
         activityList: mockActivityList

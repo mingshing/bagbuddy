@@ -9,7 +9,7 @@ import Foundation
 import SnapKit
 import UIKit
 
-public typealias SelectCompletedBlock = ((String?) -> Void)?
+public typealias SelectCompletedBlock = ((City?) -> Void)?
 
 class LocationListViewController: UIViewController {
 
@@ -55,19 +55,19 @@ class LocationListViewController: UIViewController {
     
     var presenter: LocationListPresenterType?
     var completetion: SelectCompletedBlock
-    var selectedCityName: String? {
+    var selectedCity: City? {
         didSet {
-            completetion?(selectedCityName)
+            completetion?(selectedCity)
         }
     }
     
     init(target: SelectTargetLocation,
-         selectedCityName: String? = nil,
+         selectedCity: City? = nil,
          completetion: SelectCompletedBlock = nil
     ) {
         
         self.completetion = completetion
-        self.selectedCityName = selectedCityName
+        self.selectedCity = selectedCity
         super.init(nibName: nil, bundle: nil)
     
         self.navigationTitleLabel.text = target.rawValue
@@ -84,8 +84,8 @@ class LocationListViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
-        locationInputView.inputField.text = selectedCityName
-        presenter?.updateItems(with: selectedCityName)
+        locationInputView.inputField.text = selectedCity?.displayName
+        presenter?.updateItems(with: selectedCity?.displayName)
         closeButton.addTarget(self, action: #selector(didTapClose), for: .touchUpInside)
     }
     
@@ -166,8 +166,8 @@ extension LocationListViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cellViewModel = presenter?.viewModelForIndex(at: indexPath.row) else { return }
         
-        locationInputView.inputField.text = cellViewModel.locationName
-        selectedCityName = cellViewModel.locationName
+        locationInputView.inputField.text = cellViewModel.location.displayName
+        //selectedCityName = cellViewModel.locationName
         dismiss(animated: true, completion: nil)
     }
     
@@ -177,7 +177,7 @@ extension LocationListViewController: UITableViewDataSource, UITableViewDelegate
 extension LocationListViewController: CityInputViewDelegate {
     
     func textFieldDidChangeText(_ textField: CityInputView, text: String?) {
-        selectedCityName = text
+        //selectedCityName = text
         presenter?.updateItems(with: text)
     }
     

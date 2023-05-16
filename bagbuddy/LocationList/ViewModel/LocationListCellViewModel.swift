@@ -8,5 +8,5 @@
 import Foundation
 
 struct LocationListCellViewModel {
-    let locationName: String
+    let location: City
 }

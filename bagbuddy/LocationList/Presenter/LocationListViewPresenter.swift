@@ -58,14 +58,14 @@ class LocationListPresenter: LocationListPresenterType {
         }
         guard let filterText = filterText else {
             return cityList.map { city in
-                LocationListCellViewModel(locationName: city.displayName)
+                LocationListCellViewModel(location: city)
             }
         }
         return cityList
             .filter { city in
                 city.displayName.contains(filterText)
             }.map { city in
-                LocationListCellViewModel(locationName: city.displayName)
+                LocationListCellViewModel(location: city)
             }
     }
 }

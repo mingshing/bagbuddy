@@ -13,7 +13,10 @@ struct SectionHeaderViewModel {
 }
 
 struct ActivityListViewModel {
-    var activityNames: [String]
+    var activities: [Activity]
+    var activityNames: [String] {
+        activities.map { $0.name }
+    }
 }
 
 struct ActivitySectionViewModel {

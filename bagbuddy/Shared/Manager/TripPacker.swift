@@ -29,9 +29,10 @@ struct Item: Codable {
     }
 }
 
+
 struct TripDetailList {
-    var source: String?
-    var destination: String?
+    var source: City?
+    var destination: City?
     var lowTemperature: Int?
     var highTemperature: Int?
     var activityList: [Activity]?

@@ -84,7 +84,7 @@ class SelectLocationViewController: UIViewController {
     private lazy var locationInputView: CityInputView = {
         let textInputView = CityInputView()
         textInputView.delegate = self
-        textInputView.inputField.text = selectedCity
+        textInputView.inputField.text = selectedCity?.displayName
         textInputView.leftViewState = !hasSelectedCity ? .none : .selected
         return textInputView
     }()
@@ -107,9 +107,9 @@ class SelectLocationViewController: UIViewController {
     }()
     
     private let selectTarget: SelectTargetLocation
-    private var selectedCity: String?
+    private var selectedCity: City?
     private var hasSelectedCity: Bool {
-        return !(selectedCity?.isEmpty ?? true)
+        return !(selectedCity?.displayName.isEmpty ?? true)
     }
     init(target: SelectTargetLocation = .source) {
         selectTarget = target
@@ -219,11 +219,11 @@ extension SelectLocationViewController: SelectLocationDelegate {
         BagbuddyCoordinator.openLocationListPage(
             from: self,
             target: selectTarget,
-            selectedCityName: selectedCity
-        ) { [weak self] selectedCityName in
+            selectedCity: selectedCity
+        ) { [weak self] selectedCity in
             
-            self?.selectedCity = selectedCityName
-            self?.locationInputView.inputField.text = selectedCityName
+            self?.selectedCity = selectedCity
+            self?.locationInputView.inputField.text = selectedCity?.displayName
             self?.setCurrentStep()
         }
     }

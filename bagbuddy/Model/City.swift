@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct City: Codable {
+public struct City: Codable {
     let name: String
     let country: String
     
