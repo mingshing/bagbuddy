@@ -2,7 +2,7 @@ PODS:
   - Alamofire (5.6.4)
   - HorizonCalendar (1.16.0)
   - IQKeyboardManagerSwift (6.5.11)
-  - Kingfisher (7.3.2)
+  - Kingfisher (7.6.2)
   - Moya (15.0.0):
     - Moya/Core (= 15.0.0)
   - Moya/Core (15.0.0):
@@ -37,7 +37,7 @@ SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   HorizonCalendar: 90d7281cf1cd0cb3fae1d3e53f6f7fd24fda5a0e
   IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
-  Kingfisher: 0086ad83719761ba9b2cdaf6ef4d5b4878cbae23
+  Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   Realm: 5902885dd1d5e71b0b020830caab937ecdf5bf07
   RealmSwift: 0fc037d6c32c7c4fc9362892380f380114ecdcf0
@@ -45,4 +45,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: b4296cbad337ee11ad1a318bef887af440718cae
 
-COCOAPODS: 1.12.0
+COCOAPODS: 1.11.3
