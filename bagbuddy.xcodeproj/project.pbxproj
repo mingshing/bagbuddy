@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		03A4CAB280574A67CE8AD4DD /* Pods_bagbuddy_bagbuddyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA84250EEF6B7BC17F90BA53 /* Pods_bagbuddy_bagbuddyUITests.framework */; };
 		287D69229E6F2ECDAAB0CC74 /* Pods_bagbuddyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D31F411A0D2C57EE3F04E9 /* Pods_bagbuddyTests.framework */; };
+		E814CE6B2A2B87C4002EA1C2 /* DayRangeIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E814CE6A2A2B87C4002EA1C2 /* DayRangeIndicatorView.swift */; };
+		E814CE702A2B8BBF002EA1C2 /* DayRangeSelectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E814CE6F2A2B8BBF002EA1C2 /* DayRangeSelectionHelper.swift */; };
 		E87BB67329E1B4D200E823D1 /* cityList.json in Resources */ = {isa = PBXBuildFile; fileRef = E87BB67229E1B4D200E823D1 /* cityList.json */; };
 		E87BB67529E1B4FC00E823D1 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB67429E1B4FC00E823D1 /* City.swift */; };
 		E87BB67729E1B6AF00E823D1 /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB67629E1B6AF00E823D1 /* LocalDataManager.swift */; };
@@ -124,6 +126,8 @@
 		B13D1C8592F644C220337304 /* Pods_bagbuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bagbuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3D31F411A0D2C57EE3F04E9 /* Pods_bagbuddyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bagbuddyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5EF199862AAA3D508E8A432 /* Pods-bagbuddy-bagbuddyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bagbuddy-bagbuddyUITests.release.xcconfig"; path = "Target Support Files/Pods-bagbuddy-bagbuddyUITests/Pods-bagbuddy-bagbuddyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E814CE6A2A2B87C4002EA1C2 /* DayRangeIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRangeIndicatorView.swift; sourceTree = "<group>"; };
+		E814CE6F2A2B8BBF002EA1C2 /* DayRangeSelectionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRangeSelectionHelper.swift; sourceTree = "<group>"; };
 		E87BB67229E1B4D200E823D1 /* cityList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cityList.json; sourceTree = "<group>"; };
 		E87BB67429E1B4FC00E823D1 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		E87BB67629E1B6AF00E823D1 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
@@ -273,6 +277,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E814CE692A2B87A8002EA1C2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E814CE6A2A2B87C4002EA1C2 /* DayRangeIndicatorView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E814CE6C2A2B8AC7002EA1C2 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				E814CE6F2A2B8BBF002EA1C2 /* DayRangeSelectionHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		E87BB67829E1B9FD00E823D1 /* SelectDate */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +346,8 @@
 		E887E1B329ED397000CA14BF /* DatePicker */ = {
 			isa = PBXGroup;
 			children = (
+				E814CE6C2A2B8AC7002EA1C2 /* Helper */,
+				E814CE692A2B87A8002EA1C2 /* View */,
 				E887E1B429ED399000CA14BF /* DatePickerViewController.swift */,
 			);
 			path = DatePicker;
@@ -944,6 +966,7 @@
 				E87BB68429E1BECF00E823D1 /* LocationListViewPresenter.swift in Sources */,
 				E8EB3EF129DD727400C44EB5 /* BagbuddyCoordinator.swift in Sources */,
 				E8EB3F0029DDAE0C00C44EB5 /* CityTextField.swift in Sources */,
+				E814CE702A2B8BBF002EA1C2 /* DayRangeSelectionHelper.swift in Sources */,
 				E887E1C229ED3EF500CA14BF /* PackageListInteactor.swift in Sources */,
 				E887E1D229F6BCA900CA14BF /* SectionHeaderView.swift in Sources */,
 				E8EB3EFA29DD7D3100C44EB5 /* UIFont+Extensions.swift in Sources */,
@@ -963,6 +986,7 @@
 				E8E01ABB2A09514D00FFE31A /* CityActivityList.swift in Sources */,
 				E887E1AE29EAEAB500CA14BF /* LocationListCellViewModel.swift in Sources */,
 				E87BB67529E1B4FC00E823D1 /* City.swift in Sources */,
+				E814CE6B2A2B87C4002EA1C2 /* DayRangeIndicatorView.swift in Sources */,
 				E887E1D029F5787F00CA14BF /* ChatGPTResponse.swift in Sources */,
 				E87BB67E29E1BA7D00E823D1 /* SelectDatePresenter.swift in Sources */,
 				E887E1C029ED3EC500CA14BF /* PackageListViewModel.swift in Sources */,

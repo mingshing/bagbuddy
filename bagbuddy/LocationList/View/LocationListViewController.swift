@@ -33,6 +33,7 @@ class LocationListViewController: UIViewController {
     private lazy var locationInputView: CityInputView = {
         let textInputView = CityInputView()
         textInputView.leftViewState = .selected
+        textInputView.rightViewState = .none
         textInputView.delegate = self
         
         return textInputView
@@ -167,7 +168,7 @@ extension LocationListViewController: UITableViewDataSource, UITableViewDelegate
         guard let cellViewModel = presenter?.viewModelForIndex(at: indexPath.row) else { return }
         
         locationInputView.inputField.text = cellViewModel.location.displayName
-        //selectedCityName = cellViewModel.locationName
+        selectedCity = cellViewModel.location
         dismiss(animated: true, completion: nil)
     }
     
@@ -177,7 +178,6 @@ extension LocationListViewController: UITableViewDataSource, UITableViewDelegate
 extension LocationListViewController: CityInputViewDelegate {
     
     func textFieldDidChangeText(_ textField: CityInputView, text: String?) {
-        //selectedCityName = text
         presenter?.updateItems(with: text)
     }
     

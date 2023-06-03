@@ -15,7 +15,7 @@ PODS:
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
-  - HorizonCalendar
+  - HorizonCalendar (from `https://github.com/airbnb/HorizonCalendar.git`, branch `master`)
   - IQKeyboardManagerSwift
   - Kingfisher
   - Moya (~> 15.0)
@@ -25,13 +25,22 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
-    - HorizonCalendar
     - IQKeyboardManagerSwift
     - Kingfisher
     - Moya
     - Realm
     - RealmSwift
     - SnapKit
+
+EXTERNAL SOURCES:
+  HorizonCalendar:
+    :branch: master
+    :git: https://github.com/airbnb/HorizonCalendar.git
+
+CHECKOUT OPTIONS:
+  HorizonCalendar:
+    :commit: b065198f6880424a7367a4c9b47de489758ce38a
+    :git: https://github.com/airbnb/HorizonCalendar.git
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
@@ -43,6 +52,6 @@ SPEC CHECKSUMS:
   RealmSwift: 0fc037d6c32c7c4fc9362892380f380114ecdcf0
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 90430bc7aa9c3483c7d1341ea7c230347e65a479
+PODFILE CHECKSUM: 6c2ad399c9e7af1a9683810b348415fb6bef002a
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

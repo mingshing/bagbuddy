@@ -1,6 +1,0 @@
-framework module Pods_bagbuddy {
-  umbrella header "Pods-bagbuddy-umbrella.h"
-
-  export *
-  module * { export * }
-}

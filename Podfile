@@ -9,7 +9,7 @@ target 'bagbuddy' do
     pod 'Moya', '~> 15.0'
     pod 'SnapKit', '~> 5.0.0'
     pod 'Kingfisher'
-    pod 'HorizonCalendar'
+    pod 'HorizonCalendar', :git => 'https://github.com/airbnb/HorizonCalendar.git', :branch => 'master'
     pod 'RealmSwift', '~>10'
     pod 'IQKeyboardManagerSwift'
 

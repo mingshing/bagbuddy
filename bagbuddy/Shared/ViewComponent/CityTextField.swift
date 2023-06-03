@@ -21,6 +21,11 @@ class CityInputView: UIView {
         case selected
     }
     
+    enum RightViewState {
+        case none
+        case expand
+    }
+    
     weak var delegate: CityInputViewDelegate? {
         didSet { inputField.delegate = delegate }
     }
@@ -32,6 +37,17 @@ class CityInputView: UIView {
                 locationIconImageView.image = UIImage(named: "locationIcon")
             case .none:
                 locationIconImageView.image = UIImage(named: "locationDisableIcon")
+            }
+        }
+    }
+    
+    public var rightViewState: RightViewState = .expand {
+        didSet {
+            switch rightViewState {
+            case .none:
+                expandButton.isHidden = true
+            default:
+                break
             }
         }
     }

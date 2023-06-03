@@ -14,8 +14,6 @@ protocol PackageItemCellDelegate: AnyObject {
 
 class PackageItemCell: UITableViewCell {
     
-    private let highlightBackground = UIView()
-    
     private let stateIcon: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
@@ -65,16 +63,10 @@ class PackageItemCell: UITableViewCell {
     
     private func setupView() {
         contentView.backgroundColor = .white
-        contentView.addSubview(highlightBackground)
         contentView.addSubview(stateIcon)
         contentView.addSubview(nameLabel)
         contentView.addSubview(noteLabel)
         contentView.addSubview(actionButton)
-        
-        highlightBackground.snp.makeConstraints { make in
-            make.top.left.bottom.equalToSuperview()
-            make.right.equalToSuperview().inset(LayoutConstants.actionIconWidth)
-        }
         
         stateIcon.snp.makeConstraints { make in
             make.top.left.equalToSuperview()
@@ -100,16 +92,7 @@ class PackageItemCell: UITableViewCell {
             make.bottom.equalToSuperview().inset(12)
         }
     }
-    
-    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        super.setHighlighted(highlighted, animated: false)
-        
-        if highlighted {
-            highlightBackground.backgroundColor = .highlightPurple
-        } else {
-            highlightBackground.backgroundColor = .white
-        }
-    }
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         

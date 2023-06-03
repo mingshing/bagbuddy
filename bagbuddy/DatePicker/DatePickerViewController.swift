@@ -11,6 +11,27 @@ import SnapKit
 import UIKit
 
 class DatePickerViewController: UIViewController {
+
+    lazy var calendarView = CalendarView(initialContent: makeContent())
+    lazy var calendar = Calendar.current
+    lazy var dayDateFormatter: DateFormatter = {
+      let dateFormatter = DateFormatter()
+      dateFormatter.calendar = calendar
+      dateFormatter.locale = calendar.locale
+      dateFormatter.dateFormat = DateFormatter.dateFormat(
+        fromTemplate: "EEEE, MMM d, yyyy",
+        options: 0,
+        locale: calendar.locale ?? Locale.current)
+      return dateFormatter
+    }()
+    
+    private var selectedDayRange: DayRange? {
+        didSet{
+            print(selectedDayRange?.lowerBound.description)
+            print(selectedDayRange?.upperBound.description)
+        }
+    }
+    private var selectedDayRangeAtStartOfDrag: DayRange?
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -26,10 +47,99 @@ class DatePickerViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        setupHandler()
     }
     
     private func setupView() {
-        self.view.backgroundColor = .red
+        view.addSubview(calendarView)
+        
+        calendarView.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.left.right.equalToSuperview().inset(20)
+        }
     }
     
+    func makeContent() -> CalendarViewContent {
+      let startDate = calendar.date(from: DateComponents(year: 2020, month: 01, day: 01))!
+      let endDate = calendar.date(from: DateComponents(year: 2021, month: 12, day: 31))!
+
+      let dateRanges: Set<ClosedRange<Date>>
+      let selectedDayRange = selectedDayRange
+      if
+        let selectedDayRange,
+        let lowerBound = calendar.date(from: selectedDayRange.lowerBound.components),
+        let upperBound = calendar.date(from: selectedDayRange.upperBound.components)
+      {
+        dateRanges = [lowerBound...upperBound]
+      } else {
+        dateRanges = []
+      }
+
+      return CalendarViewContent(
+        calendar: calendar,
+        visibleDateRange: startDate...endDate,
+        monthsLayout: .vertical)
+
+        .interMonthSpacing(24)
+        .verticalDayMargin(8)
+        .horizontalDayMargin(8)
+
+        .dayItemProvider { [calendar, dayDateFormatter] day in
+          var invariantViewProperties = DayView.InvariantViewProperties.baseInteractive
+
+          let isSelectedStyle: Bool
+          if let selectedDayRange {
+            isSelectedStyle = day == selectedDayRange.lowerBound || day == selectedDayRange.upperBound
+          } else {
+            isSelectedStyle = false
+          }
+
+          if isSelectedStyle {
+            invariantViewProperties.backgroundShapeDrawingConfig.fillColor = .systemBackground
+            invariantViewProperties.backgroundShapeDrawingConfig.borderColor = UIColor(.accentColor)
+          }
+
+          let date = calendar.date(from: day.components)
+
+          return DayView.calendarItemModel(
+            invariantViewProperties: invariantViewProperties,
+            content: .init(
+              dayText: "\(day.day)",
+              accessibilityLabel: date.map { dayDateFormatter.string(from: $0) },
+              accessibilityHint: nil))
+        }
+
+        .dayRangeItemProvider(for: dateRanges) { dayRangeLayoutContext in
+          DayRangeIndicatorView.calendarItemModel(
+            invariantViewProperties: .init(),
+            content: .init(
+              framesOfDaysToHighlight: dayRangeLayoutContext.daysAndFrames.map { $0.frame }))
+        }
+    }
+    
+    private func setupHandler() {
+        
+        calendarView.daySelectionHandler = { [weak self] day in
+          guard let self else { return }
+
+          DayRangeSelectionHelper.updateDayRange(
+            afterTapSelectionOf: day,
+            existingDayRange: &self.selectedDayRange)
+
+          self.calendarView.setContent(self.makeContent())
+        }
+
+        calendarView.multipleDaySelectionDragHandler = { [weak self, calendar] day, state in
+          guard let self else { return }
+
+          DayRangeSelectionHelper.updateDayRange(
+            afterDragSelectionOf: day,
+            existingDayRange: &self.selectedDayRange,
+            initialDayRange: &self.selectedDayRangeAtStartOfDrag,
+            state: state,
+            calendar: calendar)
+
+          self.calendarView.setContent(self.makeContent())
+        }
+    }
 }
