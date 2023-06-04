@@ -47,7 +47,7 @@ class TripHeaderView: UIView {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(20)
-            make.top.equalToSuperview().offset(48)
+            make.top.equalToSuperview().offset(60)
         }
         
         addSubview(dateLabel)

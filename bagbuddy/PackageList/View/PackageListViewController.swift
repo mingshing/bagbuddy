@@ -23,6 +23,8 @@ class PackageListViewController: UIViewController {
         let button = UIButton()
         let image = UIImage(named: "close")
         button.setImage(image, for: .normal)
+        button.backgroundColor = .white
+        button.layer.cornerRadius = LayoutConstants.actionButtonHeight / 2.0
         button.addTarget(self, action: #selector(didTapClose), for: .touchUpInside)
         return button
     }()
@@ -32,6 +34,7 @@ class PackageListViewController: UIViewController {
         table.backgroundColor = .mainHeaderBackground
         table.showsVerticalScrollIndicator = false
         table.separatorStyle = .none
+        table.estimatedRowHeight = 48
         table.allowsMultipleSelection = true
         table.register(
             PackageItemCell.self,
@@ -53,6 +56,14 @@ class PackageListViewController: UIViewController {
     
     private lazy var categorySectionView = SectionHeaderView()
     private lazy var packItemSectionView = SectionHeaderView()
+    
+    private var tagListHeight: CGFloat {
+        
+        let tagListView = TagListView(frame: CGRectMake(0, 0, DeviceConstants.width - 2*LayoutConstants.pageHorizontalMargin, 0))
+        tagListView.addTags(presenter?.viewModel.activyListSection.activityNames ?? [])
+        
+        return tagListView.intrinsicContentSize.height + 20
+    }
 
 // MARK: Property
     private var presenter: PackageListPresenterType?
@@ -129,7 +140,9 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
+        if indexPath.section == PackageListSection.customizeTrip.rawValue {
+            return tagListHeight
+        }
         return UITableView.automaticDimension
     }
     
@@ -169,10 +182,11 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
         guard let cellViewModel = presenter?.viewModelForIndex(at: indexPath) else { return UITableViewCell() }
         
         if cellViewModel is TagListCellViewModel {
-            let cell = TagListCell(
-                reuseIdentifier: String(describing: TagListCell.self),
-                tags: presenter?.viewModel.activyListSection.activityNames
-            )
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: TagListCell.self),
+                for: indexPath
+            ) as! TagListCell
+            cell.tags = presenter?.viewModel.activyListSection.activityNames
             cell.delegate = self
             return cell
         }
@@ -205,7 +219,7 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
 extension PackageListViewController: TagListCellDelegate {
     
     func listContentChanged() {
-        //tableView.reloadData()
+       
     }
     
     func addActivity(_ title: String) {
@@ -226,6 +240,14 @@ extension PackageListViewController: TagListCellDelegate {
     
     func removeActivity(_ title: String) {
         
+    }
+    
+    func reloadCell(row: Int, section: Int) {
+        tableView.reloadRows(at: [IndexPath(row: row, section: section)], with: .automatic)
+    }
+    
+    func reloadSection(section: Int) {
+        tableView.reloadSections(IndexSet(integer: section), with: .automatic)
     }
     
 }

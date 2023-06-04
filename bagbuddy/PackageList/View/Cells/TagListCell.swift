@@ -17,20 +17,22 @@ protocol TagListCellDelegate: AnyObject {
 class TagListCell: UITableViewCell {
     
     weak var delegate: TagListCellDelegate?
-    private lazy var tagListView = TagListView()
-    
-    init(reuseIdentifier: String, tags: [String]?) {
-        super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .white
-        selectionStyle = .none
-        setupView()
-        setupContent(tags: tags)
-        tagListView.delegate = self
+    private let tagListView = TagListView()
+    var tags: [String]? {
+        didSet {
+            setupContent(tags: tags)
+        }
     }
+    var tagListViewContentHeight: CGFloat = 0.0
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+        backgroundColor = .clear
+        selectionStyle = .none
+        backgroundColor = .white
+        selectionStyle = .none
+        setupView()
+        tagListView.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -49,13 +51,14 @@ class TagListCell: UITableViewCell {
     
     private func setupContent(tags: [String]?) {
         guard let tags = tags else { return }
+        tagListView.removeAllTags()
         tagListView.addTags(tags)
     }
 }
 
 extension TagListCell: TagListViewDelegate {
     func viewReArranged() {
-        //delegate?.listContentChanged()
+        
     }
     
     func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
