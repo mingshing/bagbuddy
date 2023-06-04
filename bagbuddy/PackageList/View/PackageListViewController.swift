@@ -19,10 +19,11 @@ class PackageListViewController: UIViewController {
     
 // MARK: View Related
     
-    private let closeButton: UIButton = {
+    private lazy var closeButton: UIButton = {
         let button = UIButton()
         let image = UIImage(named: "close")
         button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(didTapClose), for: .touchUpInside)
         return button
     }()
     
@@ -71,7 +72,6 @@ class PackageListViewController: UIViewController {
         
         setupView()
         closeButton.addTarget(self, action: #selector(didTapClose), for: .touchUpInside)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {

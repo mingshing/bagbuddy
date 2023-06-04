@@ -52,8 +52,9 @@ class BagbuddyCoordinator {
         navigationVC.pushViewController(dateVC, animated: true)
     }
     
-    static func openDatePicker(from sourceVC: UIViewController) {
+    static func openDatePicker(from sourceVC: SelectDateViewController) {
         let datePickerVC = DatePickerViewController()
+        datePickerVC.delegate = sourceVC
         datePickerVC.modalPresentationStyle = .pageSheet
         
         sourceVC.present(datePickerVC, animated: true, completion: nil)

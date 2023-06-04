@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import HorizonCalendar
 import SnapKit
 import UIKit
 
-class SelectDateViewController: UIViewController {
+class SelectDateViewController: UIViewController, DatePickedDelegate {
 
     var presenter: SelectDatePresenterType?
     
@@ -58,14 +59,14 @@ class SelectDateViewController: UIViewController {
     private lazy var startDateInputView: DateInputView = {
         let dateInputView = DateInputView(titlePlaceHolder: "From")
         dateInputView.delegate = self
-        dateInputView.inputField.text = "Mar 21, 2023"
+        dateInputView.inputField.placeholder = "Please Select Start Date"
         return dateInputView
     }()
     
     private lazy var endDateInputView: DateInputView = {
         let dateInputView = DateInputView(titlePlaceHolder: "To")
         dateInputView.delegate = self
-        dateInputView.inputField.text = "Mar 28, 2023"
+        dateInputView.inputField.placeholder = "Please Select End Date"
         return dateInputView
     }()
     
@@ -81,14 +82,13 @@ class SelectDateViewController: UIViewController {
         return button
     }()
     
-    private var hasSelectedDate: Bool = true /*{
-        
+    private var hasSelectedDate: Bool = false {
         didSet {
             actionBtn.backgroundColor = hasSelectedDate ? .interactionPrimaryBackground : .interactionDisableBackground
+            
             actionBtn.isEnabled = hasSelectedDate
         }
-        
-    }*/
+    }
     init() {
         super.init(nibName: nil, bundle: nil)
         presenter = SelectDatePresenter(delegate: self)
@@ -156,8 +156,28 @@ class SelectDateViewController: UIViewController {
     }
     @objc func buttonAction(sender: UIButton!) {
         presenter?.openPackageListPage()
-   }
+        
+    }
+    
+    func didSelectedDate(selectedDate: DayRange) {
+        hasSelectedDate = true
+        let calendar = Calendar.current
+        let startDateComponents = selectedDate.lowerBound.components
+        let endDateComponents = selectedDate.upperBound.components
 
+        if let startDate = calendar.date(from: startDateComponents),
+           let endDate = calendar.date(from: endDateComponents) {
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = DateFormatter.dateFormat(
+                fromTemplate: "EEEE, MMM d, yyyy",
+                options: 0,
+                locale: Locale.current
+            )
+            startDateInputView.inputField.text = dateFormatter.string(from: startDate)
+            endDateInputView.inputField.text = dateFormatter.string(from: endDate)
+        }
+    }
 }
 
 extension SelectDateViewController: DateInputViewDelegate {
@@ -172,10 +192,9 @@ extension SelectDateViewController: DateInputViewDelegate {
     }
 }
 
-extension SelectDateViewController: SelectDateDelegate {
+extension SelectDateViewController: SelectDatePresenterDelegate {
     func showDatePicker() {
         BagbuddyCoordinator.openDatePicker(from: self)
-        hasSelectedDate = true
     }
     
     func enterPackageList() {

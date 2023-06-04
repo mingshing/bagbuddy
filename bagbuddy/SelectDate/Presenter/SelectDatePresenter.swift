@@ -7,22 +7,22 @@
 
 import Foundation
 
-protocol SelectDateDelegate: AnyObject {
+protocol SelectDatePresenterDelegate: AnyObject {
     func showDatePicker()
     func enterPackageList()
 }
 
 protocol SelectDatePresenterType {
-    var delegate: SelectDateDelegate? {get set}
+    var delegate: SelectDatePresenterDelegate? {get set}
     func openDatePicker()
     func openPackageListPage()
 }
 
 class SelectDatePresenter: SelectDatePresenterType {
     
-    weak var delegate: SelectDateDelegate?
+    weak var delegate: SelectDatePresenterDelegate?
     
-    init(delegate: SelectDateDelegate? = nil) {
+    init(delegate: SelectDatePresenterDelegate? = nil) {
         
         self.delegate = delegate
     }
