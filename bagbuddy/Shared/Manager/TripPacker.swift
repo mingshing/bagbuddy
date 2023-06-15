@@ -35,6 +35,8 @@ struct TripDetailList {
     var destination: City?
     var lowTemperature: Int?
     var highTemperature: Int?
+    var startDate: Date?
+    var endDate: Date?
     var activityList: [Activity]?
 }
 

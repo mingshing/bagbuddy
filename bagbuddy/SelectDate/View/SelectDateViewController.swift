@@ -156,11 +156,11 @@ class SelectDateViewController: UIViewController, DatePickedDelegate {
     }
     @objc func buttonAction(sender: UIButton!) {
         presenter?.openPackageListPage()
-        
     }
     
     func didSelectedDate(selectedDate: DayRange) {
         hasSelectedDate = true
+        presenter?.selectedDayRange = selectedDate
         let calendar = Calendar.current
         let startDateComponents = selectedDate.lowerBound.components
         let endDateComponents = selectedDate.upperBound.components
@@ -170,7 +170,7 @@ class SelectDateViewController: UIViewController, DatePickedDelegate {
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = DateFormatter.dateFormat(
-                fromTemplate: "EEEE, MMM d, yyyy",
+                fromTemplate: "MMM d, yyyy",
                 options: 0,
                 locale: Locale.current
             )
