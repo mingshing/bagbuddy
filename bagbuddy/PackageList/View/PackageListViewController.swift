@@ -147,7 +147,6 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         if section == PackageListSection.customizeTrip.rawValue {
             return categorySectionView
         } else if section == PackageListSection.startPacking.rawValue {
@@ -224,21 +223,28 @@ extension PackageListViewController: TagListCellDelegate {
     
     func addActivity(_ title: String) {
         
-        if let activityList = presenter?.viewModel.activyListSection.activities,
+        if let activityList = self.presenter?.viewModel.activyListSection.activities,
            let addedActivity = activityList.filter({ activity in
                activity.name == title
            }).first {
             let newSectionModel = ActivitySectionViewModel(
-                activity: addedActivity
+                activity: addedActivity,
+                isVisible: true
             )
-            // TODO: ADD HIDDEN SET
             presenter?.viewModel.activitiesSections.append(newSectionModel)
-            
-            // TODO: ONLY RELOAD THE SECTION
+            let insertIdx = self.presenter?.viewModel.activitiesSections.count ?? 0 - 1
+            tableView.beginUpdates()
+            tableView.insertSections(IndexSet(integer: insertIdx), with: .bottom)
+            tableView.endUpdates()
+            DispatchQueue.main.async { [weak self] in
+                self?.reloadSection(section: insertIdx + 1)
+            }
         }
     }
     
     func removeActivity(_ title: String) {
+        
+        print("remove the activity")
         
     }
     

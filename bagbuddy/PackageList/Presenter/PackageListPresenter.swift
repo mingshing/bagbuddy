@@ -13,7 +13,6 @@ protocol PackageListPresenterDelegate: AnyObject {
 }
 
 protocol PackageListPresenterType: AnyObject {
-    var hiddenSections: Set<Int> { get set }
     var viewModel: PackageListViewModel { get set }
     func setupHeader()
     func setupContent()
@@ -30,13 +29,12 @@ class PackageListPresenter: PackageListPresenterType {
     
     private weak var delegate: PackageListPresenterDelegate?
     var viewModel: PackageListViewModel
-    var hiddenSections: Set<Int>
+    //var hiddenSections: Set<Int>
     
     init(with viewModel: PackageListViewModel, delegate: PackageListPresenterDelegate? = nil) {
         self.delegate = delegate
         self.viewModel = viewModel
-        let totalSectionCount = viewModel.activitiesSections.count + PackageListSection.itemList.rawValue
-        self.hiddenSections = Set<Int>(0..<totalSectionCount)
+        //self.hiddenSections = Set<Int>(0..<totalSectionCount)
     }
     
     func setupHeader() {
@@ -58,7 +56,6 @@ extension PackageListPresenter {
         return viewModel.activitiesSections.count
     }
     
-    
     func numberOfItems(for section: Int) -> Int {
         if section == PackageListSection.customizeTrip.rawValue {
             return 1
@@ -66,10 +63,10 @@ extension PackageListPresenter {
             return 0
         } else {
             let startIdx = section - PackageListSection.itemList.rawValue
-            if hiddenSections.contains(section) {
+            let activity = viewModel.activitiesSections[startIdx]
+            if activity.displayState == .close {
                 return 0
             }
-            let activity = viewModel.activitiesSections[startIdx]
             return activity.itemCount
         }
     }
@@ -79,7 +76,6 @@ extension PackageListPresenter {
         guard section - itemStartIdx >= 0 else {
             return nil
         }
-        
         return viewModel.activitiesSections[section - itemStartIdx]
     }
     
@@ -87,10 +83,8 @@ extension PackageListPresenter {
         let itemStartIdx = PackageListSection.itemList.rawValue
         if var sectionViewModel = viewModelForItemSection(at: section) {
             if fromState == .close {
-                hiddenSections.remove(section)
                 sectionViewModel.displayState = .open
             } else if fromState == .open {
-                hiddenSections.insert(section)
                 sectionViewModel.displayState = .close
             }
             viewModel.activitiesSections[section - itemStartIdx] = sectionViewModel
