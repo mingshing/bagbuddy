@@ -125,6 +125,10 @@ extension PackageListViewController: PackageListPresenterDelegate {
         packItemSectionView.updateView(with: viewModel.packItemSection)
         tableView.reloadData()
     }
+    
+    func updateActivitiesSection(section: Int) {
+        reloadSection(section: section)
+    }
 }
 
 
@@ -180,23 +184,23 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
         
         guard let cellViewModel = presenter?.viewModelForIndex(at: indexPath) else { return UITableViewCell() }
         
-        if cellViewModel is TagListCellViewModel {
+        if let tagListCellViewModel = cellViewModel as? TagListCellViewModel {
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: TagListCell.self),
                 for: indexPath
             ) as! TagListCell
-            cell.tags = presenter?.viewModel.activyListSection.activityNames
+            cell.tags = tagListCellViewModel.tags
             cell.delegate = self
             return cell
         }
         
-        if cellViewModel is PackageItemCellViewModel {
+        if let packageItemCellViewModel = cellViewModel as? PackageItemCellViewModel {
             
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: PackageItemCell.self),
                 for: indexPath
             ) as! PackageItemCell
-            cell.update(with: cellViewModel as! PackageItemCellViewModel)
+            cell.update(with: packageItemCellViewModel)
             cell.delegate = self
             return cell
         }
@@ -244,7 +248,13 @@ extension PackageListViewController: TagListCellDelegate {
     
     func removeActivity(_ title: String) {
         
-        print("remove the activity")
+        let removeIdx = presenter?.removeItemSection(with: title)
+        guard let removeIdx = removeIdx,
+              removeIdx >= 0 else { return }
+        
+        tableView.beginUpdates()
+        tableView.deleteSections(IndexSet(integer: removeIdx), with: .fade)
+        tableView.endUpdates()
         
     }
     

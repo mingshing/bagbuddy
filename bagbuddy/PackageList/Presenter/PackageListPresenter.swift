@@ -10,6 +10,7 @@ import Foundation
 protocol PackageListPresenterDelegate: AnyObject {
     func updateHeaderView(with viewModel: PackageListViewModel)
     func updateContent(with viewModel: PackageListViewModel)
+    func updateActivitiesSection(section: Int)
 }
 
 protocol PackageListPresenterType: AnyObject {
@@ -19,6 +20,8 @@ protocol PackageListPresenterType: AnyObject {
     func numberOfSections() -> Int
     func numberOfItemSections() -> Int
     func numberOfItems(for section: Int) -> Int
+    
+    func removeItemSection(with title: String) -> Int
     
     func viewModelForItemSection(at section: Int) -> ActivitySectionViewModel?
     func changeItemSectionState(section: Int, fromState: ItemSectionState)
@@ -71,6 +74,19 @@ extension PackageListPresenter {
         }
     }
     
+    
+    // remove the section with same title name, and return the section index
+    func removeItemSection(with title: String) -> Int {
+        let itemStartIdx = PackageListSection.itemList.rawValue
+        for(idx, model) in viewModel.activitiesSections.enumerated().reversed() {
+            if model.title == title {
+                viewModel.activitiesSections.remove(at: idx)
+                return idx + itemStartIdx
+            }
+        }
+        return -1
+    }
+    
     func viewModelForItemSection(at section: Int) -> ActivitySectionViewModel? {
         let itemStartIdx = PackageListSection.itemList.rawValue
         guard section - itemStartIdx >= 0 else {
@@ -88,7 +104,7 @@ extension PackageListPresenter {
                 sectionViewModel.displayState = .close
             }
             viewModel.activitiesSections[section - itemStartIdx] = sectionViewModel
-            delegate?.updateContent(with: viewModel)
+            delegate?.updateActivitiesSection(section: section)
         }
     }
     
@@ -96,8 +112,7 @@ extension PackageListPresenter {
     func viewModelForIndex(at indexPath: IndexPath) -> ReuseableCellViewModel? {
         
         if indexPath.section == PackageListSection.customizeTrip.rawValue {
-            // TODO: get the real data from local / chatgpt
-            return TagListCellViewModel(tags: ["Inboard", "Pomotodo", "Halo Word"])
+            return TagListCellViewModel(tags: viewModel.activyListSection.activityNames)
         } else if indexPath.section >= PackageListSection.itemList.rawValue {
             
             let startIdx = indexPath.section - PackageListSection.itemList.rawValue
