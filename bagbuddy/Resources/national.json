@@ -1,25 +1,31 @@
 {
     "items": [
         {
-            "name": "Passport"
+            "name": "Passport",
+            "note": "Check to make sure your passport has not expired"
+        },
+        {
+            "name": "Photocopy of passport",
+            "note": "In case your passport gets lost or stolen"
         },
         {
             "name": "Boarding pass"
         },
         {
-            "name": "Cash"
+            "name": "VISA documents"
         },
         {
-            "name": "Credit/debit card"
+            "name": "International Driving Permit"
         },
         {
-            "name": "Vaccination certificate"
-        },
-        {
-            "name": "Pen"
+            "name": "PCR negative report",
+            "note": "If needed"
         },
         {
             "name": "Power adaptor"
+        },
+        {
+            "name": "SIM card / Portable Wi-Fi"
         }
     ],
     "name": "International trip"
