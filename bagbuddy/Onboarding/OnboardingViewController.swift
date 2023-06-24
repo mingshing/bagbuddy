@@ -24,6 +24,7 @@ class OnboardingViewController: UIViewController {
     }
     
     private func setupView() {
+        view.backgroundColor = .white
         actionBtn.layer.cornerRadius = 8.0
         actionBtn.backgroundColor = .interactionPrimaryBackground
         actionBtn.setTitleColor(.primaryBlack, for: .normal)
@@ -33,8 +34,8 @@ class OnboardingViewController: UIViewController {
     
     @objc func buttonAction(sender: UIButton!) {
         TripPacker.shared.startNewTrip()
-        BagbuddyCoordinator.openSelectLocationPage(from: self, target: .source)
-        //BagbuddyCoordinator.openPackageListPage(from: self)
+        //BagbuddyCoordinator.openSelectLocationPage(from: self, target: .source)
+        BagbuddyCoordinator.openPackageListPage(from: self)
    }
 }
 

@@ -12,6 +12,7 @@ target 'bagbuddy' do
     pod 'HorizonCalendar', :git => 'https://github.com/airbnb/HorizonCalendar.git', :branch => 'master'
     pod 'RealmSwift', '~>10'
     pod 'IQKeyboardManagerSwift'
+    pod 'FittedSheets'
 
   target 'bagbuddyTests' do
     inherit! :search_paths

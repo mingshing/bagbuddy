@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PackageItemCellDelegate: AnyObject {
-    func didTapActionButton(_ viewModel: PackageItemCellViewModel)
+    func didTapActionButton()
 }
 
 
@@ -45,6 +45,7 @@ class PackageItemCell: UITableViewCell {
         let button = UIButton()
         let image = UIImage(named: "add")
         button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
     
@@ -129,5 +130,9 @@ class PackageItemCell: UITableViewCell {
         let attributedString = NSAttributedString(string: text)
 
         return attributedString
+    }
+    
+    @objc func buttonAction(sender: UIButton!) {
+        delegate?.didTapActionButton()
     }
 }

@@ -232,8 +232,7 @@ extension PackageListViewController: TagListCellDelegate {
                activity.name == title
            }).first {
             let newSectionModel = ActivitySectionViewModel(
-                activity: addedActivity,
-                isVisible: true
+                activity: addedActivity
             )
             presenter?.viewModel.activitiesSections.append(newSectionModel)
             let insertIdx = self.presenter?.viewModel.activitiesSections.count ?? 0 - 1
@@ -269,7 +268,7 @@ extension PackageListViewController: TagListCellDelegate {
 }
 
 extension PackageListViewController: PackageItemCellDelegate {
-    func didTapActionButton(_ viewModel: PackageItemCellViewModel) {
+    func didTapActionButton() {
         BagbuddyCoordinator.openNoteEditPage(from: self)
     }
 }

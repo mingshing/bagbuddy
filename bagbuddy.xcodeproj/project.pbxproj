@@ -11,6 +11,8 @@
 		287D69229E6F2ECDAAB0CC74 /* Pods_bagbuddyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D31F411A0D2C57EE3F04E9 /* Pods_bagbuddyTests.framework */; };
 		E814CE6B2A2B87C4002EA1C2 /* DayRangeIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E814CE6A2A2B87C4002EA1C2 /* DayRangeIndicatorView.swift */; };
 		E814CE702A2B8BBF002EA1C2 /* DayRangeSelectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E814CE6F2A2B8BBF002EA1C2 /* DayRangeSelectionHelper.swift */; };
+		E814CE762A3DB328002EA1C2 /* ItemNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E814CE752A3DB328002EA1C2 /* ItemNoteViewController.swift */; };
+		E814CE782A3DB3A7002EA1C2 /* ItemNotePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E814CE772A3DB3A7002EA1C2 /* ItemNotePresenter.swift */; };
 		E87BB67329E1B4D200E823D1 /* cityList.json in Resources */ = {isa = PBXBuildFile; fileRef = E87BB67229E1B4D200E823D1 /* cityList.json */; };
 		E87BB67529E1B4FC00E823D1 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB67429E1B4FC00E823D1 /* City.swift */; };
 		E87BB67729E1B6AF00E823D1 /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87BB67629E1B6AF00E823D1 /* LocalDataManager.swift */; };
@@ -128,6 +130,8 @@
 		E5EF199862AAA3D508E8A432 /* Pods-bagbuddy-bagbuddyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bagbuddy-bagbuddyUITests.release.xcconfig"; path = "Target Support Files/Pods-bagbuddy-bagbuddyUITests/Pods-bagbuddy-bagbuddyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E814CE6A2A2B87C4002EA1C2 /* DayRangeIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRangeIndicatorView.swift; sourceTree = "<group>"; };
 		E814CE6F2A2B8BBF002EA1C2 /* DayRangeSelectionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRangeSelectionHelper.swift; sourceTree = "<group>"; };
+		E814CE752A3DB328002EA1C2 /* ItemNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNoteViewController.swift; sourceTree = "<group>"; };
+		E814CE772A3DB3A7002EA1C2 /* ItemNotePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNotePresenter.swift; sourceTree = "<group>"; };
 		E87BB67229E1B4D200E823D1 /* cityList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cityList.json; sourceTree = "<group>"; };
 		E87BB67429E1B4FC00E823D1 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		E87BB67629E1B6AF00E823D1 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
@@ -291,6 +295,39 @@
 				E814CE6F2A2B8BBF002EA1C2 /* DayRangeSelectionHelper.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		E814CE712A3DB2D0002EA1C2 /* ItemNote */ = {
+			isa = PBXGroup;
+			children = (
+				E814CE742A3DB30C002EA1C2 /* Presenter */,
+				E814CE732A3DB302002EA1C2 /* ViewModel */,
+				E814CE722A3DB2F7002EA1C2 /* View */,
+			);
+			path = ItemNote;
+			sourceTree = "<group>";
+		};
+		E814CE722A3DB2F7002EA1C2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E814CE752A3DB328002EA1C2 /* ItemNoteViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E814CE732A3DB302002EA1C2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E814CE742A3DB30C002EA1C2 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E814CE772A3DB3A7002EA1C2 /* ItemNotePresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		E87BB67829E1B9FD00E823D1 /* SelectDate */ = {
@@ -471,6 +508,7 @@
 			children = (
 				E887E1B329ED397000CA14BF /* DatePicker */,
 				E8EB3EFD29DD85ED00C44EB5 /* LocationList */,
+				E814CE712A3DB2D0002EA1C2 /* ItemNote */,
 				E87BB67829E1B9FD00E823D1 /* SelectDate */,
 				E8EB3EF229DD766E00C44EB5 /* SelectLocation */,
 				E8EB3EE229DD698E00C44EB5 /* Onboarding */,
@@ -961,6 +999,7 @@
 				E8E01ABD2A0AA41400FFE31A /* TagListCellViewModel.swift in Sources */,
 				E895FA2F29D953D200F618A7 /* OnboardingViewController.swift in Sources */,
 				E887E1D829F6CC6700CA14BF /* TagView.swift in Sources */,
+				E814CE762A3DB328002EA1C2 /* ItemNoteViewController.swift in Sources */,
 				E887E1E129FD64C000CA14BF /* ItemSectionHeaderView.swift in Sources */,
 				E887E1B529ED399000CA14BF /* DatePickerViewController.swift in Sources */,
 				E87BB68429E1BECF00E823D1 /* LocationListViewPresenter.swift in Sources */,
@@ -969,6 +1008,7 @@
 				E814CE702A2B8BBF002EA1C2 /* DayRangeSelectionHelper.swift in Sources */,
 				E887E1C229ED3EF500CA14BF /* PackageListInteactor.swift in Sources */,
 				E887E1D229F6BCA900CA14BF /* SectionHeaderView.swift in Sources */,
+				E814CE782A3DB3A7002EA1C2 /* ItemNotePresenter.swift in Sources */,
 				E8EB3EFA29DD7D3100C44EB5 /* UIFont+Extensions.swift in Sources */,
 				E895FA2B29D953D200F618A7 /* AppDelegate.swift in Sources */,
 				E887E1E329FD665200CA14BF /* TagListCell.swift in Sources */,

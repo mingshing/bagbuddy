@@ -18,6 +18,10 @@ struct LayoutConstants {
     static let actionIconHeight: CGFloat = 44.0
     //margin
     static let pageHorizontalMargin: CGFloat = 20.0
+    
+    //input content inset
+    static let horizontalMargin: CGFloat = 16.0
+    static let verticalMargin: CGFloat = 10.0
 }
 
 struct DeviceConstants {

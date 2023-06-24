@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import MessageUI
+import FittedSheets
 
 class BagbuddyCoordinator {
     
@@ -69,10 +69,18 @@ class BagbuddyCoordinator {
     }
     
     static func openNoteEditPage(from sourceVC: UIViewController) {
-        print("try to open a simple edit screen")
+        let itemNoteViewController = ItemNoteViewController()
+        let options = SheetOptions(
+                presentingViewCornerRadius: 16,
+                setIntrinsicHeightOnNavigationControllers: false,
+                useFullScreenMode: false
+            )
+        let sheetController = SheetViewController(controller: itemNoteViewController, options: options)
+        sourceVC.present(sheetController, animated: false)
+        sheetController.updateIntrinsicHeight()
     }
     
-    // MARK: Testing purpose
+    // MARK: package list view model builder
     static func buildPackageListViewModel() -> PackageListViewModel? {
         
         guard let destination = TripPacker.shared.currentPlannedTrip?.destination else { return nil }
@@ -100,14 +108,34 @@ class BagbuddyCoordinator {
             categorySection: categorySectionViewModel,
             packItemSection: packItemSectionViewModel,
             activyListSection: ActivityListViewModel(activities: activities),
-            activitiesSections: [
-                ActivitySectionViewModel(
-                    activity: LocalDataManager.shared.getDefaultEssential()
-                ),
-                ActivitySectionViewModel(
-                    activity: LocalDataManager.shared.getDefaultInternalTrip()
-                )   
-            ]
+            activitiesSections: generateDefaultSectionViewModels(activities)
         )
+    }
+    private static func generateDefaultSectionViewModels(_ activities: [Activity]) -> [ActivitySectionViewModel] {
+        
+        var sectionViewModels: [ActivitySectionViewModel] = []
+        //var sectionViewModels = activities.map { activity in
+        //    ActivitySectionViewModel(activity: activity)
+        //}
+        
+        sectionViewModels.insert(
+            ActivitySectionViewModel(
+                activity: LocalDataManager.shared.getDefaultEssential()
+            ),
+            at: 0
+        )
+        if let source = TripPacker.shared.currentPlannedTrip?.source,
+           let dest = TripPacker.shared.currentPlannedTrip?.destination {
+           
+            if source.country.lowercased() != dest.country.lowercased() {
+                sectionViewModels.insert(
+                    ActivitySectionViewModel(
+                        activity: LocalDataManager.shared.getDefaultInternalTrip()
+                    ),
+                    at: 1
+                )
+            }
+        }
+        return sectionViewModels
     }
 }
