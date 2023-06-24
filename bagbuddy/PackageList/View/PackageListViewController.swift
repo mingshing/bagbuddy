@@ -15,7 +15,7 @@ enum PackageListSection: Int {
 }
 
 
-class PackageListViewController: UIViewController {
+class PackageListViewController: UIViewController, ItemNoteDelegate {
     
 // MARK: View Related
     
@@ -268,8 +268,15 @@ extension PackageListViewController: TagListCellDelegate {
 }
 
 extension PackageListViewController: PackageItemCellDelegate {
-    func didTapActionButton() {
-        BagbuddyCoordinator.openNoteEditPage(from: self)
+    func didTapActionButton(on viewModel: PackageItemCellViewModel) {
+        let itemNoteViewModel = ItemNoteViewModel(name: viewModel.name, note: viewModel.note)
+        BagbuddyCoordinator.openNoteEditPage(from: self, with: itemNoteViewModel)
+    }
+}
+
+extension PackageListViewController {
+    func updateSaveNote(note: String?) {
+        
     }
 }
 

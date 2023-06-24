@@ -10,6 +10,8 @@ import FittedSheets
 
 class BagbuddyCoordinator {
     
+    static var bottomSheetContainer: SheetViewController?
+    
     static func openLocationListPage(
         from sourceVC: UIViewController,
         target: SelectTargetLocation,
@@ -68,8 +70,8 @@ class BagbuddyCoordinator {
         sourceVC.present(packageListVC, animated: true, completion: nil)
     }
     
-    static func openNoteEditPage(from sourceVC: UIViewController) {
-        let itemNoteViewController = ItemNoteViewController()
+    static func openNoteEditPage(from sourceVC: PackageListViewController, with viewModel: ItemNoteViewModel) {
+        let itemNoteViewController = ItemNoteViewController(with: viewModel, delegate: sourceVC)
         let options = SheetOptions(
                 presentingViewCornerRadius: 16,
                 setIntrinsicHeightOnNavigationControllers: false,
@@ -77,7 +79,7 @@ class BagbuddyCoordinator {
             )
         let sheetController = SheetViewController(controller: itemNoteViewController, options: options)
         sourceVC.present(sheetController, animated: false)
-        sheetController.updateIntrinsicHeight()
+        bottomSheetContainer = sheetController
     }
     
     // MARK: package list view model builder

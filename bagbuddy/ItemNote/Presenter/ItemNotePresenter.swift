@@ -7,27 +7,20 @@
 
 import Foundation
 
-protocol ItemNotePresenterDelegate: AnyObject {
-    func updateNote(text: String)
-}
-
 protocol ItemNotePresenterType: AnyObject {
-    
-    var delegate: ItemNotePresenterDelegate? {get set}
     func saveNote(text: String)
 }
 
 
 class ItemNotePresenter: ItemNotePresenterType {
-    weak var delegate: ItemNotePresenterDelegate?
     
-    init(delegate: ItemNotePresenterDelegate? = nil) {
-        
-        self.delegate = delegate
+    
+    init() {
+    
     }
     
     func saveNote(text: String) {
-        delegate?.updateNote(text: text)
+       // delegate?.updateNote(text: text)
     }
     
 }

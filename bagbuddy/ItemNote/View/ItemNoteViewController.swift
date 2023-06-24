@@ -9,6 +9,10 @@ import Foundation
 import SnapKit
 import UIKit
 
+protocol ItemNoteDelegate: AnyObject {
+    
+    func updateSaveNote(note: String?)
+}
 
 class ItemNoteViewController: UIViewController {
 
@@ -29,6 +33,7 @@ class ItemNoteViewController: UIViewController {
         let view = UITextView()
         view.backgroundColor = .inputBackground
         view.textColor = .primaryBlack
+        view.tintColor = .primaryBlack
         view.textContainerInset = UIEdgeInsets(
             top: LayoutConstants.verticalMargin,
             left: LayoutConstants.horizontalMargin,
@@ -54,10 +59,12 @@ class ItemNoteViewController: UIViewController {
         return button
     }()
     
-    
-    init() {
+    weak private var delegate: ItemNoteDelegate?
+    private var viewModel: ItemNoteViewModel
+    init(with viewModel: ItemNoteViewModel, delegate: ItemNoteDelegate?) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        presenter = ItemNotePresenter(delegate: self)
+        self.delegate = delegate
     }
     
     required init?(coder: NSCoder) {
@@ -67,7 +74,9 @@ class ItemNoteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupContent()
         setupView()
+        
     }
     
     private func setupView() {
@@ -90,28 +99,36 @@ class ItemNoteViewController: UIViewController {
             make.top.equalTo(actionBtn.snp.bottom).offset(12)
             make.left.right.equalToSuperview().inset(LayoutConstants.pageHorizontalMargin)
             make.bottom.equalToSuperview().inset(48)
-            make.height.equalTo(60)
+            make.height.equalTo(64)
         }
         view.layoutIfNeeded()
     }
-    @objc func buttonAction(sender: UIButton!) {
-        presenter?.saveNote(text: "")
+    
+    private func setupContent() {
+        headLineLabel.text = viewModel.name
+        if let note = viewModel.note {
+            inputTextView.text = note
+        } else {
+            inputTextView.text = NSLocalizedString("item_note_placeholder", comment:"")
+            inputTextView.textColor = .selectedNoteGrey
+        }
     }
     
-}
-
-extension ItemNoteViewController: ItemNotePresenterDelegate {
-    func updateNote(text: String) {
-        
+    @objc func buttonAction(sender: UIButton!) {
+        if !inputTextView.text.isEmpty {
+            self.delegate?.updateSaveNote(note: inputTextView.text)
+        }
+        self.dismiss(animated: true)
     }
 }
+
 
 extension ItemNoteViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         // Measure the new height of the content
         let size = CGSize(width: textView.frame.width, height: .infinity)
         let estimatedSize = textView.sizeThatFits(size)
-        let estimateHeight = max(estimatedSize.height, 60)
+        let estimateHeight = max(estimatedSize.height, 64)
         // Update the height of the text view
         inputTextView.snp.updateConstraints { make in
             make.top.equalTo(actionBtn.snp.bottom).offset(14)
@@ -119,8 +136,21 @@ extension ItemNoteViewController: UITextViewDelegate {
             make.bottom.equalToSuperview().inset(20)
             make.height.equalTo(estimateHeight)
         }
-
-        // Tell the form sheet to re-layout its subviews
         view.layoutIfNeeded()
     }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if viewModel.note == nil {
+            inputTextView.text = ""
+            inputTextView.textColor = .primaryBlack
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            inputTextView.text = NSLocalizedString("item_note_placeholder", comment:"")
+            inputTextView.textColor = .selectedNoteGrey
+        }
+    }
+    
 }
