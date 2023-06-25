@@ -8,10 +8,12 @@
 import Foundation
 struct ItemNoteViewModel{
     let name: String
+    let indexPath: IndexPath
     var note: String?
     
     
-    init(name: String, note: String? = nil) {
+    init(name: String, for indexPath: IndexPath, note: String? = nil) {
+        self.indexPath = indexPath
         self.name = name
         self.note = note
     }

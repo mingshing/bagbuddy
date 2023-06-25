@@ -26,18 +26,17 @@ protocol PackageListPresenterType: AnyObject {
     func viewModelForItemSection(at section: Int) -> ActivitySectionViewModel?
     func changeItemSectionState(section: Int, fromState: ItemSectionState)
     func viewModelForIndex(at indexPath: IndexPath) -> ReuseableCellViewModel?
+    func updateItemViewModelForIndex(_ viewModel: PackageItemCellViewModel, at indexPath: IndexPath)
 }
 
 class PackageListPresenter: PackageListPresenterType {
     
     private weak var delegate: PackageListPresenterDelegate?
     var viewModel: PackageListViewModel
-    //var hiddenSections: Set<Int>
     
     init(with viewModel: PackageListViewModel, delegate: PackageListPresenterDelegate? = nil) {
         self.delegate = delegate
         self.viewModel = viewModel
-        //self.hiddenSections = Set<Int>(0..<totalSectionCount)
     }
     
     func setupHeader() {
@@ -70,7 +69,7 @@ extension PackageListPresenter {
             if activity.displayState == .close {
                 return 0
             }
-            return activity.itemCount
+            return viewModel.itemViewModels[startIdx].count
         }
     }
     
@@ -112,21 +111,23 @@ extension PackageListPresenter {
     func viewModelForIndex(at indexPath: IndexPath) -> ReuseableCellViewModel? {
         
         if indexPath.section == PackageListSection.customizeTrip.rawValue {
-            return TagListCellViewModel(tags: viewModel.activyListSection.activityNames)
+            return viewModel.tagListViewModel
         } else if indexPath.section >= PackageListSection.itemList.rawValue {
             
             let startIdx = indexPath.section - PackageListSection.itemList.rawValue
             
             guard viewModel.activitiesSections.count > startIdx,
                   viewModel.activitiesSections[startIdx].itemCount > indexPath.row else { return nil }
-            
-            let activity = viewModel.activitiesSections[startIdx].activity
-            let packageItem = activity.items[indexPath.row]
-            return PackageItemCellViewModel(
-                name: packageItem.name,
-                note: packageItem.note
-            )
+            return viewModel.itemViewModels[startIdx][indexPath.row]
         }
         return nil
+    }
+    
+    func updateItemViewModelForIndex(_ updateViewModel: PackageItemCellViewModel, at indexPath: IndexPath) {
+        
+        guard indexPath.section >= PackageListSection.itemList.rawValue else { return }
+        
+        let startIdx = indexPath.section - PackageListSection.itemList.rawValue
+        viewModel.itemViewModels[startIdx][indexPath.row] = updateViewModel
     }
 }

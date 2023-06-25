@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PackageItemCellDelegate: AnyObject {
-    func didTapActionButton(on viewModel: PackageItemCellViewModel)
+    func didTapActionButton(_ cell: UITableViewCell, on viewModel: PackageItemCellViewModel)
 }
 
 
@@ -112,9 +112,9 @@ class PackageItemCell: UITableViewCell {
     }
     
     public func update(with viewModel: PackageItemCellViewModel) {
+        self.viewModel = viewModel
         nameLabel.text = viewModel.name
         noteLabel.text = viewModel.note
-        self.viewModel = viewModel
     }
     
     private func getStrikethroughText(_ text: String?) -> NSAttributedString? {
@@ -136,6 +136,6 @@ class PackageItemCell: UITableViewCell {
     
     @objc func buttonAction(sender: UIButton!) {
         guard let viewModel = viewModel else { return }
-        delegate?.didTapActionButton(on: viewModel)
+        delegate?.didTapActionButton(self, on: viewModel)
     }
 }

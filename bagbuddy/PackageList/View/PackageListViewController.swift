@@ -194,29 +194,40 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
             return cell
         }
         
-        if let packageItemCellViewModel = cellViewModel as? PackageItemCellViewModel {
+        if let itemCellViewModel = cellViewModel as? PackageItemCellViewModel {
             
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: PackageItemCell.self),
                 for: indexPath
             ) as! PackageItemCell
-            cell.update(with: packageItemCellViewModel)
             cell.delegate = self
+            cell.update(with: itemCellViewModel)
+            cell.isSelected = itemCellViewModel.checked
             return cell
         }
         return UITableViewCell()
     }
-    /*
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard var cellViewModel = presenter?.viewModelForIndex(at: indexPath) else { return }
+        guard let cellViewModel = presenter?.viewModelForIndex(at: indexPath) else { return }
         
-        if cellViewModel is PackageItemCellViewModel {
-            if let cell = tableView.cellForRow(at: indexPath) {
-                cell.isSelected.toggle()
-            }
+        if cellViewModel is PackageItemCellViewModel,
+           var itemCellViewModel = presenter?.viewModelForIndex(at: indexPath) as? PackageItemCellViewModel {
+            itemCellViewModel.checked = true
+            presenter?.updateItemViewModelForIndex(itemCellViewModel, at: indexPath)
         }
     }
-     */
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cellViewModel = presenter?.viewModelForIndex(at: indexPath) else { return }
+        
+        if cellViewModel is PackageItemCellViewModel,
+           var itemCellViewModel = presenter?.viewModelForIndex(at: indexPath) as? PackageItemCellViewModel {
+            itemCellViewModel.checked = false
+            presenter?.updateItemViewModelForIndex(itemCellViewModel, at: indexPath)
+        }
+    }
+     
 }
 
 extension PackageListViewController: TagListCellDelegate {
@@ -262,21 +273,41 @@ extension PackageListViewController: TagListCellDelegate {
     }
     
     func reloadSection(section: Int) {
+        let selectedIndexPaths = tableView.indexPathsForSelectedRows
         tableView.reloadSections(IndexSet(integer: section), with: .automatic)
+        
+        if let selectedIndexPaths = selectedIndexPaths {
+            for indexPath in selectedIndexPaths {
+                if indexPath.section == section {
+                    tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+                }
+            }
+        }
     }
     
 }
 
 extension PackageListViewController: PackageItemCellDelegate {
-    func didTapActionButton(on viewModel: PackageItemCellViewModel) {
-        let itemNoteViewModel = ItemNoteViewModel(name: viewModel.name, note: viewModel.note)
-        BagbuddyCoordinator.openNoteEditPage(from: self, with: itemNoteViewModel)
+    
+    func didTapActionButton(_ cell: UITableViewCell, on viewModel: PackageItemCellViewModel) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            let itemNoteViewModel = ItemNoteViewModel(
+                name: viewModel.name,
+                for: indexPath,
+                note: viewModel.note
+            )
+            BagbuddyCoordinator.openNoteEditPage(from: self, with: itemNoteViewModel)
+        }
     }
 }
 
 extension PackageListViewController {
-    func updateSaveNote(note: String?) {
-        
+    func updateSaveNote(from viewModel: ItemNoteViewModel) {
+        if var itemCellViewModel = presenter?.viewModelForIndex(at: viewModel.indexPath) as? PackageItemCellViewModel {
+            itemCellViewModel.note = viewModel.note
+            presenter?.updateItemViewModelForIndex(itemCellViewModel, at: viewModel.indexPath)
+            tableView.reloadRows(at: [viewModel.indexPath], with: .fade)
+        }
     }
 }
 

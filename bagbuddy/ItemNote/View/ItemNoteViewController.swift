@@ -11,7 +11,7 @@ import UIKit
 
 protocol ItemNoteDelegate: AnyObject {
     
-    func updateSaveNote(note: String?)
+    func updateSaveNote(from viewModel: ItemNoteViewModel)
 }
 
 class ItemNoteViewController: UIViewController {
@@ -61,6 +61,7 @@ class ItemNoteViewController: UIViewController {
     
     weak private var delegate: ItemNoteDelegate?
     private var viewModel: ItemNoteViewModel
+    
     init(with viewModel: ItemNoteViewModel, delegate: ItemNoteDelegate?) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -116,7 +117,7 @@ class ItemNoteViewController: UIViewController {
     
     @objc func buttonAction(sender: UIButton!) {
         if !inputTextView.text.isEmpty {
-            self.delegate?.updateSaveNote(note: inputTextView.text)
+            self.delegate?.updateSaveNote(from: viewModel)
         }
         self.dismiss(animated: true)
     }
@@ -136,6 +137,7 @@ extension ItemNoteViewController: UITextViewDelegate {
             make.bottom.equalToSuperview().inset(20)
             make.height.equalTo(estimateHeight)
         }
+        viewModel.note = textView.text
         view.layoutIfNeeded()
     }
     
@@ -150,6 +152,7 @@ extension ItemNoteViewController: UITextViewDelegate {
         if textView.text.isEmpty {
             inputTextView.text = NSLocalizedString("item_note_placeholder", comment:"")
             inputTextView.textColor = .selectedNoteGrey
+            viewModel.note = nil
         }
     }
     
