@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TagListCellDelegate: AnyObject {
-    func listContentChanged()
+    func listContentChanged(_ selectedTitle: [String])
     func addActivity(_ title: String)
     func removeActivity(_ title: String)
 }
@@ -54,6 +54,10 @@ class TagListCell: UITableViewCell {
         tagListView.removeAllTags()
         tagListView.addTags(tags)
     }
+    
+    func updateSelectedTag(selectedTags: [String]) {
+        tagListView.setTagsSelected(selectedTags)
+    }
 }
 
 extension TagListCell: TagListViewDelegate {
@@ -69,5 +73,10 @@ extension TagListCell: TagListViewDelegate {
         } else {
             delegate?.removeActivity(title)
         }
+        let selectedTagTitles = tagListView.selectedTags().compactMap { tagView in
+            tagView.titleLabel?.text
+        }
+        delegate?.listContentChanged(selectedTagTitles)
+        
     }
 }

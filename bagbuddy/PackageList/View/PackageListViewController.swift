@@ -190,6 +190,9 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
                 for: indexPath
             ) as! TagListCell
             cell.tags = tagListCellViewModel.tags
+            if let selectedActivityTitle = presenter?.viewModel.selectedActivityTitle {
+                cell.updateSelectedTag(selectedTags: selectedActivityTitle)
+            }
             cell.delegate = self
             return cell
         }
@@ -202,7 +205,7 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
             ) as! PackageItemCell
             cell.delegate = self
             cell.update(with: itemCellViewModel)
-            cell.isSelected = itemCellViewModel.checked
+            //cell.isSelected = itemCellViewModel.checked
             return cell
         }
         return UITableViewCell()
@@ -232,12 +235,12 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
 
 extension PackageListViewController: TagListCellDelegate {
     
-    func listContentChanged() {
-       
+    func listContentChanged(_ selectedTitle: [String]) {
+        presenter?.viewModel.selectedActivityTitle = selectedTitle
     }
     
     func addActivity(_ title: String) {
-        
+        // TODO: if add new activity while the last section is open, it would crash
         if let activityList = self.presenter?.viewModel.activyListSection.activities,
            let addedActivity = activityList.filter({ activity in
                activity.name == title
@@ -250,7 +253,9 @@ extension PackageListViewController: TagListCellDelegate {
             tableView.beginUpdates()
             tableView.insertSections(IndexSet(integer: insertIdx), with: .bottom)
             tableView.endUpdates()
+            presenter?.viewModel.addNewActivityItemModels(from: newSectionModel)
             DispatchQueue.main.async { [weak self] in
+                
                 self?.reloadSection(section: insertIdx + 1)
             }
         }
@@ -275,14 +280,23 @@ extension PackageListViewController: TagListCellDelegate {
     func reloadSection(section: Int) {
         let selectedIndexPaths = tableView.indexPathsForSelectedRows
         tableView.reloadSections(IndexSet(integer: section), with: .automatic)
-        
-        if let selectedIndexPaths = selectedIndexPaths {
-            for indexPath in selectedIndexPaths {
-                if indexPath.section == section {
-                    tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        if let viewModel = presenter?.viewModel {
+            for (section, sectionItemViewModels) in viewModel.itemViewModels.enumerated() {
+                for (row, itemViewModel) in sectionItemViewModels.enumerated() {
+                    let displaySection = section + PackageListSection.itemList.rawValue
+                    if itemViewModel.checked {
+                        tableView.selectRow(at: IndexPath(row: row, section: displaySection), animated: false, scrollPosition: .none)
+                    }
                 }
             }
         }
+        /*
+        if let selectedIndexPaths = selectedIndexPaths {
+            for indexPath in selectedIndexPaths {
+                
+            }
+        }
+        */
     }
     
 }

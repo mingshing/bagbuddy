@@ -80,6 +80,7 @@ extension PackageListPresenter {
         for(idx, model) in viewModel.activitiesSections.enumerated().reversed() {
             if model.title == title {
                 viewModel.activitiesSections.remove(at: idx)
+                viewModel.removeActivityItemModels(at: idx)
                 return idx + itemStartIdx
             }
         }

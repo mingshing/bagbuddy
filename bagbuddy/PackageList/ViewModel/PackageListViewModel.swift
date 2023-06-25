@@ -8,15 +8,35 @@
 import Foundation
 
 struct PackageListViewModel {
+    
+    static func defaultItemCellViewModels(_ source: [ActivitySectionViewModel]) -> [[PackageItemCellViewModel]] {
+        var itemViewModelArray: [[PackageItemCellViewModel]] = []
+        for activityViewModel in source {
+            var sectionItems:[PackageItemCellViewModel] = []
+            for item in activityViewModel.activity.items {
+                sectionItems.append(
+                    PackageItemCellViewModel(
+                        name: item.name,
+                        note: item.note
+                    )
+                )
+            }
+            itemViewModelArray.append(sectionItems)
+        }
+        return itemViewModelArray
+    }
+    
+    
     let tripDestination: String
     let startDate: String
     let endDate: String
     let categorySection: SectionHeaderViewModel
     let packItemSection: SectionHeaderViewModel
     let activyListSection: ActivityListViewModel
-    var activitiesSections: [ActivitySectionViewModel] 
+    var activitiesSections: [ActivitySectionViewModel]
     var tagListViewModel: TagListCellViewModel
     var itemViewModels: [[PackageItemCellViewModel]]
+    var selectedActivityTitle: [String]
     init(
         tripDestination: String,
         startDate: String,
@@ -34,23 +54,24 @@ struct PackageListViewModel {
         self.activyListSection = activyListSection
         self.activitiesSections = activitiesSections
         self.tagListViewModel = TagListCellViewModel(tags: activyListSection.activityNames)
-        self.itemViewModels = PackageListViewModel.generateItemCellViewModels(activitiesSections)
+        self.itemViewModels = PackageListViewModel.defaultItemCellViewModels(activitiesSections)
+        self.selectedActivityTitle = []
     }
     
-    static func generateItemCellViewModels(_ source: [ActivitySectionViewModel]) -> [[PackageItemCellViewModel]] {
-        var itemViewModelArray: [[PackageItemCellViewModel]] = []
-        for activityViewModel in source {
-            var sectionItems:[PackageItemCellViewModel] = []
-            for item in activityViewModel.activity.items {
-                sectionItems.append(
-                    PackageItemCellViewModel(
-                        name: item.name,
-                        note: item.note
-                    )
+    mutating func addNewActivityItemModels(from viewModel: ActivitySectionViewModel) {
+        var sectionItems:[PackageItemCellViewModel] = []
+        for item in viewModel.activity.items {
+            sectionItems.append(
+                PackageItemCellViewModel(
+                    name: item.name,
+                    note: item.note
                 )
-            }
-            itemViewModelArray.append(sectionItems)
+            )
         }
-        return itemViewModelArray
+        itemViewModels.append(sectionItems)
+    }
+    
+    mutating func removeActivityItemModels(at idx: Int) {
+        itemViewModels.remove(at: idx)
     }
 }

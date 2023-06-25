@@ -340,6 +340,13 @@ open class TagListView: UIView {
         return tagViews.filter { $0.isSelected }
     }
     
+    open func setTagsSelected(_ titles: [String]) {
+        for title in titles {
+            if var tagView = tagViews.filter({ $0.titleLabel?.text == title }).first {
+                tagView.isSelected = true
+            }
+        }
+    }
     // MARK: - Events
     
     @objc func tagPressed(_ sender: TagView!) {
