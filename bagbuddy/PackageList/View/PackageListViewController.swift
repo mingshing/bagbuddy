@@ -240,7 +240,6 @@ extension PackageListViewController: TagListCellDelegate {
     }
     
     func addActivity(_ title: String) {
-        // TODO: if add new activity while the last section is open, it would crash
         if let activityList = self.presenter?.viewModel.activyListSection.activities,
            let addedActivity = activityList.filter({ activity in
                activity.name == title
@@ -249,14 +248,13 @@ extension PackageListViewController: TagListCellDelegate {
                 activity: addedActivity
             )
             presenter?.viewModel.activitiesSections.append(newSectionModel)
-            let insertIdx = self.presenter?.viewModel.activitiesSections.count ?? 0 - 1
             tableView.beginUpdates()
+            let insertIdx = self.tableView.numberOfSections
             tableView.insertSections(IndexSet(integer: insertIdx), with: .bottom)
             tableView.endUpdates()
             presenter?.viewModel.addNewActivityItemModels(from: newSectionModel)
             DispatchQueue.main.async { [weak self] in
-                
-                self?.reloadSection(section: insertIdx + 1)
+                self?.reloadSection(section: insertIdx)
             }
         }
     }
@@ -278,7 +276,7 @@ extension PackageListViewController: TagListCellDelegate {
     }
     
     func reloadSection(section: Int) {
-        let selectedIndexPaths = tableView.indexPathsForSelectedRows
+        
         tableView.reloadSections(IndexSet(integer: section), with: .automatic)
         if let viewModel = presenter?.viewModel {
             for (section, sectionItemViewModels) in viewModel.itemViewModels.enumerated() {
@@ -290,13 +288,6 @@ extension PackageListViewController: TagListCellDelegate {
                 }
             }
         }
-        /*
-        if let selectedIndexPaths = selectedIndexPaths {
-            for indexPath in selectedIndexPaths {
-                
-            }
-        }
-        */
     }
     
 }
