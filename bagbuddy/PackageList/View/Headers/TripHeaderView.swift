@@ -31,6 +31,15 @@ class TripHeaderView: UIView {
         return label
     }()
     
+    private lazy var noteLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        label.font = UIFont.actionTextFont(ofSize: 14)
+        label.textColor = .primaryBlack
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         clipsToBounds = true
@@ -46,7 +55,8 @@ class TripHeaderView: UIView {
         
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(20)
+            make.width.equalTo(DeviceConstants.width - 40)
+            make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(60)
         }
         
@@ -54,6 +64,12 @@ class TripHeaderView: UIView {
         dateLabel.snp.makeConstraints { make in
             make.left.right.equalTo(titleLabel)
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
+        }
+        
+        addSubview(noteLabel)
+        noteLabel.snp.makeConstraints { make in
+            make.left.right.equalTo(titleLabel)
+            make.top.equalTo(dateLabel.snp.bottom).offset(8)
             make.bottom.equalToSuperview().inset(24)
         }
     }
@@ -61,6 +77,7 @@ class TripHeaderView: UIView {
     public func updateView(with viewModel: PackageListViewModel) {
         titleLabel.text = viewModel.tripDestination
         dateLabel.text = viewModel.startDate + " - " + viewModel.endDate
+        noteLabel.text = viewModel.contryNote
         layoutIfNeeded()
     }
 }

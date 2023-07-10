@@ -30,6 +30,7 @@ struct PackageListViewModel {
     let tripDestination: String
     let startDate: String
     let endDate: String
+    let contryNote: String
     let categorySection: SectionHeaderViewModel
     let packItemSection: SectionHeaderViewModel
     let activyListSection: ActivityListViewModel
@@ -41,6 +42,7 @@ struct PackageListViewModel {
         tripDestination: String,
         startDate: String,
         endDate: String,
+        countryNote: String,
         categorySection: SectionHeaderViewModel,
         packItemSection: SectionHeaderViewModel,
         activyListSection: ActivityListViewModel,
@@ -49,6 +51,7 @@ struct PackageListViewModel {
         self.tripDestination = tripDestination
         self.startDate = startDate
         self.endDate = endDate
+        self.contryNote = countryNote
         self.categorySection = categorySection
         self.packItemSection = packItemSection
         self.activyListSection = activyListSection

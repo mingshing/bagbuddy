@@ -85,7 +85,8 @@ class BagbuddyCoordinator {
     // MARK: package list view model builder
     static func buildPackageListViewModel() -> PackageListViewModel? {
         
-        guard let destination = TripPacker.shared.currentPlannedTrip?.destination else { return nil }
+        guard let trip = TripPacker.shared.currentPlannedTrip,
+              let destination = trip.destination else { return nil }
         let categorySectionViewModel = SectionHeaderViewModel(
             title: "Customize your trip",
             description: "What will you be doing on this trip?"
@@ -97,16 +98,17 @@ class BagbuddyCoordinator {
         )
 
         var activities: [Activity] = []
-        
-         if let allCityActivities = LocalDataManager().getActivityItemDomainModel() {
-             activities = allCityActivities[destination.name.lowercased()] ?? []
-            //activities = Array(cityActivities.values.joined())
+        var cityInfo: CityInfoList?
+        if let allCityInfos = LocalDataManager().getActivityItemDomainModel() {
+            cityInfo = allCityInfos[destination.name.lowercased()]
+            activities = cityInfo?.activities ?? []
         }
         
         return PackageListViewModel(
             tripDestination: destination.displayName,
-            startDate: "May 16",
-            endDate: "Mar 21",
+            startDate: trip.startDate?.format(with: "MMM dd") ?? "",
+            endDate: trip.endDate?.format(with: "MMM dd YYYY") ?? "",
+            countryNote: "📌" + (cityInfo?.note ?? ""),
             categorySection: categorySectionViewModel,
             packItemSection: packItemSectionViewModel,
             activyListSection: ActivityListViewModel(activities: activities),

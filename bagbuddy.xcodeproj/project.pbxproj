@@ -89,6 +89,7 @@
 		E8BA007B29D9D00800EC7EEA /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8BA006929D9D00800EC7EEA /* Poppins-Medium.ttf */; };
 		E8BDF8B12A4735B0005E2AE3 /* ItemNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BDF8B02A4735B0005E2AE3 /* ItemNoteViewModel.swift */; };
 		E8BDF8B32A5AA0ED005E2AE3 /* suggestedItemList.json in Resources */ = {isa = PBXBuildFile; fileRef = E8BDF8B22A5AA0ED005E2AE3 /* suggestedItemList.json */; };
+		E8BDF8B52A5C6194005E2AE3 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BDF8B42A5C6194005E2AE3 /* Date+Extensions.swift */; };
 		E8E01AB92A094FFF00FFE31A /* suggestedItemList.json_bak in Resources */ = {isa = PBXBuildFile; fileRef = E8E01AB82A094FFF00FFE31A /* suggestedItemList.json_bak */; };
 		E8E01ABB2A09514D00FFE31A /* CityActivityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E01ABA2A09514D00FFE31A /* CityActivityList.swift */; };
 		E8E01ABD2A0AA41400FFE31A /* TagListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E01ABC2A0AA41400FFE31A /* TagListCellViewModel.swift */; };
@@ -214,6 +215,7 @@
 		E8BA006929D9D00800EC7EEA /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		E8BDF8B02A4735B0005E2AE3 /* ItemNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNoteViewModel.swift; sourceTree = "<group>"; };
 		E8BDF8B22A5AA0ED005E2AE3 /* suggestedItemList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = suggestedItemList.json; sourceTree = "<group>"; };
+		E8BDF8B42A5C6194005E2AE3 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		E8E01AB82A094FFF00FFE31A /* suggestedItemList.json_bak */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = suggestedItemList.json_bak; sourceTree = "<group>"; };
 		E8E01ABA2A09514D00FFE31A /* CityActivityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityActivityList.swift; sourceTree = "<group>"; };
 		E8E01ABC2A0AA41400FFE31A /* TagListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListCellViewModel.swift; sourceTree = "<group>"; };
@@ -639,6 +641,7 @@
 			children = (
 				E8EB3EEC29DD6C8B00C44EB5 /* UIColor+Extensions.swift */,
 				E8EB3EF929DD7D3100C44EB5 /* UIFont+Extensions.swift */,
+				E8BDF8B42A5C6194005E2AE3 /* Date+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1035,6 +1038,7 @@
 				E887E1AE29EAEAB500CA14BF /* LocationListCellViewModel.swift in Sources */,
 				E87BB67529E1B4FC00E823D1 /* City.swift in Sources */,
 				E814CE6B2A2B87C4002EA1C2 /* DayRangeIndicatorView.swift in Sources */,
+				E8BDF8B52A5C6194005E2AE3 /* Date+Extensions.swift in Sources */,
 				E887E1D029F5787F00CA14BF /* ChatGPTResponse.swift in Sources */,
 				E87BB67E29E1BA7D00E823D1 /* SelectDatePresenter.swift in Sources */,
 				E887E1C029ED3EC500CA14BF /* PackageListViewModel.swift in Sources */,

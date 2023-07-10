@@ -34,8 +34,8 @@ class OnboardingViewController: UIViewController {
     
     @objc func buttonAction(sender: UIButton!) {
         TripPacker.shared.startNewTrip()
-        //BagbuddyCoordinator.openSelectLocationPage(from: self, target: .source)
-        BagbuddyCoordinator.openPackageListPage(from: self)
+        BagbuddyCoordinator.openSelectLocationPage(from: self, target: .source)
+        //BagbuddyCoordinator.openPackageListPage(from: self)
    }
 }
 

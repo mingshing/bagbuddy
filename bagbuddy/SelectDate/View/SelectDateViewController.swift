@@ -168,14 +168,8 @@ class SelectDateViewController: UIViewController, DatePickedDelegate {
         if let startDate = calendar.date(from: startDateComponents),
            let endDate = calendar.date(from: endDateComponents) {
             
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = DateFormatter.dateFormat(
-                fromTemplate: "MMM d, yyyy",
-                options: 0,
-                locale: Locale.current
-            )
-            startDateInputView.inputField.text = dateFormatter.string(from: startDate)
-            endDateInputView.inputField.text = dateFormatter.string(from: endDate)
+            startDateInputView.inputField.text = startDate.format(with: "MMM d, yyyy")
+            endDateInputView.inputField.text = endDate.format(with: "MMM d, yyyy")
         }
     }
 }

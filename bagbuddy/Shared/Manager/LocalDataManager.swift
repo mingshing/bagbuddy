@@ -27,14 +27,14 @@ class LocalDataManager {
         return nil
     }
     
-    public func getActivityItemDomainModel() -> [String: [Activity]]? {
+    public func getActivityItemDomainModel() -> [String: CityInfoList]? {
         
         if let url = Bundle.main.url(forResource: LocalFileName.suggestItemList, withExtension: "json") {
            do {
                let data = try Data(contentsOf: url)
                let decoder = JSONDecoder()
-               let cityActivities = try decoder.decode([CityActivityList].self, from: data)
-               return Dictionary(uniqueKeysWithValues: cityActivities.map { ($0.name.lowercased(), $0.activities) })
+               let cityInfos = try decoder.decode([CityInfoList].self, from: data)
+               return Dictionary(uniqueKeysWithValues: cityInfos.map { ($0.name.lowercased(), $0) })
            } catch {
                print("error: \(error)")
            }

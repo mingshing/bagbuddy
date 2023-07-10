@@ -44,7 +44,8 @@ class SectionHeaderView: UIView {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(24)
-            make.left.right.equalToSuperview().inset(20)
+            make.width.equalTo(DeviceConstants.width - 40)
+            make.centerX.equalToSuperview()
             make.height.equalTo(24)
         }
         

@@ -59,7 +59,7 @@ class PackageListViewController: UIViewController, ItemNoteDelegate {
     
     private var tagListHeight: CGFloat {
         
-        let tagListView = TagListView(frame: CGRectMake(0, 0, DeviceConstants.width - 2*LayoutConstants.pageHorizontalMargin, 0))
+        let tagListView = TagListView(frame: CGRectMake(0, 0, DeviceConstants.width - 2 * LayoutConstants.pageHorizontalMargin, 0))
         tagListView.addTags(presenter?.viewModel.activyListSection.activityNames ?? [])
         
         return tagListView.intrinsicContentSize.height + 20
@@ -105,6 +105,7 @@ class PackageListViewController: UIViewController, ItemNoteDelegate {
         presenter?.setupHeader()
         
     }
+    
     @objc func didTapClose(sender: UIButton!) {
         dismiss(animated: true)
     }
@@ -114,9 +115,10 @@ extension PackageListViewController: PackageListPresenterDelegate {
     
     func updateHeaderView(with viewModel: PackageListViewModel) {
         headerView.updateView(with: viewModel)
-        let headerHeight = headerView.systemLayoutSizeFitting(CGSize(width: tableView.bounds.width, height: 0)).height
+        headerView.layoutIfNeeded()
+        let size = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
 
-        headerView.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: headerHeight)
+        headerView.frame.size = size
         tableView.tableHeaderView = headerView
     }
     
@@ -228,6 +230,16 @@ extension PackageListViewController: UITableViewDataSource, UITableViewDelegate 
            var itemCellViewModel = presenter?.viewModelForIndex(at: indexPath) as? PackageItemCellViewModel {
             itemCellViewModel.checked = false
             presenter?.updateItemViewModelForIndex(itemCellViewModel, at: indexPath)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // 1. Remove the data from your data source first
+            presenter?.deleteModelForIndex(at: indexPath)
+            
+            // 2. Then delete the row from the table view
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
      

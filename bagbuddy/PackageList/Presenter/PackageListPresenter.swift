@@ -26,6 +26,7 @@ protocol PackageListPresenterType: AnyObject {
     func viewModelForItemSection(at section: Int) -> ActivitySectionViewModel?
     func changeItemSectionState(section: Int, fromState: ItemSectionState)
     func viewModelForIndex(at indexPath: IndexPath) -> ReuseableCellViewModel?
+    func deleteModelForIndex(at indexPath: IndexPath)
     func updateItemViewModelForIndex(_ viewModel: PackageItemCellViewModel, at indexPath: IndexPath)
 }
 
@@ -130,5 +131,12 @@ extension PackageListPresenter {
         
         let startIdx = indexPath.section - PackageListSection.itemList.rawValue
         viewModel.itemViewModels[startIdx][indexPath.row] = updateViewModel
+    }
+    
+    func deleteModelForIndex(at indexPath: IndexPath) {
+        guard indexPath.section >= PackageListSection.itemList.rawValue else { return }
+        
+        let startIdx = indexPath.section - PackageListSection.itemList.rawValue
+        viewModel.itemViewModels[startIdx].remove(at: indexPath.row)
     }
 }

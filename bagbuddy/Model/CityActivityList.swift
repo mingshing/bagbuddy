@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CityActivityList: Codable {
+struct CityInfoList: Codable {
     let activities: [Activity]
     let name: String
     let currency: String
