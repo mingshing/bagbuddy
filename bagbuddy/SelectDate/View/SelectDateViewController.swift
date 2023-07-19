@@ -156,7 +156,7 @@ class SelectDateViewController: UIViewController, DatePickedDelegate {
             make.height.equalTo(LayoutConstants.actionButtonHeight)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-66)
         }
-        loadingIndicator = NVActivityIndicatorView(frame: CGRect.zero, color: .lightGray)
+        loadingIndicator = NVActivityIndicatorView(frame: CGRect.zero, color: .mainItemOrange)
         loadingIndicator.type = .ballSpinFadeLoader
         view.addSubview(loadingIndicator)
         loadingIndicator.snp.makeConstraints { make in
