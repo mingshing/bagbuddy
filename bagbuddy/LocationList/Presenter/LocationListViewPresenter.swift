@@ -61,9 +61,10 @@ class LocationListPresenter: LocationListPresenterType {
                 LocationListCellViewModel(location: city)
             }
         }
+        let compareText = filterText.lowercased()
         return cityList
             .filter { city in
-                city.displayName.contains(filterText)
+                city.displayName.lowercased().contains(compareText)
             }.map { city in
                 LocationListCellViewModel(location: city)
             }
