@@ -121,7 +121,9 @@ class PackageItemCell: UITableViewCell {
         guard let text = text else { return nil }
         let attributedStringWithColor = NSAttributedString(string: text, attributes: [
             NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
-            NSAttributedString.Key.strikethroughColor: UIColor.selectedGrey
+            NSAttributedString.Key.strikethroughColor: UIColor.selectedGrey,
+            NSAttributedString.Key.foregroundColor:
+                UIColor.selectedGrey
         ])
 
         return attributedStringWithColor
