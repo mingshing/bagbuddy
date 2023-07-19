@@ -13,6 +13,7 @@ target 'bagbuddy' do
     pod 'RealmSwift', '~>10'
     pod 'IQKeyboardManagerSwift'
     pod 'FittedSheets'
+    pod 'NVActivityIndicatorView'
 
   target 'bagbuddyTests' do
     inherit! :search_paths

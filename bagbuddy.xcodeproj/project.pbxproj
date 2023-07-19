@@ -88,9 +88,9 @@
 		E8BA007A29D9D00800EC7EEA /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8BA006829D9D00800EC7EEA /* Poppins-SemiBold.ttf */; };
 		E8BA007B29D9D00800EC7EEA /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8BA006929D9D00800EC7EEA /* Poppins-Medium.ttf */; };
 		E8BDF8B12A4735B0005E2AE3 /* ItemNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BDF8B02A4735B0005E2AE3 /* ItemNoteViewModel.swift */; };
-		E8BDF8B32A5AA0ED005E2AE3 /* suggestedItemList.json in Resources */ = {isa = PBXBuildFile; fileRef = E8BDF8B22A5AA0ED005E2AE3 /* suggestedItemList.json */; };
+		E8BDF8B32A5AA0ED005E2AE3 /* suggestedItemList.json.bak in Resources */ = {isa = PBXBuildFile; fileRef = E8BDF8B22A5AA0ED005E2AE3 /* suggestedItemList.json.bak */; };
 		E8BDF8B52A5C6194005E2AE3 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BDF8B42A5C6194005E2AE3 /* Date+Extensions.swift */; };
-		E8E01AB92A094FFF00FFE31A /* suggestedItemList.json_bak in Resources */ = {isa = PBXBuildFile; fileRef = E8E01AB82A094FFF00FFE31A /* suggestedItemList.json_bak */; };
+		E8CC78522A682A300061F76C /* suggestedItemList.json in Resources */ = {isa = PBXBuildFile; fileRef = E8CC78512A682A300061F76C /* suggestedItemList.json */; };
 		E8E01ABB2A09514D00FFE31A /* CityActivityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E01ABA2A09514D00FFE31A /* CityActivityList.swift */; };
 		E8E01ABD2A0AA41400FFE31A /* TagListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E01ABC2A0AA41400FFE31A /* TagListCellViewModel.swift */; };
 		E8E01ABF2A0FCE8400FFE31A /* MockGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E01ABE2A0FCE8400FFE31A /* MockGenerator.swift */; };
@@ -214,9 +214,9 @@
 		E8BA006829D9D00800EC7EEA /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		E8BA006929D9D00800EC7EEA /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		E8BDF8B02A4735B0005E2AE3 /* ItemNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNoteViewModel.swift; sourceTree = "<group>"; };
-		E8BDF8B22A5AA0ED005E2AE3 /* suggestedItemList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = suggestedItemList.json; sourceTree = "<group>"; };
+		E8BDF8B22A5AA0ED005E2AE3 /* suggestedItemList.json.bak */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = suggestedItemList.json.bak; sourceTree = "<group>"; };
 		E8BDF8B42A5C6194005E2AE3 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
-		E8E01AB82A094FFF00FFE31A /* suggestedItemList.json_bak */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = suggestedItemList.json_bak; sourceTree = "<group>"; };
+		E8CC78512A682A300061F76C /* suggestedItemList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = suggestedItemList.json; sourceTree = "<group>"; };
 		E8E01ABA2A09514D00FFE31A /* CityActivityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityActivityList.swift; sourceTree = "<group>"; };
 		E8E01ABC2A0AA41400FFE31A /* TagListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListCellViewModel.swift; sourceTree = "<group>"; };
 		E8E01ABE2A0FCE8400FFE31A /* MockGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGenerator.swift; sourceTree = "<group>"; };
@@ -558,8 +558,8 @@
 				E87BB67229E1B4D200E823D1 /* cityList.json */,
 				E8E01AC32A11314600FFE31A /* national.json */,
 				E8E01AC52A113F9700FFE31A /* essential.json */,
-				E8E01AB82A094FFF00FFE31A /* suggestedItemList.json_bak */,
-				E8BDF8B22A5AA0ED005E2AE3 /* suggestedItemList.json */,
+				E8BDF8B22A5AA0ED005E2AE3 /* suggestedItemList.json.bak */,
+				E8CC78512A682A300061F76C /* suggestedItemList.json */,
 				E8BA003329D9CF9A00EC7EEA /* fonts */,
 				E895FA3329D953D700F618A7 /* Assets.xcassets */,
 			);
@@ -874,9 +874,9 @@
 				E8BA005329D9CFEF00EC7EEA /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				E8BA006D29D9D00800EC7EEA /* Poppins-ExtraLightItalic.ttf in Resources */,
 				E887E1CA29F576E200CA14BF /* ChatGPTResponse.json in Resources */,
-				E8E01AB92A094FFF00FFE31A /* suggestedItemList.json_bak in Resources */,
 				E8BA005729D9CFEF00EC7EEA /* Montserrat-ExtraBold.ttf in Resources */,
-				E8BDF8B32A5AA0ED005E2AE3 /* suggestedItemList.json in Resources */,
+				E8BDF8B32A5AA0ED005E2AE3 /* suggestedItemList.json.bak in Resources */,
+				E8CC78522A682A300061F76C /* suggestedItemList.json in Resources */,
 				E8BA005429D9CFEF00EC7EEA /* Montserrat-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1238,7 +1238,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = KSFL9L3S98;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = bagbuddy/Info.plist;
@@ -1268,7 +1268,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = KSFL9L3S98;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = bagbuddy/Info.plist;

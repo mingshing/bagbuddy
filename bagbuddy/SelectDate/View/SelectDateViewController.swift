@@ -7,6 +7,7 @@
 
 import Foundation
 import HorizonCalendar
+import NVActivityIndicatorView
 import SnapKit
 import UIKit
 
@@ -89,6 +90,8 @@ class SelectDateViewController: UIViewController, DatePickedDelegate {
             actionBtn.isEnabled = hasSelectedDate
         }
     }
+    private var loadingIndicator: NVActivityIndicatorView!
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         presenter = SelectDatePresenter(delegate: self)
@@ -153,6 +156,13 @@ class SelectDateViewController: UIViewController, DatePickedDelegate {
             make.height.equalTo(LayoutConstants.actionButtonHeight)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-66)
         }
+        loadingIndicator = NVActivityIndicatorView(frame: CGRect.zero, color: .lightGray)
+        loadingIndicator.type = .ballSpinFadeLoader
+        view.addSubview(loadingIndicator)
+        loadingIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.size.equalTo(40)
+        }
     }
     @objc func buttonAction(sender: UIButton!) {
         presenter?.openPackageListPage()
@@ -192,6 +202,13 @@ extension SelectDateViewController: SelectDatePresenterDelegate {
     }
     
     func enterPackageList() {
-        BagbuddyCoordinator.openPackageListPage(from: self)
+        
+        view.bringSubviewToFront(loadingIndicator)
+        loadingIndicator.startAnimating()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.loadingIndicator.stopAnimating()
+            BagbuddyCoordinator.openPackageListPage(from: self)
+        }
     }
 }
