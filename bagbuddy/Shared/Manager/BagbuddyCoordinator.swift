@@ -99,7 +99,7 @@ class BagbuddyCoordinator {
 
         var activities: [Activity] = []
         var cityInfo: CityInfoList?
-        if let allCityInfos = LocalDataManager().getActivityItemDomainModel() {
+        if let allCityInfos = LocalDataManager().getActivityItemDomainInfo() {
             cityInfo = allCityInfos[destination.name.lowercased()]
             activities = cityInfo?.activities ?? []
         }
@@ -108,7 +108,7 @@ class BagbuddyCoordinator {
             tripDestination: destination.displayName,
             startDate: trip.startDate?.format(with: "MMM dd") ?? "",
             endDate: trip.endDate?.format(with: "MMM dd YYYY") ?? "",
-            countryNote: "📌" + (cityInfo?.note ?? ""),
+            countryNote: "📌   " + (cityInfo?.note ?? ""),
             categorySection: categorySectionViewModel,
             packItemSection: packItemSectionViewModel,
             activyListSection: ActivityListViewModel(activities: activities),
@@ -117,29 +117,28 @@ class BagbuddyCoordinator {
     }
     private static func generateDefaultSectionViewModels(_ activities: [Activity]) -> [ActivitySectionViewModel] {
         
+        guard let source  = TripPacker.shared.currentPlannedTrip?.source,
+              let destination = TripPacker.shared.currentPlannedTrip?.destination else { return [] }
+        
         var sectionViewModels: [ActivitySectionViewModel] = []
-        //var sectionViewModels = activities.map { activity in
-        //    ActivitySectionViewModel(activity: activity)
-        //}
+        
         
         sectionViewModels.insert(
             ActivitySectionViewModel(
-                activity: LocalDataManager.shared.getDefaultEssential()
+                activity: LocalDataManager.shared.getDefaultEssential(destination.name.lowercased())
             ),
             at: 0
         )
-        if let source = TripPacker.shared.currentPlannedTrip?.source,
-           let dest = TripPacker.shared.currentPlannedTrip?.destination {
-           
-            if source.country.lowercased() != dest.country.lowercased() {
-                sectionViewModels.insert(
-                    ActivitySectionViewModel(
-                        activity: LocalDataManager.shared.getDefaultInternalTrip()
-                    ),
-                    at: 1
-                )
-            }
+   
+        if source.country.lowercased() != destination.country.lowercased() {
+            sectionViewModels.insert(
+                ActivitySectionViewModel(
+                    activity: LocalDataManager.shared.getDefaultInternalTrip(destination.name.lowercased())
+                ),
+                at: 1
+            )
         }
+        
         return sectionViewModels
     }
 }

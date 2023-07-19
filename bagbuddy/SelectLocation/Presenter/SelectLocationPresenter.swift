@@ -37,4 +37,3 @@ class SelectLocationPresenter: SelectLocationPresenterType {
         delegate?.showLocationListPage()
     }
 }
-    

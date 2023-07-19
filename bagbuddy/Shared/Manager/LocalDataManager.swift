@@ -27,7 +27,7 @@ class LocalDataManager {
         return nil
     }
     
-    public func getActivityItemDomainModel() -> [String: CityInfoList]? {
+    public func getActivityItemDomainInfo() -> [String: CityInfoList]? {
         
         if let url = Bundle.main.url(forResource: LocalFileName.suggestItemList, withExtension: "json") {
            do {
@@ -42,12 +42,20 @@ class LocalDataManager {
         return nil
     }
     
-    public func getDefaultEssential() -> Activity {
+    public func getDefaultEssential(_ country: String) -> Activity {
         if let url = Bundle.main.url(forResource: LocalFileName.essentialItemList, withExtension: "json") {
            do {
                let data = try Data(contentsOf: url)
                let decoder = JSONDecoder()
-               let essentialActivity = try decoder.decode(Activity.self, from: data)
+               var essentialActivity = try decoder.decode(Activity.self, from: data)
+               if let cityInfos = getActivityItemDomainInfo(),
+                  let tagetCountryInfo = cityInfos[country] {
+                   for (idx,item) in essentialActivity.items.enumerated() {
+                       if item.name == "Cash" {
+                           essentialActivity.items[idx].note = tagetCountryInfo.currency
+                       }
+                   }
+               }
                return essentialActivity
            } catch {
                print("error: \(error)")
@@ -56,12 +64,20 @@ class LocalDataManager {
         return Activity(name: "Essential")
     }
     
-    public func getDefaultInternalTrip() -> Activity {
+    public func getDefaultInternalTrip(_ country: String) -> Activity {
         if let url = Bundle.main.url(forResource: LocalFileName.interNationalTripItemList, withExtension: "json") {
            do {
                let data = try Data(contentsOf: url)
                let decoder = JSONDecoder()
-               let nationalActivity = try decoder.decode(Activity.self, from: data)
+               var nationalActivity = try decoder.decode(Activity.self, from: data)
+               if let cityInfos = getActivityItemDomainInfo(),
+                  let tagetCountryInfo = cityInfos[country] {
+                   for (idx,item) in nationalActivity.items.enumerated() {
+                       if item.name == "Power adaptor" {
+                           nationalActivity.items[idx].note = tagetCountryInfo.powerAdapter
+                       }
+                   }
+               }
                return nationalActivity
            } catch {
                print("error: \(error)")
