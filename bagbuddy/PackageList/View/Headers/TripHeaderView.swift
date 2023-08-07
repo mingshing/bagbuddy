@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 
 
+protocol TripHeaderViewDelegate: AnyObject {
+    func didReloadContent(_ view: TripHeaderView)
+}
+
 class TripHeaderView: UIView {
 
 // MARK: View Related
@@ -33,17 +37,31 @@ class TripHeaderView: UIView {
     
     private lazy var noteLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0
+        label.numberOfLines = 3
         label.textAlignment = .left
         label.font = UIFont.actionTextFont(ofSize: 14)
         label.textColor = .primaryBlack
+        label.sizeToFit()
         return label
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    private lazy var moreButton: UIButton = {
+        let button = UIButton()
+        
+        button.setTitle("See more", for: .normal)
+        button.setTitleColor(UIColor.mainItemOrange, for: .normal)
+        button.titleLabel?.font = UIFont.actionTextFont(ofSize: 14)
+        button.addTarget(self, action: #selector(didTapMore), for: .touchUpInside)
+        return button
+    }()
+    
+    private var delegate: TripHeaderViewDelegate?
+    
+    init(delegate: TripHeaderViewDelegate) {
+        super.init(frame: .zero)
         clipsToBounds = true
         backgroundColor = .mainHeaderBackground
+        self.delegate = delegate
         setupView()
     }
 
@@ -70,6 +88,13 @@ class TripHeaderView: UIView {
         noteLabel.snp.makeConstraints { make in
             make.left.right.equalTo(titleLabel)
             make.top.equalTo(dateLabel.snp.bottom).offset(8)
+        }
+        
+        addSubview(moreButton)
+        moreButton.snp.makeConstraints { make in
+            make.left.equalTo(titleLabel)
+            make.top.equalTo(noteLabel.snp.bottom).offset(8)
+            make.height.equalTo(20)
             make.bottom.equalToSuperview().inset(24)
         }
     }
@@ -78,6 +103,23 @@ class TripHeaderView: UIView {
         titleLabel.text = viewModel.tripDestination
         dateLabel.text = viewModel.startDate + " - " + viewModel.endDate
         noteLabel.text = viewModel.contryNote
+    }
+    
+    @objc func didTapMore() {
+        expandHeaderView()
+    }
+    
+    private func expandHeaderView() {
+        noteLabel.numberOfLines = 0
+        noteLabel.sizeToFit()
+        
+        noteLabel.snp.remakeConstraints { make in
+            make.left.right.equalTo(titleLabel)
+            make.top.equalTo(dateLabel.snp.bottom).offset(8)
+            make.bottom.equalToSuperview().inset(24)
+        }
+        moreButton.removeFromSuperview()
         layoutIfNeeded()
+        delegate?.didReloadContent(self)
     }
 }

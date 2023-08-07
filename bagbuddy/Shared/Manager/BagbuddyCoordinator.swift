@@ -99,8 +99,14 @@ class BagbuddyCoordinator {
 
         var activities: [Activity] = []
         var cityInfo: CityInfoList?
-        if let allCityInfos = LocalDataManager().getActivityItemDomainInfo() {
-            cityInfo = allCityInfos[destination.name.lowercased()]
+        if let allCityInfos = LocalDataManager().getActivityItemDomainInfo(),
+            let startDate = trip.startDate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMMM"
+
+            let travelMonth = dateFormatter.string(from: startDate)
+            let searchKey = destination.name.lowercased() + "_" + travelMonth.lowercased()
+            cityInfo = allCityInfos[searchKey]
             activities = cityInfo?.activities ?? []
         }
         

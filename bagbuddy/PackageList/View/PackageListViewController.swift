@@ -50,7 +50,7 @@ class PackageListViewController: UIViewController, ItemNoteDelegate {
     }()
     
     private lazy var headerView: TripHeaderView = {
-        let view = TripHeaderView()
+        let view = TripHeaderView(delegate: self)
         return view
     }()
     
@@ -331,5 +331,15 @@ extension PackageListViewController {
 extension PackageListViewController: ItemSectionHeaderViewDelegate {
     func didTapActivity(_ view: ItemSectionHeaderView, currentState: ItemSectionState) {
         presenter?.changeItemSectionState(section: view.tag, fromState: currentState)
+    }
+}
+
+extension PackageListViewController: TripHeaderViewDelegate {
+    func didReloadContent(_ view: TripHeaderView) {
+        headerView.layoutIfNeeded()
+        let size = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+
+        headerView.frame.size = size
+        tableView.tableHeaderView = headerView
     }
 }

@@ -34,7 +34,12 @@ class LocalDataManager {
                let data = try Data(contentsOf: url)
                let decoder = JSONDecoder()
                let cityInfos = try decoder.decode([CityInfoList].self, from: data)
-               return Dictionary(uniqueKeysWithValues: cityInfos.map { ($0.name.lowercased(), $0) })
+               return Dictionary(uniqueKeysWithValues: cityInfos.map {
+                   let travelMonth = $0.month.lowercased()
+                   let cityName = $0.name.lowercased()
+                   let searchKey = cityName + "_" + travelMonth
+                   return (searchKey, $0)
+               })
            } catch {
                print("error: \(error)")
            }
